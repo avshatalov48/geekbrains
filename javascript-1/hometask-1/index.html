@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+	<title>Alexander Shatalov > First Lesson > Home Task</title>
+	<script>
+
+		/* Счастливый билетик
+		Написать программу, определяющую, является ли число билетика счастливым или нет. if/else и всё, что мы не проходили, применять нельзя. */
+		function luckyTicket() {
+			var ticketNumber = +prompt ('Введите шестизначный номер билета: '),
+				number1,
+				number2,
+				number3,
+				number4,
+				number5,
+				number6,
+				temp;
+			number1 = (ticketNumber - ticketNumber % 100000) / 100000; // получаем крайнюю левую цифру
+			temp = ticketNumber - number1 * 100000; // уменьшаем номер билета на 1 цифру слева
+			number2 = (temp - temp % 10000) / 10000;
+			temp = temp - number2 * 10000;
+			number3 = (temp - temp % 1000) / 1000;
+			temp = temp - number3 * 1000;
+			number4 = (temp - temp % 100) / 100;
+			temp = temp - number4 * 100;
+			number5 = (temp - temp % 10) / 10;
+			number6 = temp - number5 * 10;
+			alert ('Билетик c №' + ticketNumber + ' является счастливым (True or False)?\nОтвет: '
+			+ (number1 + number2 + number3 == number4 + number5 + number6));
+		}
+
+		/* Авторизация по возрасту
+		Написать программу, которая бы проверила возраст пользователя, введённый в поле. При возрасте меньше 18 должна выводить предупреждение о входе в закрытый раздел сайта. */
+		function authorizationAge() {
+			var userAge = +prompt ('Введите Ваш возраст: ');
+			var message = (userAge >= 18) ? 'Добро пожаловать на сайт!' :
+			'Внимание! Вы входите в закрытый раздел сайта!';
+			alert (message);
+		}
+
+		/* Конвертер температур
+		Задать температуру в градусах по Цельсию. Вывести в alert соответствующую температуру в градусах по Фаренгейту. Подсказка: расчёт идёт по формуле: Tf = (9 / 5) * Tc + 32, где Tf – температура по Фаренгейту, Tc – температура по Цельсию */
+		function converterTemperature() {
+			var degreeCelsius = +prompt ('Введите температуру в градусах по Цельсию: ');
+			alert (degreeCelsius + ' градусов по Цельсию = ' + ((9 / 5) * degreeCelsius + 32)
+			+ ' градусов по Фаренгейту');
+		}
+
+		/* Админ "Василий"
+		Объявить две переменные: admin и name. Записать в name строку "Василий"; Скопировать значение из name в admin. Вывести admin (должно вывести "Василий"). */
+		function adminVasya() {
+			var name = '"Василий"';
+			alert (admin = name);
+		}
+
+		/* 1000 + "108"
+		Чему будет равно JS-выражение 1000 + "108" */
+		function oneThousand() {
+			var a = 1000,
+				b = '108',
+				c = a + b;
+			alert ('a=' + a + ' (' + typeof(a) + ') + b=' + b + ' (' + typeof(b) + ') = ' + c);
+		}
+
+		/* async и defer
+		Самостоятельно разобраться с атрибутами тега script (async и defer) */
+		function asyncDefer() {
+			document.getElementById('pasteText').style.display = "block";
+		}
+
+	</script>
+</head>
+<body>
+	<ul><b>Домашнее задание №1:</b>
+		<li><a href="#" onclick="converterTemperature();">Конвертер температур</a></li>
+		<li><a href="#" onclick="adminVasya();">Админ "Василий"</a></li>
+		<li><a href="#" onclick="oneThousand();">1000 + "108"</a><sup>*</sup></li>
+		<li><a href="#" onclick="asyncDefer();">async и defer</a><sup>*</sup></li>
+		<li><a href="#" onclick="luckyTicket();">Счастливый билетик</a><sup>*</sup></li>
+		<li><a href="#" onclick="authorizationAge();">Авторизация по возрасту</a><sup>*</sup></li>
+	</ul>
+	<div id="pasteText" style="display: none;">
+		<hr>
+
+		<h3>Атрибут async</h3>
+		<p>Поддержка атрибута async появилась в HTML5, он разрешает браузеру загружать js-файлы параллельно и выполнять сразу после загрузки, не дожидаясь обработки остальной части страницы.</p>
+		<img src="https://webliberty.ru/wp-content/uploads/2015/09/Script-async.png" alt="Атрибут async">
+
+		<h3>Атрибут defer</h3>
+		<p>Атрибут defer позволяет браузеру начать загрузку js-файлов параллельно, не останавливая дальнейшую обработку страницы. Их выполнение происходит после полного разбора объектной модель документа (от англ. Document Object Model, сокращенно DOM), при этом браузер гарантирует последовательность на основе порядка подключения файлов.</p>
+		<img src="https://webliberty.ru/wp-content/uploads/2015/09/Script-defer.png" alt="Атрибут defer">
+
+		<p><b>Источник</b>: <a href="https://webliberty.ru/async-javascript/" target="_blank">https://webliberty.ru/async-javascript/</a></p>
+	</div>
+</body>
+</html>
