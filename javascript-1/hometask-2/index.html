@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-	<title>Alexander Shatalov > First Lesson > Home Task №2</title>
+	<title>Alexander Shatalov > JavaScript 1 > Second Lesson > HomeTask</title>
 	<style>
 		body { font-family: Consolas, Courier, monospace; }
 	</style>
@@ -53,7 +53,7 @@
 			var x = 1 + (a *= 2);
 			document.write(x);
 		</script>
-		, сначала операция в скобках, т.к. приоритет выше и корректность записи, далее сумма, полная запись x = 1 + (a = a * 2 = 4) = 5.</i>
+		, сначала выполняется операция в скобках, т.к. приоритет выше и корректность записи, далее сумма, полная запись x = 1 + (a = a * 2 = 4) = 5.</i>
 	</p>
 
 	<hr>
@@ -87,7 +87,7 @@
 			}
 		</script>
 
-		<a href="#" onclick="taskNumberThree();">Запустить выполнение задачи №3</a>
+		<a href="javascript:void(0);" onclick="taskNumberThree();">Запустить выполнение задачи №3</a>
 	</p>
 
 	<hr>
@@ -123,7 +123,152 @@
 			}
 		</script>
 	<p>
-		<a href="#" onclick="taskNumberFour();">Запустить выполнение задачи №4</a>
+		<a href="javascript:void(0);" onclick="taskNumberFour();">Запустить выполнение задачи №4</a>
 	</p>
+
+	<hr>
+
+	<h3>Задача №5</h3>
+	<p>Реализовать основные 4 арифметические операции в виде функций с двумя параметрами. Обязательно использовать оператор return.</p>
+
+		<script>
+			function taskNumberFive() {
+
+				var a = Math.floor(Math.random()*100),
+					b = Math.floor(Math.random()*100);
+
+				function operationAddition (a, b) {
+					return a+b;
+				}
+
+				function operationSubtraction(a, b) {
+					return a-b;
+				}
+
+				function operationMultiplication (a, b) {
+					return a*b;
+				}
+
+				function operationDivision (a, b) {
+					return a/b;
+				}
+
+				alert ('a (random) = ' + a +
+						'\nb (random) = ' + b +
+						'\na + b = ' + operationAddition(a, b) +
+						'\na - b = ' + operationSubtraction(a, b) +
+						'\na * b = ' + operationMultiplication(a, b) +
+						'\na / b = ' + operationDivision(a, b).toFixed(4));
+			}
+		</script>
+	<p>
+		<a href="javascript:void(0);" onclick="taskNumberFive();">Запустить выполнение задачи №5</a>
+	</p>
+
+	<hr>
+
+	<h3>Задача №6</h3>
+	<p>Реализовать функцию с тремя параметрами: function mathOperation(arg1, arg2, operation), где arg1, arg2 – значения аргументов, operation – строка с названием операции. В зависимости от переданного значения операции выполнить одну из арифметических операций и вернуть полученное значение (использовать switch).</p>
+
+		<script>
+			function taskNumberSix() {
+
+				var a = +prompt('Введите значение переменной "a"'),
+					b = +prompt('Введите значение переменной "b"'),
+					operation = prompt('Введите необходимую операцию "+", "-", "*", "/"'),
+					result;
+
+				function operationAddition (a, b) {
+					return a+b;
+				}
+
+				function operationSubtraction(a, b) {
+					return a-b;
+				}
+
+				function operationMultiplication (a, b) {
+					return a*b;
+				}
+
+				function operationDivision (a, b) {
+					return a/b;
+				}
+
+				function mathOperation(a, b, operation) {
+					switch (operation) {
+						case("+"):
+							return operationAddition (a, b);
+						case("-"):
+							return operationSubtraction (a, b);
+						case("*"):
+							return operationMultiplication (a, b);
+						case("/"):
+							return operationDivision (a, b);
+						default:
+							return "Неправильно введена арифметическая операция!";
+					}
+				}
+
+				alert ('a = ' + a +
+						'\nb = ' + b +
+						'\nоперация: ' + operation +
+						'\nрезультат: ' + mathOperation(a, b, operation));
+			}
+		</script>
+	<p>
+		<a href="javascript:void(0);" onclick="taskNumberSix();">Запустить выполнение задачи №6</a>
+	</p>
+
+	<hr>
+
+	<h3>Задача №7<sup>*</sup></h3>
+	<p>Сравнить null и 0. Попробуйте объяснить результат.</p>
+
+		<script>
+			function taskNumberSeven() {
+				console.log ('typeof(null) ', typeof(null)); // object
+				console.log ('typeof(0) ', typeof(0)); // number
+				console.log ('== ', null == 0); // false
+				console.log ('=== ', null === 0); // false
+				console.log ('<= ', null <= 0); // true
+				console.log ('>= ', null >= 0); // true
+				console.log ('< ', null < 0); // false
+				console.log ('> ', null > 0); // false
+				console.log ('* ', null * 0); // 0
+				console.log ('null / 0 ', null / 0); // NaN
+				console.log ('0 / null ', 0 / null); // NaN
+				console.log ('Значение null является литералом JavaScript (а не свойством глобального объекта, как undefined), представляющим нулевое или "пустое" значение, то есть, когда нет никакого объектного значения. Это одно из примитивных значений JavaScript. В API null часто присутствует в местах, где ожидается объект, но подходящего объекта нет. 0 - это число.');
+			}
+		</script>
+	<p>
+		<a href="javascript:void(0);" onclick="taskNumberSeven();">Запустить выполнение задачи №7 (результаты выводятся в консоль)</a>
+	</p>
+
+	<hr>
+
+	<h3>Задача №8<sup>*</sup></h3>
+	<p>С помощью рекурсии организовать функцию возведения числа в степень. Формат: function power(val, pow), где val – заданное число, pow – степень.</p>
+
+		<script>
+			function taskNumberEight() {
+
+				var val = +prompt('Введите значение числа'),
+					pow = +prompt('Введите значение степени');
+
+				function power(val, pow) {
+				if (pow == 0)
+					return 1;
+				else
+					return val * power(val, pow-1);
+				}
+
+				alert ('Число ' + val + ' в степени ' + pow + ' = ' + power(val, pow));
+
+			}
+		</script>
+	<p>
+		<a href="javascript:void(0);" onclick="taskNumberEight();">Запустить выполнение задачи №8</a>
+	</p>
+
 </body>
 </html>
