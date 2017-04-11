@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+	<title>Alexander Shatalov > JavaScript 1 > Third Lesson > HomeTask "Happy Cats"</title>
+	<style>
+		body { font-family: Consolas, Courier, monospace; }
+	</style>
+</head>
+<body>
+
+	<script>
+		function taskNumberFirst() {
+			var answer = false,
+			cats = '',
+			countCats = 0,
+			pictureCat = '<img src="https://lh3.googleusercontent.com/2ZdBdwmCiU9eYOGDFVrc8BGCLo8qtVi6hKKX6wOh3KFO5ucc705AHtBedGXlyYfNj9Q=w300">';
+
+			question (answer);
+
+			function question (answer) {
+				answer = confirm('Ты счастлив?\n("OK" - Да, "Отмена" - Нет)');
+				switch (answer) {
+					case (false):
+						document.getElementById('textTask').style.display = "none"; // Скрываю текст задачи
+						cats+=pictureCat; // Увеличиваю количество кошек
+						countCats++; // Считаем кошек
+						document.getElementById('pasteCats').innerHTML = cats; // Добавляю кошек на страницу
+						alert ('Заведи больше кошек!');
+						question (answer);
+						break;
+					case (true):
+						alert ('Ура! Вы счастливы!\n' + 'Для счастья потребовалось всего '+ countCats + ' кошки(ек)!');
+						document.getElementById('textTask').style.display = "block"; // Отображаю текст задачи
+				}
+			}
+		}
+	</script>
+
+	<div id="textTask">
+	<h2>Домашнее задание №3</h2>
+
+	<hr>
+	<h3>"Задача по кошек"</h3>
+	<p>Написать данную программу без циклов. Написать минусы при данном подходе.</p>
+		<img src="http://img0.joyreactor.cc/pics/post/блок-схема-счастье-кошки-удалённое-465436.jpeg" alt="" />
+	<p>
+		<i>Ответ: Минусы при данном подходе, в более сложной структуре кода, понимании его.</i>
+	</p>
+	<p>
+		<a href="javascript:void(0);" onclick="taskNumberFirst();">Запустить выполнение задачи</a>
+	</p>
+	</div>
+
+	<div id="pasteCats">
+	</div>
+
+</body>
+</html>
