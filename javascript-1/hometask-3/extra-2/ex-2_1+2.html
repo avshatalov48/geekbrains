@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 2 > Extra Task 1</title>
+</head>
+<body>
+
+	<script>
+		function startScript() {
+
+			var a = 0,
+				b = 0,
+				c = 0,
+				D = 0,
+				x1 = 0,
+				x2 = 0,
+				result='';
+
+			a = document.getElementById('variableA').value;
+			b = document.getElementById('variableB').value;
+			c = document.getElementById('variableC').value;
+			D = Math.pow(b,2) - 4*a*c; // D=b^{2}-4ac.
+
+			if (D>0) {
+				// корни разные
+				// a=1; b=-7; c=6; D=25; x1=1; x2=6
+				x1 = (-1*b - Math.sqrt(D))/(2*a);
+				x2 = (-1*b + Math.sqrt(D))/(2*a);
+			} else if (D == 0) {
+				// корней два, они равны
+				// a=3; b=-18; c=27; D=0; x1=3; x2=3
+				x1 = -1*b / (2*a);
+				x2 = x1;
+			} else {
+				// при D<0 вещественных (действительных) корней нет, однако существуют два комплексных корня, выражающиеся той же формулой, что и для положительного дискриминанта. Также её можно переписать, выразив корень из отрицательного числа в виде произведения корня с мнимой единицей.
+				// http://fxdx.ru/page/reshenie-kvadratnyh-uravnenij-v-pole-kompleksnyh-chisel
+				// a=20; b=1; c=2; D=-159;
+				x1 = '(-' + b + ' - i * sqr(|' + D + '|)) / (2*' + a + ')';
+				x2 = '(-' + b + ' + i * sqr(|' + D + '|)) / (2*' + a + ');';
+				x2+='<br>где i - это мнимая единица';
+				x2+='<br>D<0 =>';
+				x2+='<br><img src="ex-2_1_formula.svg">';
+			}
+
+			result+='a='+ a +'; b=' + b + '; c='+ c +'; D='+ D +';<br>x1=' + x1 + ';<br>x2=' + x2 + ';';
+			document.getElementById('pasteResult').innerHTML = result;
+
+		}
+	</script>
+
+	<div id="textTask">
+		<h2>Дополнительное домашнее задание №2</h2>
+
+		<hr>
+		<h3>Задача 1</h3>
+		<p>
+			Написать программу вычисления решений x1 и x2 квадратного уравнения. Для вычисления корня пользоваться функцией Math.sqrt(x). Важно реализовать это через текстовые поля &lt;input&gt;.
+		</p>
+
+		<h3>Задача 2</h3>
+		<p>
+			Со звёздочкой: в случае отрицательного дискриминанта вывести x1 и x2 в качестве комплексного числа.
+		</p>
+
+		<hr>
+
+		<p>
+			<form action="" id="form" onsubmit="startScript(); return false;">
+				<input type="text" placeholder="Введите a" id="variableA">*x^2 +
+				<input type="text" placeholder="Введите b" id="variableB">*x +
+				<input type="text" placeholder="Введите c" id="variableC"> = 0
+				<input type="submit" value="Вычислить">
+			</form>
+		</p>
+
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Task 2</title>
+	<script>
+		function startScript() {
+			var i = 0,
+				maxNumber = 10,
+				join = '',
+				result = '';
+
+			do {
+
+				if (i == 0) {
+					join = 'это ноль';
+				} else if (i%2 == 0) {
+					join = 'четное число';
+				} else {
+					join = 'нечетное число';
+				}
+
+				result+='<br>' + i + ' - ' + join;
+
+			} while (++i<=maxNumber);
+
+			document.getElementById('pasteResult').innerHTML = result;
+		}
+	</script>
+
+</head>
+<body>
+
+	<div id="textTask">
+		<h2>Домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 2</h3>
+		<p>
+			С помощью цикла do…while написать функцию для вывода чисел от 0 до 10, чтобы результат выглядел так:
+			<br>0 – это ноль
+			<br>1 – нечетное число
+			<br>2 – четное число
+			<br>3 – нечетное число
+			<br>…
+			<br>10 – четное число
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

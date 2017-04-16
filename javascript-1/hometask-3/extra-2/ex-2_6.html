@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 2 > Extra Task 6</title>
+</head>
+<body>
+
+	<script>
+		function startScript() {
+
+			var n = 2,
+				f=[],
+				result='';
+
+			f[0]=0;
+			f[1]=1;
+
+			while (n<1478) {
+				f[n]=f[n-1]+f[n-2]
+				result+='F('+ n + ') = ' + f[n] + '<br>';
+				n++;
+			}
+
+			// console.log(Number.MAX_VALUE);
+			document.getElementById('pasteResult').innerHTML = result;
+
+		}
+	</script>
+
+	<div id="textTask">
+		<h2>Дополнительное домашнее задание №2</h2>
+
+		<hr>
+		<h3>Задача 6</h3>
+		<p>
+			Написать функцию подсчёта чисел Фибоначчи. Проверить, на каких N перестаёт работать ваша программа и почему это происходит.
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+		<hr>
+	</div>
+
+		<!-- https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number -->
+		<p>
+			<i>Ответ: Программа перестаёт работать при N>1476, F(1477) = Infinity, F(1476) = 1.3069892237633987e+308, т.к. наибольшее представимое положительное число Number.MAX_VALUE = 1.7976931348623157e+308. Для решения проблемы можно воспользоваться библиотекой <a href="https://github.com/silentmatt/javascript-biginteger">https://github.com/silentmatt/javascript-biginteger</a>.</i>
+		</p>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

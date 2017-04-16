@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Extra Task 4</title>
+</head>
+<body>
+
+	<script>
+
+			var a = 0,
+				b = 0,
+				c = 0,
+				operation,
+				result='';
+
+		function startScript(operation) {
+
+			a = +document.getElementById('numberOne').value;
+			b = +document.getElementById('numberTwo').value;
+
+			switch (operation) {
+				case 'Addition':
+					c=a+b;
+					break;
+				case 'Subtraction':
+					c=a-b;
+					break;
+				case 'Multiplication':
+					c=a*b;
+					break;
+				case 'Division':
+					c=a/b;
+					break;
+				case 'pow':
+					c=Math.pow(a, b)
+					break;
+				case 'cos':
+					c=Math.cos(a)
+					break;
+				case 'log':
+					c=Math.log(a);
+					break;
+				case 'sin':
+					c=Math.sin(a);
+					break;
+				case 'tan':
+					c=Math.tan(a);
+					break;
+				case 'acos':
+					c=Math.acos(a)
+					break;
+				case 'atan':
+					c=Math.atan(a);
+					break;
+				case 'asin':
+					c=Math.asin(a);
+					break;
+				case 'reset':
+					c=0;
+					document.getElementById('numberOne').value = 0;
+					document.getElementById('numberTwo').value = 0;
+					break;
+				case 'random':
+					c=0;
+					document.getElementById('numberOne').value = Math.floor(Math.random()*1000);
+					document.getElementById('numberTwo').value = Math.floor(Math.random()*1000);
+					break;
+			}
+
+			document.getElementById('numberResult').value = c;
+
+		}
+	</script>
+
+	<div id="textTask">
+		<h2>Дополнительное домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 4</h3>
+		<p>
+			Создать калькулятор на странице. 3 поля - 1 число и 2 число + результат. Нажимая на определённую кнопку с операцией, пользователь получает результат в 3 поле. Добавьте арифметические операции + тригонометрические функции, возвредение в степень (всё это вы можете узнать в объекте Math, <a href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math" target="_blank">https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math</a>. Как взаимодействовать с полями - смотрите моё ДЗ к предыдущему уроку
+		</p>
+
+		<hr>
+
+		<h3>Калькулятор</h3>
+
+		<p>
+			<form action="" id="form" onsubmit="return false;">
+				Число 1 (a=): <input type="text" placeholder="" id="numberOne">
+				<br>Число 2 (b=): <input type="text" placeholder="" id="numberTwo">
+				<br>Результат: <input type="text" placeholder="" id="numberResult" disabled>
+				<p>
+					<button onclick="startScript('Addition');">+</button>
+					<button onclick="startScript('Subtraction');">-</button>
+					<button onclick="startScript('Multiplication');">*</button>
+					<button onclick="startScript('Division');">/</button>
+					<button onclick="startScript('reset');">RESET</button>
+					<button onclick="startScript('random');">RANDOM</button>
+				</p>
+				<p>
+					<button onclick="startScript('pow');">a^b</button>
+					<button onclick="startScript('sin');">sin(a)</button>
+					<button onclick="startScript('cos');">cos(a)</button>
+					<button onclick="startScript('tan');">tan(a)</button>
+				</p>
+				<p>
+					<button onclick="startScript('log');">log(a)</button>
+					<button onclick="startScript('asin');">asin(a)</button>
+					<button onclick="startScript('acos');">acos(a)</button>
+					<button onclick="startScript('atan');">atan(a)</button>
+				</p>
+			</form>
+		</p>
+
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

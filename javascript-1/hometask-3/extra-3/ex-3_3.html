@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Extra Task 3</title>
+</head>
+<body>
+
+	<script>
+		function startScript() {
+
+			var
+				i=0,
+				j=0,
+				k=0,
+				matrixCount=Math.floor(Math.random()*9)+2,
+				matrix=[],
+				result='';
+
+			// заполнение массива случайными цифрами
+			while (i<matrixCount) {
+				matrix[i++]=Math.floor(Math.random()*9)+1;
+
+			}
+
+			k = matrix.length;
+			while (j<k/2) {
+				if (j>0) {
+					result+='-';
+				}
+				if (j==Math.floor(k/2)) {
+					result+=matrix[j];
+				} else {
+					result+=matrix[j] + '' + matrix[k-j-1];
+				}
+				j++;
+			}
+
+			document.getElementById('pasteResult').innerHTML = 'Массив (random): ' + matrix.toString() + '<br>Результат: '+ result;
+
+		}
+	</script>
+
+	<div id="textTask">
+		<h2>Дополнительное домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 3</h3>
+		<p>
+			Дан массив ['1', '2', '3', '4', '5', '6']. Сделайте из него строку '16-25-34'. Массив может быть любым.
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+		<hr>
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

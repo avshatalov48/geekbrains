@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Task 1</title>
+	<script>
+		function startScript() {
+			var i = 0,
+				maxNumber = 100,
+				j,
+				simpleNumber,
+				result = '<b>Ответ:</b> ';
+
+			do {
+				j = 1;
+
+				while (j<i) {
+					if (i%j == 0 && j!=1) {
+						simpleNumber = false;
+						break;
+					} else {
+						simpleNumber = true;
+					}
+					j++;
+				};
+
+				if (simpleNumber) {
+					result+=i+ '; ';
+				}
+			} while (++i<=maxNumber);
+
+			document.getElementById('pasteResult').innerHTML = result;
+		}
+	</script>
+
+</head>
+<body>
+
+	<div id="textTask">
+		<h2>Домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 1</h3>
+		<p>
+			С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+		</p>
+		<p>
+			Простые числа — это целые натуральные (положительные) числа больше единицы, которые имеют ровно 2 натуральных делителя (только 1 и самого себя), т.е. не делится ни на одно другое число, кроме самого себя и единицы. Все остальные числа кроме единицы называются составными. Таким образом, все натуральные числа, за исключением единицы, разбиваются на простые и составные.
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Task 3</title>
+	<script>
+		function startScript() {
+			var i = 0,
+				result = 'Результат: ';
+
+			for (i = 0; i <= 9; result+=i+'; ', i++) {
+				// здесь пусто
+			}
+
+			document.getElementById('pasteResult').innerHTML = result;
+		}
+	</script>
+</head>
+<body>
+
+	<div id="textTask">
+		<h2>Домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 3</h3>
+		<p>
+			Вывести с помощью цикла for числа от 0 до 9, НЕ используя тело цикла. То есть выглядеть должно вот так: for(…){// здесь пусто}
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>

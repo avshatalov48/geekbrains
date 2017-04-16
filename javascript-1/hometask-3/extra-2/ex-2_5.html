@@ -4,19 +4,17 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-	<title>Alexander Shatalov > JavaScript 1 > Third Lesson > HomeTask "Happy Cats"</title>
-	<style>
-		body { font-family: Consolas, Courier, monospace; }
-	</style>
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 2 > Extra Task 5 - "Gitty Kitty"</title>
 </head>
 <body>
 
 	<script>
-		function taskNumberFirst() {
+		function startScript() {
 			var answer = false,
 			cats = '',
 			countCats = 0,
-			pictureCat = '<img src="https://lh3.googleusercontent.com/2ZdBdwmCiU9eYOGDFVrc8BGCLo8qtVi6hKKX6wOh3KFO5ucc705AHtBedGXlyYfNj9Q=w300">';
+			pictureCat = '<img src="ex-2_5_cat.png" alt="Gitty Kitty">';
 
 			question (answer);
 
@@ -25,9 +23,9 @@
 				switch (answer) {
 					case (false):
 						document.getElementById('textTask').style.display = "none"; // Скрываю текст задачи
-						cats+=pictureCat; // Увеличиваю количество кошек на странице
-						countCats++; // Считаю количество кошек
+						cats+=pictureCat; // Увеличиваю количество картинок с кошками на странице
 						document.getElementById('pasteCats').innerHTML = cats; // Добавляю кошек на страницу
+						countCats++; // Считаю количество кошек
 						alert ('Заведи больше кошек!');
 						question (answer); // Рекурсия
 						break;
@@ -40,17 +38,17 @@
 	</script>
 
 	<div id="textTask">
-		<h2>Домашнее задание №3</h2>
+		<h2>Дополнительное домашнее задание №2</h2>
 
 		<hr>
-		<h3>"Задача по кошек"</h3>
+		<h3>5. "Задача про кошек"</h3>
 		<p>Написать данную программу без циклов. Написать минусы при данном подходе.</p>
-			<img src="http://img0.joyreactor.cc/pics/post/блок-схема-счастье-кошки-удалённое-465436.jpeg" alt="" />
+			<img src="ex-2_5_algorithm.jpg" alt="Схема алгоритма" />
 		<p>
-			<i>Ответ: Минусы при данном подходе, в более сложной структуре кода, понимании его.</i>
+			<i>Ответ: Минусы при данном подходе в более сложной структуре кода, понимании его.</i>
 		</p>
 		<p>
-			<a href="javascript:void(0);" onclick="taskNumberFirst();">Запустить выполнение задачи</a>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
 		</p>
 	</div>
 

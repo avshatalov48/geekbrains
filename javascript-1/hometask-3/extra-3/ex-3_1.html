@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 3 > Extra Task 1</title>
+</head>
+<body>
+
+	<script>
+		function startScript() {
+
+			var
+				i=0,
+				matrix=[],
+				matrixSquare=[],
+				result='';
+
+			while (i<10) {
+				matrix[i]=Math.floor(Math.random()*10);
+				matrixSquare[i]=Math.pow(matrix[i],2);
+				result+=matrix[i] + '^2=' + matrixSquare[i] + '; ';
+				i++;
+			}
+
+			document.getElementById('pasteResult').innerHTML = result;
+
+		}
+	</script>
+
+	<div id="textTask">
+		<h2>Дополнительное домашнее задание №3</h2>
+
+		<hr>
+		<h3>Задача 1</h3>
+		<p>
+			Создать массив из 10 разных чисел. Создать переменную, в которой будет находиться массив с квадратом этих чисел.
+		</p>
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Запустить выполнение задачи</a>
+		</p>
+		<hr>
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>
