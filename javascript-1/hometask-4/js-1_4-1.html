@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="../style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 4 > Task 1</title>
+</head>
+<body>
+
+	<script>
+			var numberObject = {
+			};
+
+			function numberToObject() {
+				numberObject['сотни'] = 0;
+				numberObject['десятки'] = 0;
+				var k = document.getElementById('inputNumber').value,
+					i = +k,
+					j = k.split('').reverse(),
+					l = j.length;
+
+				if(isNaN(k) || i > 999 || i < 0) {
+					console.log('Введенное число не соответствует условию. Повторите ввод.');
+				} else {
+					if (l > 2)
+						numberObject['сотни'] = +j[2];
+					if (l > 1 && (j[0]!=j[1]))
+						numberObject['десятки'] = +j[1];
+					numberObject['единицы'] = +j[0];
+					console.log(numberObject);
+				}
+			};
+
+	</script>
+
+	<div id="textTask">
+		<h2>Домашнее задание №4</h2>
+
+		<hr>
+		<h3>Задача 1</h3>
+		<p>
+			Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, мы должны получить на выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245 мы должны получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999, необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+		</p>
+
+		<hr>
+
+		<p>
+			<form action="" id="form" onsubmit="return false;">
+				Введите число от 0 до 999: <input type="text" placeholder="" id="inputNumber">
+				<button onclick="numberToObject();">Преобразовать в объект</button> (смотрим консоль)
+			</form>
+		</p>
+
+	</div>
+
+</body>
+</html>
