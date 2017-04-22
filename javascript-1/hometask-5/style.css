@@ -1,0 +1,35 @@
+body {
+	width: 70%;
+	margin: 0 auto;
+	font-family: Consolas, Courier, monospace;
+}
+
+table, tr, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 0px;
+}
+
+table {
+	border: 3px solid black;
+	margin: 20px auto;
+}
+
+tr {
+	height: 64px;
+}
+
+td {
+	vertical-align: middle;
+	text-align: center;
+	width: 64px;
+}
+
+.boardFigures {
+	font-size: 44px;
+}
+
+.boardNumbers, .boardLetters {
+	font-size: 14px;
+	color: gray;
+}

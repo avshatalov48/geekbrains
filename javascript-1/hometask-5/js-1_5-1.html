@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="style.css">
+	<title>Alexander Shatalov > JavaScript 1 > Lesson 5 > Task 1-3</title>
+</head>
+<body>
+	<script>
+
+		function startScript() {
+			var pasteResult = document.getElementById('pasteResult'),
+				pasteTd,
+
+				// фигуры - белые
+				figuresWhite = [
+					// пешки
+					['&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;'],
+					// основные фигуры
+					['&#9814;', '&#9816;', '&#9815;', '&#9813;', '&#9812;', '&#9815;', '&#9816;', '&#9814;']
+				],
+
+				// фигуры - черные
+				figuresBlack = [
+					// основные фигуры
+					['&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;', '&#9820;'],
+					// пешки
+					['&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;']
+				];
+
+
+			// создаем <table>
+			var boardTable = document.createElement('table');
+  			pasteResult.appendChild(boardTable);
+
+  			for (var row = 1; row <= 10; row++) {
+				// создаем <tr>
+				var boardTr = document.createElement('tr');
+	  			boardTable.appendChild(boardTr);
+
+	  			for (var col = 1; col <= 10; col++) {
+
+					// создаем <td>
+					var boardTd = document.createElement('td');
+
+					// раскраска доски
+					if (((row%2 != 0 && col%2 == 0) || (row%2 == 0 && col%2 != 0)) && (col > 1 && col < 10) && (row > 1 && row < 10)) {
+						boardTd.style.background = 'gray';
+					}
+
+					pasteTd = '';
+
+					// цифры по вертикали
+					if (row > 1 && row < 10 && (col == 1 || col == 10)) {
+						boardTd.className = 'boardNumbers';
+						pasteTd+= 8 - row + 2;
+					}
+
+					// буквы по горизонтали
+					if (col > 1 && col < 10 && (row == 1 || row == 10)) {
+						boardTd.className = 'boardLetters';
+						pasteTd+= '&#' + (65 + col - 2); // HTML - A-H
+					}
+
+					// фигуры - белые
+					if (col > 1 && col < 10 && (row == 8 || row == 9)) {
+						boardTd.className = 'boardFigures';
+						pasteTd+= figuresWhite[row-8][col-2];
+					}
+
+					// фигуры - черные
+					if (col > 1 && col < 10 && (row == 2 || row == 3)) {
+						boardTd.className = 'boardFigures';
+						pasteTd+= figuresBlack[row-2][col-2];
+					}
+
+					boardTd.innerHTML = pasteTd;
+					boardTr.appendChild(boardTd);
+	  			}
+  			}
+
+		}
+
+	</script>
+
+	<div id="textTask">
+		<h2>Домашнее задание №5</h2>
+
+		<hr>
+		<h3>Задача 1</h3>
+		<p>
+			Создать функцию, генерирующую шахматную доску. При этом можно использовать любые html-теги по своему  желанию. Доска должна быть разлинована соответствующим образом, т.е. чередовать черные и белые ячейки. Строки должны нумероваться числами от 1 до 8, столбцы – латинскими буквами A, B, C, D, E, F, G, H.
+		</p>
+
+		<hr>
+		<h3>Задача 2</h3>
+		<p>
+			2. Заполнить созданную таблицу буквами, отвечающими за шахматную фигуру, например К-
+			король, Ф – ферзь и тп., причем все фигуры должны стоять на своих местах и быть
+			соответственно черными и белыми.
+		</p>
+
+		<hr>
+		<h3>Задача 3</h3>
+		<p>
+			3*. Заменить буквы, обозначающие фигуры картинками.
+		</p>
+
+		<hr>
+
+		<p>
+			<a href="javascript:void(0);" onclick="startScript();">Сгенерировать шахматную доску</a>
+		</p>
+
+	</div>
+
+	<div id="pasteResult">
+	</div>
+
+</body>
+</html>
