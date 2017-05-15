@@ -45,11 +45,6 @@
 					// создаем <td>
 					var boardTd = document.createElement('td');
 
-					// раскраска доски
-					if (((row%2 != 0 && col%2 == 0) || (row%2 == 0 && col%2 != 0)) && (col > 1 && col < 10) && (row > 1 && row < 10)) {
-						boardTd.style.background = 'gray';
-					}
-
 					pasteTd = '';
 
 					// цифры по вертикали
@@ -58,22 +53,31 @@
 						pasteTd+= 8 - row + 2;
 					}
 
-					// буквы по горизонтали
-					if (col > 1 && col < 10 && (row == 1 || row == 10)) {
-						boardTd.className = 'boardLetters';
-						pasteTd+= '&#' + (65 + col - 2); // HTML - A-H
-					}
+					if (col > 1 && col < 10) {
 
-					// фигуры - белые
-					if (col > 1 && col < 10 && (row == 8 || row == 9)) {
-						boardTd.className = 'boardFigures';
-						pasteTd+= figuresWhite[row-8][col-2];
-					}
+						// раскраска доски, либо сделать через CSS
+						if (((row%2 != 0 && col%2 == 0) || (row%2 == 0 && col%2 != 0)) && (row > 1 && row < 10)) {
+							boardTd.style.background = 'gray';
+						}
 
-					// фигуры - черные
-					if (col > 1 && col < 10 && (row == 2 || row == 3)) {
-						boardTd.className = 'boardFigures';
-						pasteTd+= figuresBlack[row-2][col-2];
+						// буквы по горизонтали
+						if (row == 1 || row == 10) {
+							boardTd.className = 'boardLetters';
+							pasteTd+= '&#' + (65 + col - 2); // HTML - A-H
+						}
+
+						// фигуры - белые
+						if (row == 8 || row == 9) {
+							boardTd.className = 'boardFigures';
+							pasteTd+= figuresWhite[row-8][col-2];
+						}
+
+						// фигуры - черные
+						if (row == 2 || row == 3) {
+							boardTd.className = 'boardFigures';
+							pasteTd+= figuresBlack[row-2][col-2];
+						}
+
 					}
 
 					boardTd.innerHTML = pasteTd;
