@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-	<title>Alexander Shatalov > JavaScript 1 > Circles</title>
+	<title>Alexander Shatalov > JavaScript 1 > Circles (19/05/2017)</title>
 </head>
-<body>
+<body style="background-color: #ffffff;">
+	<p id="text" style="font-size: 14px; color: silver;">Для остановки скрипта нажмите клавишу "ESC"</p>
 </body>
 <script>
 	var times = 0,
@@ -20,7 +21,16 @@
 			circle.style.height = circle.style.width;
 			transition = false;
 			// количество повторов до остановки
-			if (times++ > 100) {
+			if (times++ > 30) {
+				circle = document.getElementById('circle' + (times - 32));
+				circle.style.transition = '2s';
+				circle.style.width = '0px';
+				// circle.style.left = 0 + 'px';
+				circle.style.top = 0 + 'px';
+				circle.style.height = circle.style.width;
+				// circle.parentNode.removeChild(circle); // удаление элемента
+			}
+			if (times > 1000) {
 				clearInterval(numInterval);
 			}
 		} else {
@@ -47,6 +57,7 @@
 			// circle.innerHTML = times;
 			document.body.appendChild(circle);
 			transition = true;
+			// document.getElementById('text').style.color = circle.style.backgroundColor;
 		}
 
 	}
