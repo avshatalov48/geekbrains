@@ -4,76 +4,88 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-	<title>Alexander Shatalov > JavaScript 1 > Circles (19/05/2017)</title>
+	<title>Alexander Shatalov > JavaScript 1 > Circles (25/05/2017)</title>
 </head>
-<body style="background-color: #ffffff;">
-	<p id="text" style="font-size: 14px; color: silver;">Для остановки скрипта нажмите клавишу "ESC"</p>
+<body style="background-color: #ffffff; overflow: hidden;">
+	<p style="font-size: 14px; color: silver;">Для остановки скрипта нажмите клавишу "ESC"</p>
 </body>
 <script>
 	var times = 0,
 		diameter = 0,
-		transition = false;
+		transition = false,
+		colors = ['red', 'blue', 'green', 'orange', 'aqua', 'violet', 'black', 'gray']; // Палитра цветов
 
 	function createCircle() {
+
+		function circleDraw(width, height, transition, top, left) {
+			if (!isNaN(left)) { circle.style.left = left + 'px'; }
+			circle.style.top = top + 'px';
+			circle.style.width = width + 'px';
+			circle.style.height = height + 'px';
+			circle.style.transition = transition + 's';
+		}
+
+		function circleColor() {
+			var r = Math.floor(Math.random()*255), // Цвет RGB
+				g = Math.floor(Math.random()*255), // Цвет RGB
+				b = Math.floor(Math.random()*255); // Цвет RGB
+			circle.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
+		}
+
+		var diameter = Math.floor(Math.random()*110) + 10, // Диаметр круга
+			windowHeight = window.innerHeight, // Высота области просмотра окна
+			windowWidth = window.innerWidth; // Ширина области просмотра окна
+
 		if (transition) {
+			// анимация увеличения круга
 			var circle = document.getElementById('circle' + times);
 			circle.style.width = diameter + 'px';
 			circle.style.height = circle.style.width;
 			transition = false;
-			// количество повторов до остановки
+			// количество повторов до начала анимации полёта круга
 			if (times++ > 30) {
 				circle = document.getElementById('circle' + (times - 32));
-				circle.style.transition = '2s';
-				circle.style.width = '0px';
-				// circle.style.left = 0 + 'px';
-				circle.style.top = 0 + 'px';
-				circle.style.height = circle.style.width;
-				// circle.parentNode.removeChild(circle); // удаление элемента
+				circleDraw(0, 0, 2, 0, NaN);
 			}
 			if (times > 1000) {
-				clearInterval(numInterval);
+				clearInterval(numInterval); // Остановка после 1000 циклов
 			}
 		} else {
-			var circle = document.createElement('div');
-				diameter = Math.floor(Math.random()*110) + 10, // Диаметр круга
-				windowHeight = window.innerHeight, // Возвращает высоту области просмотра окна.
-				windowWidth = window.innerWidth, // Возвращает ширину области просмотра окна.
+			var circle = document.createElement('div'),
 				x = Math.floor(Math.random()*(windowWidth-diameter*2))+diameter,
-				y = Math.floor(Math.random()*(windowHeight-diameter*2))+diameter,
-				r = Math.floor(Math.random()*255),
-				g = Math.floor(Math.random()*255),
-				b = Math.floor(Math.random()*255),
-				colors = ['red', 'blue', 'green', 'orange', 'aqua', 'violet', 'black', 'gray']; // Палитра цветов
+				y = Math.floor(Math.random()*(windowHeight-diameter*2))+diameter;
 			circle.id = 'circle' + times;
 			circle.style.position = 'absolute';
 			circle.style.borderRadius = Math.floor(Math.random()*40) + 10 + '%';
-			// circle.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
-			circle.style.backgroundColor = 'rgb(' + r + ',' + g + ',' + b + ')';
-			circle.style.left = x + 'px';
-			circle.style.top = y + 'px';
-			circle.style.width = '1px';
-			circle.style.height = circle.style.width;
-			circle.style.transition = '.7s';
-			// circle.innerHTML = times;
+			circleColor();
+			circleDraw(1, 1, .7, y, x);
 			document.body.appendChild(circle);
 			transition = true;
-			// document.getElementById('text').style.color = circle.style.backgroundColor;
 		}
 
 	}
 
 	numInterval = setInterval(function(){ createCircle(); }, 50)
 
-	// Ожидание нажатия клавиши ESC
-	window.captureEvents(Event.KEYPRESS);
-	window.onkeypress = pressed;
-    function pressed(e) {
-        // alert("Нажата клавиша, ее значение ASCII: " + e.which);
+	// Ожидание нажатия клавиши ESC - Chrome
+	window.addEventListener('keydown', function() {
+	  	var e = window.event;
         if(e.keyCode == 27) {
 	        console.log (e);
 	        clearInterval(numInterval);
         }
-    }
+	  })
+
+	// Ожидание нажатия клавиши ESC - Mozilla FireFox
+	window.addEventListener('keydown', function() {
+		window.onkeypress = pressed;
+	    function pressed(e) {
+	        if(e.keyCode == 27) {
+		        console.log (e);
+		        clearInterval(numInterval);
+	        }
+	    }
+    })
 
 </script>
 </html>
