@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-	<title>Alexander Shatalov > JavaScript 1 > Circles (25/05/2017)</title>
+	<title>Alexander Shatalov > JavaScript 1 > Circles (11/06/2017)</title>
 </head>
 <body style="background-color: #ffffff; overflow: hidden;">
 	<p style="font-size: 14px; color: silver;">Для остановки скрипта нажмите клавишу "ESC"</p>
@@ -65,27 +65,17 @@
 
 	}
 
-	numInterval = setInterval(function(){ createCircle(); }, 50)
+	// Цикличный запуск функции createCircle через 50мс (1000 миллисекунд равны 1 секунде)
+	numInterval = setInterval(createCircle, 50)
 
-	// Ожидание нажатия клавиши ESC - Chrome
-	window.addEventListener('keydown', function() {
-	  	var e = window.event;
-        if(e.keyCode == 27) {
-	        console.log (e);
-	        clearInterval(numInterval);
-        }
-	  })
-
-	// Ожидание нажатия клавиши ESC - Mozilla FireFox
-	window.addEventListener('keydown', function() {
-		window.onkeypress = pressed;
-	    function pressed(e) {
-	        if(e.keyCode == 27) {
-		        console.log (e);
-		        clearInterval(numInterval);
-	        }
-	    }
-    })
+	// Ожидание нажатия клавиши ESC
+	var body = document.querySelector('body');
+	body.onkeydown = function (e) {
+	    if(e.keyCode == 27) {
+			console.log (e);
+			clearInterval(numInterval);
+		}
+	};
 
 </script>
 </html>
