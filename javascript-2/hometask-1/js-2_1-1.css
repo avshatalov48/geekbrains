@@ -16,6 +16,7 @@ body {
 	list-style-type: none;
 	border: solid 1px black;
 	border-right: none;
+	transition: 0.3s;
 }
 
 .menu__list-items:hover {

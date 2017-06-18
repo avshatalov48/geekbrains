@@ -33,16 +33,24 @@ Menu.prototype = Object.create(Container.prototype);
 // Обратно возвращаем стёртый конструктор
 Menu.prototype.constructor = Menu;
 
-// Генерация кода всего меню
+// Генерация HTML кода всего меню
 Menu.prototype.render = function () {
-    var res = '<ul id="' + this.id + '" class="' + this.className + '">';
+    // var resList = '<ul id="' + this.id + '" class="' + this.className + '">',
+    var resList = '<ul class="' + this.className + '">',
+        res = resList,
+        resSub = 0;
     // Перебираем items
     for (var item in this.items) {
         // Проверяем пункт ли этого меню или нет, instanceof - принадлежит ли классу
-        if (this.items[item] instanceof MenuItem) {
+        if (this.items[item] instanceof SubMenuItem) {
+            if (resSub == 0) { res += resList; resSub = 1; }
+            res += this.items[item].render();
+        } else if (this.items[item] instanceof MenuItem) {
+            if (resSub == 1) { res += '</ul>'; resSub = 0; }
             res += this.items[item].render();
         }
     }
+    if (resSub == 1) { res += '</ul>'; resSub = 0; }
     res += '</ul>';
     return res;
 };
@@ -68,7 +76,7 @@ MenuItem.prototype = Object.create(Container.prototype);
 // Обратно возвращаем стёртый конструктор
 MenuItem.prototype.constructor = MenuItem;
 
-// Отрисовка пункта меню
+// Отрисовка пункта меню (доделать, чтобы подменю <ul> вкладывалось в <li>)
 MenuItem.prototype.render = function () {
     var menuItemHtml = '<li id="' + this.id
         + '" class="' + this.className
@@ -78,25 +86,42 @@ MenuItem.prototype.render = function () {
     return menuItemHtml;
 };
 
+// Подменю
+function SubMenuItem(itemId, itemHref, itemName) {
+    // Наследование от контейнера
+    MenuItem.call(this);
+    this.id = itemId;
+    this.className = itemClassName;
+    this.href = itemHref;
+    this.hrefClassName = itemAnchorsClassName;
+    this.name = itemName;
+}
+
+SubMenuItem.prototype = Object.create(MenuItem.prototype);
+SubMenuItem.prototype.constructor = SubMenuItem;
+
 // Наполнение меню
 var menu = new Menu('menu__list-id', 'menu__list', [
-    new MenuItem('google', '#', 'Google'),
-    new MenuItem('yandex', '#', 'Yandex'),
-    new MenuItem('mailru', '#', 'Mail.ru'),
-    new MenuItem('rambler', '#', 'Rambler'),
-    new MenuItem('yahooo', '#', 'Yahoo'),
-    new MenuItem('facebook', '#', 'FaceBook'),
-    new MenuItem('twitter', '#', 'Twitter'),
+    new MenuItem('search', '#', 'Search'),
+    new SubMenuItem('google', '#', 'Google'),
+    new SubMenuItem('yandex', '#', 'Yandex'),
+    new SubMenuItem('mailru', '#', 'Mail.ru'),
+    new SubMenuItem('rambler', '#', 'Rambler'),
+    new SubMenuItem('yahooo', '#', 'Yahoo'),
+    new MenuItem('social', '#', 'Social'),
+    new SubMenuItem('facebook', '#', 'FaceBook'),
+    new SubMenuItem('twitter', '#', 'Twitter'),
+    new MenuItem('vesti24', '#', 'Vesti24'),
+    new MenuItem('geekbrains', '#', 'GeekBrains'),
 ])
 
 // Вставка меню после загрузки <body>
 var body = document.querySelector('body');
-body.onload = menu.insert('menu');
+body.onload = menu.insert('menu-id');
 
 // Обработка по клику
 body.onclick = function (e) {
     var event = e.target;
-
     // клик по ссылке меню (имитация)
     if (event.className == itemAnchorsClassName) {
         event.parentNode.click();
