@@ -1,5 +1,32 @@
 body {
 	width: 70%;
 	margin: 0 auto;
-	font-family: Consolas, Courier, monospace;
+	font-family: Lato, Calibri, Arial, sans-serif;
+	text-align: center;
+}
+
+.menu__list {
+	padding: 0px;
+}
+
+.menu__list-items {
+	padding: 10px;
+	background-color: #007DC7;
+	display: inline-block;
+	list-style-type: none;
+	border: solid 1px black;
+	border-right: none;
+}
+
+.menu__list-items:hover {
+	background-color: black;
+}
+
+.menu__list-items:nth-last-child(1) {
+	border-right: solid 1px black;
+}
+
+.menu__list-items a {
+	color: white;
+	text-decoration: none;
 }
