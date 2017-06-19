@@ -30,28 +30,31 @@ function Menu(menuId, menuClass, menuItems) {
 
 // Полноценное наследование от Container
 Menu.prototype = Object.create(Container.prototype);
-// Обратно возвращаем стёртый конструктор
+// Обратно возвращаем стёртый конструктор Menu
 Menu.prototype.constructor = Menu;
 
 // Генерация HTML кода всего меню
 Menu.prototype.render = function () {
-    // var resList = '<ul id="' + this.id + '" class="' + this.className + '">',
     var resList = '<ul class="' + this.className + '">',
         res = resList,
-        resSub = 0;
+        resSub = 0; // для реализации вложености тегов (колхоз)
     // Перебираем items
     for (var item in this.items) {
         // Проверяем пункт ли этого меню или нет, instanceof - принадлежит ли классу
         if (this.items[item] instanceof SubMenuItem) {
             if (resSub == 0) { res += resList; resSub = 1; }
-            res += this.items[item].render();
+            res += this.items[item].render() + '</li>';
         } else if (this.items[item] instanceof MenuItem) {
-            if (resSub == 1) { res += '</ul>'; resSub = 0; }
+            if (resSub == 1) {
+                res += '</ul></li>'; resSub = 0;
+            } else if (item > 0) {
+                res += '</li>';
+            }
             res += this.items[item].render();
         }
     }
     if (resSub == 1) { res += '</ul>'; resSub = 0; }
-    res += '</ul>';
+    res += '</li></ul>';
     return res;
 };
 
@@ -62,7 +65,6 @@ Menu.prototype.insert = function (id) {
 
 // Класс - Пункты меню
 function MenuItem(itemId, itemHref, itemName) {
-    // Наследование от контейнера
     Container.call(this);
     this.id = itemId;
     this.className = itemClassName;
@@ -71,24 +73,21 @@ function MenuItem(itemId, itemHref, itemName) {
     this.name = itemName;
 }
 
-// Полноценное наследование от Container
 MenuItem.prototype = Object.create(Container.prototype);
-// Обратно возвращаем стёртый конструктор
 MenuItem.prototype.constructor = MenuItem;
 
-// Отрисовка пункта меню (доделать, чтобы подменю <ul> вкладывалось в <li>)
+// Отрисовка пункта меню
 MenuItem.prototype.render = function () {
     var menuItemHtml = '<li id="' + this.id
         + '" class="' + this.className
         + '"><a href="' + this.href
         + '" class="' + this.hrefClassName
-        + '">' + this.name + '</a></li>';
+        + '">' + this.name + '</a>'; // </li> в конце убираем, т.к. возможно вложение
     return menuItemHtml;
 };
 
 // Подменю
 function SubMenuItem(itemId, itemHref, itemName) {
-    // Наследование от контейнера
     MenuItem.call(this);
     this.id = itemId;
     this.className = itemClassName;
@@ -111,8 +110,10 @@ var menu = new Menu('menu__list-id', 'menu__list', [
     new MenuItem('social', '#', 'Social'),
     new SubMenuItem('facebook', '#', 'FaceBook'),
     new SubMenuItem('twitter', '#', 'Twitter'),
+    new SubMenuItem('vk', '#', 'VK'),
     new MenuItem('vesti24', '#', 'Vesti24'),
     new MenuItem('geekbrains', '#', 'GeekBrains'),
+    new MenuItem('youtube', '#', 'YouTube'),
 ])
 
 // Вставка меню после загрузки <body>

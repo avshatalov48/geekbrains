@@ -8,50 +8,44 @@ body {
 	margin: 0 auto;
 }
 
-.menu {
-	width: 100px;
-	display: block;
-	margin: 0 auto;
-}
-
-.menu ul ul li {
-	/*display: none;*/
-}
-
-.menu ul:hover ul li {
-	/*display: block;*/
-}
-
-.menu__list {
-	padding: 0px;
-}
-
-.menu__list-items {
-	padding: 10px;
-	background-color: #007DC7;
-	list-style-type: none;
-	border: solid 1px black;
-	/*border-right: none;*/
-	border-bottom: none;
-	transition: 0.1s;
-	font-weight: bold;
-}
-
-.menu__list-items:hover {
-	background-color: black;
-}
-
-.menu__list-items:nth-last-child(1) {
-	/*border-bottom: solid 1px black;*/
-	/*border-right: solid 1px black;*/
-}
-
-.menu__list-items a {
-	color: white;
+.menu a {
+	color: #fff;
 	text-decoration: none;
 }
 
-.menu ul ul li {
-	font-weight: normal;
+.menu ul li {
+	width: 100px;
+	padding: 10px;
+	list-style-type: none;
+}
+
+.menu ul > li:hover,
+.menu ul ul > li:hover {
+	background-color: black;
+}
+
+.menu ul li, .menu ul {
+	display: inline-block;
+}
+
+.menu ul {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	background-color: #007DC7;;
+	font-weight: bold;
+}
+
+.menu ul ul {
+	display: none;
+	position: absolute;
 	background-color: #34aac7;
+	margin-top: 10px;
+	margin-left: -10px;
+	font-weight: normal;
+}
+
+.menu li:hover ul,
+.menu li:hover li {
+	display: block;
 }
