@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+
+		// Решение в процессе, пока, что нет на него времени...
+
+		function isPalindrome(s) {
+			var a = false,
+					m = s.toLocaleLowerCase(); // .split(/\d/); // вернет массив ["a", "b", "c", "d"].
+			return m;
+		}
+
+		console.log(isPalindrome("level")); // logs 'true'
+		console.log(isPalindrome("levels")); // logs 'false'
+		console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
+	</script>
+</head>
+
+<body>
+
+<!-- думаю, что задачу необходимо решать с помощью регулярных выражений. это будет короче всего.
+
+	рекурсия.
+
+	методы while do
+
+	попробовать применить экспериментальные функци ES6
+
+	https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
+	String.prototype.startsWith() - Метод startsWith() определяет, начинается ли строка с символов другой строки, возвращая, соотвественно, true или false.
+
+	https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
+	String.prototype.endsWith() - Метод endsWith() определяет, заканчивается ли строка символами другой строки, возвращая, соотвественно, true или false.
+
+ -->
+
+    <!-- Предлагаю небольшую задачу, реальная с собеседования:
+Необходимо написать функцию, проверяющую входную строку на палиндром (слово или фраза, которая читается слева направо и справа налево одинаково).
+Функция должна возвращать true или false.
+Функция должна проходить следующие тесты:
+
+console.log(isPalindrome("level")); // logs 'true'
+console.log(isPalindrome("levels")); // logs 'false'
+console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
+
+Решение должно быть не более 80 символов. При подсчете учитывается только тело функции, то что между фигурными скобками. Учитываются пробелы, переводы строк и т.д.
+Чем короче будет тем лучше.
+Предлагаю решать ее до конца курса, до 8 урока. А потом на последнем уроке объявим победителя у кого вышло самое короткое решение.
+Свои варианты можете присылать мне в личку, лучше в телеграм. -->
+</body>
+
+</html>
