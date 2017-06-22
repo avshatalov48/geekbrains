@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="js-2_2-3.css">
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 2 > Exercise 2</title>
+
+    <script>
+    function Container() {
+        this.id = '';
+        this.className = '';
+        this.htmlCode = '';
+    }
+
+    Container.prototype.render = function() {
+        return this.htmlCode;
+    };
+
+    function Menu(myId, myClass, myItems) {
+        Container.call(this);
+        this.id = myId;
+        this.className = myClass;
+        this.items = myItems;
+    }
+
+    Menu.prototype = Object.create(Container.prototype);
+    Menu.prototype.constructor = Menu;
+
+    Menu.prototype.render = function() {
+        var res = '<ul class="' + this.className + '">';
+
+        for (var item in this.items) {
+            if (this.items[item] instanceof MenuItem) {
+                res += this.items[item].render();
+            }
+        }
+        res += '</ul>';
+        return res;
+    };
+
+    function MenuItem(myHref, myName) {
+        Container.call(this);
+        this.className = 'menu-item';
+        this.href = myHref;
+        this.name = myName;
+    }
+
+    MenuItem.prototype = Object.create(Container.prototype);
+    MenuItem.prototype.constructor = MenuItem;
+
+    MenuItem.prototype.render = function() {
+        return '<li><a href="' + this.href + '">' + this.name + '</a></li>';
+    };
+
+    window.onload = function() {
+        document.getElementById('btn').addEventListener('click', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', './js-2_2-2.json', true);
+            xhr.send();
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState != 4) return;
+
+                if (xhr.status != 200) {
+                    console.log('Error', xhr.status, xhr.statusText);
+                } else {
+                    //console.log('ok', xhr.responseText);
+                    var items = [];
+                    var myItems = JSON.parse(xhr.responseText);
+
+                    // пробегаем по всем элементам
+                    for (var i = 0; i < myItems.length; i++) {
+                        // добавляем в массив готовые пункты
+                        // Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.
+                        items.push(new MenuItem(myItems[i].href, myItems[i].title));
+                    }
+
+                    var menu1 = new Menu('my', 'my', items);
+                    var menuDom = document.getElementById('menu');
+                    menuDom.innerHTML = menu1.render();
+                }
+            }
+        });
+    }
+    </script>
+</head>
+
+<body>
+    <button id="btn">Получить пункты меню и добавить меню на страницу!</button>
+    <div id="menu"></div>
+</body>
+
+</html>
