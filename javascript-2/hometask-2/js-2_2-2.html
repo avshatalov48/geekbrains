@@ -6,8 +6,7 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
     <link rel="stylesheet" href="js-2_2-3.css">
-    <title>Alexander Shatalov > JavaScript 2 > Lesson 2 > Exercise 2</title>
-
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 2 > Exercise 2 > Shop Menu</title>
     <script>
     function Container() {
         this.id = '';
@@ -35,6 +34,8 @@
         for (var item in this.items) {
             if (this.items[item] instanceof MenuItem) {
                 res += this.items[item].render();
+            } else if (this.items[item] instanceof MenuSubItem) {
+                res += '<ul>' + this.items[item].render() + '</ul>';
             }
         }
         res += '</ul>';
@@ -52,8 +53,23 @@
     MenuItem.prototype.constructor = MenuItem;
 
     MenuItem.prototype.render = function() {
+        return '<li><b><a href="' + this.href + '">' + this.name + '</a></b></li>';
+    };
+
+    function MenuSubItem(myHref, myName) {
+        Container.call(this);
+        this.className = 'menu-sub-item';
+        this.href = myHref;
+        this.name = myName;
+    }
+
+    MenuSubItem.prototype = Object.create(Container.prototype);
+    MenuSubItem.prototype.constructor = MenuSubItem;
+
+    MenuSubItem.prototype.render = function() {
         return '<li><a href="' + this.href + '">' + this.name + '</a></li>';
     };
+
 
     window.onload = function() {
         document.getElementById('btn').addEventListener('click', function() {
@@ -65,22 +81,24 @@
                 if (xhr.readyState != 4) return;
 
                 if (xhr.status != 200) {
-                    console.log('Error', xhr.status, xhr.statusText);
+                    console.log('Console: Error', xhr.status, xhr.statusText);
                 } else {
-                    //console.log('ok', xhr.responseText);
-                    var items = [];
-                    var myItems = JSON.parse(xhr.responseText);
+                    var items = [],
+                        subItems,
+                        myItems = JSON.parse(xhr.responseText);
 
-                    // пробегаем по всем элементам
                     for (var i = 0; i < myItems.length; i++) {
-                        // добавляем в массив готовые пункты
-                        // Метод push() добавляет один или более элементов в конец массива и возвращает новую длину массива.
                         items.push(new MenuItem(myItems[i].href, myItems[i].title));
+                        if (myItems[i].submenu) {
+                            for (var j = 0; j < myItems[i].submenu.length; j++) {
+                                subItems = myItems[i].submenu[j];
+                                items.push(new MenuSubItem(subItems.href, subItems.title));
+                            }
+                        }
                     }
 
-                    var menu1 = new Menu('my', 'my', items);
-                    var menuDom = document.getElementById('menu');
-                    menuDom.innerHTML = menu1.render();
+                    var menuNew = new Menu('first', 'shop', items);
+                    document.getElementById('menu').innerHTML = menuNew.render();
                 }
             }
         });
