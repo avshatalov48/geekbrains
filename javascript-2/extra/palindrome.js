@@ -1,11 +1,10 @@
-// Решение в процессе, пока, что нет на него времени...
-
+// Вариант, без сокращений
 function isPalindrome(s) {
-    var a = false,
-        m = s.toLocaleLowerCase(); // .split(/\d/); // вернет массив ["a", "b", "c", "d"].
-    return m;
+    var i, a = true,
+        m = s.toLowerCase().match(/[a-z]/ig);
+    for (i in m) {
+        // console.log(m[i] + m.length);
+        if (m[i] != m[m.length-i-1]) a = false;
+    }
+    return a;
 }
-
-console.log(isPalindrome("level")); // logs 'true'
-console.log(isPalindrome("levels")); // logs 'false'
-console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'

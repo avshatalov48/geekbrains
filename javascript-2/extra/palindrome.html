@@ -5,26 +5,24 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
+    <!-- <script src="palindrome.js"></script> --><!-- вариант, без сокращений -->
+    <!-- <script src="palindrome-2.js"></script> --><!-- 91 символ -->
+    <script src="palindrome-3.js"></script><!-- 67 символов -->
+    <script>
+	    // Проверка
+	    console.log(isPalindrome("level")); // logs 'true'
+	    console.log(isPalindrome("levels")); // logs 'false'
+	    console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
+    </script>
     <title>Alexander Shatalov > Palindrome</title>
 </head>
 
 <body>
-    <!-- думаю, что задачу необходимо решать с помощью регулярных выражений. это будет короче всего.
+	<p>Результат выведен в консоль.</p>
+<!--
+Самое короткое без хитростей порядка 52-54 символов!
 
-	рекурсия.
-
-	методы while do
-
-	попробовать применить экспериментальные функци ES6
-
-	https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith
-	String.prototype.startsWith() - Метод startsWith() определяет, начинается ли строка с символов другой строки, возвращая, соотвественно, true или false.
-
-	https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String/endsWith
-	String.prototype.endsWith() - Метод endsWith() определяет, заканчивается ли строка символами другой строки, возвращая, соотвественно, true или false.
-
- -->
-    <!-- Предлагаю небольшую задачу, реальная с собеседования:
+Предлагаю небольшую задачу, реальная с собеседования:
 Необходимо написать функцию, проверяющую входную строку на палиндром (слово или фраза, которая читается слева направо и справа налево одинаково).
 Функция должна возвращать true или false.
 Функция должна проходить следующие тесты:
@@ -37,7 +35,6 @@ console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
 Чем короче будет тем лучше.
 Предлагаю решать ее до конца курса, до 8 урока. А потом на последнем уроке объявим победителя у кого вышло самое короткое решение.
 Свои варианты можете присылать мне в личку, лучше в телеграм. -->
-    <script src="palindrome.js"></script>
 </body>
 
 </html>
