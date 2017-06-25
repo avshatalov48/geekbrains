@@ -23,26 +23,23 @@ Form.prototype.render = function () {
     return this.value;
 };
 
-// Обработка текста формы
+// Обработка текста формы регулярным выражением
 Form.prototype.correction = function () {
-    var value = this.value;
+    var reg, value = this.value;
 
     // 1 задание - Меняем все двойные кавычки на одинарные
     // value = value.replace(/'/g,'"');
 
-    // Замена символа " в начале строки
-    value = value.replace(/^'/gm,'\"');
-    // Замена символа " перед и после пробела
-    value = value.replace(/\b'\s/gm,'\" ');
-    value = value.replace(/\s'\b/gm,' \"');
-    // Замена символа " перед точкой и запятой
-    value = value.replace(/\b'\./gm,'\".');
-    value = value.replace(/\b'\,/gm,'\",');
+    // Замена символа " после пробела и ";"
+    value = value.replace(/[\s|;]'\b/gm,' \"');
+    // Замена символа " - перед пробелом и ";" | в начале строки | в конце строки | перед точкой и запятой |
+    value = value.replace(/\b'(?=[\s|;])|^'|'$|\b'(?=[\.|\,])/gm,'\"');
+
     return value;
 };
 
 // Загрузка текста из файла JSON через AJAX
-window.onload = function () {
+document.getElementById('form__button-load').onclick = function () {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', './js-2_3-1+2.json', true);
     xhr.send();
@@ -60,7 +57,7 @@ window.onload = function () {
     }
 };
 
-// Отслеживание Submit формы
+// Отслеживание события "submit" формы
 document.getElementById('form').onsubmit = function (e) {
     e.preventDefault();
     var textArea = document.getElementById('form__text'),
