@@ -29,6 +29,13 @@ body, form, input, textarea {
 	font-style: italic;
 }
 
+.form__message {
+	font-size: 18px;
+	color: red;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
 /* Текстовое поле */
 .form__text {
 	font-size: 18px;

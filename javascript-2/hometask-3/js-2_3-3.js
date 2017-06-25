@@ -33,11 +33,43 @@ Form.prototype.fill = function () {
 };
 
 // Обработка текста формы регулярным выражением
-Form.prototype.validate = function () {
-    document.getElementById('form__input-name').value = '1';
-    document.getElementById('form__input-phone').value = '1';
-    document.getElementById('form__input-email').value = '1';
-    document.getElementById('form__text').value = '1';
+Form.prototype.validate = function (myId, myType) {
+
+    var field = document.getElementById(myId),
+        message = document.getElementById('form__message'),
+        reg = /./g;
+
+    switch (myType) {
+        case "name":
+            reg = /[a-zA-Za-яА-Я]/g;
+            break;
+        case "phone":
+            // +7(000)000-0000
+            break;
+        case "email":
+            // mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru
+            break;
+    }
+
+    console.log(field.value, reg, reg.test(field.value));
+
+    if (reg.test(field.value) == false) {
+        field.style.borderColor = 'red';
+        message.display = 'block';
+        message.innerHTML = 'Проверьте правильность заполнения полей!';
+    } else {
+        message.display = 'none';
+    }
+
+
+    // document.getElementById(myId).value = myType;
+
+
+
+    // this.name = myName;
+    // this.phone = document.getElementById('form__input-phone').value;
+    // this.email = document.getElementById('form__input-email').value;
+    // this.text = document.getElementById('form__text').value;
 
     // var reg, value = this.value;
     //
@@ -74,7 +106,12 @@ document.getElementById('form__button-load').onclick = function () {
 // Отслеживание события "submit" формы
 document.getElementById('form').onsubmit = function (e) {
     e.preventDefault();
-    var formNew = new Form();
-    console.log(formNew);
-    // formNew.validate();
+    var formNew = new Form('formId', 'formClass', document.getElementById('form__input-name').value,
+        document.getElementById('form__input-phone').value,
+        document.getElementById('form__input-email').value,
+        document.getElementById('form__text').value);
+    formNew.validate('form__input-name', 'name');
+    formNew.validate('form__input-phone', 'phone');
+    formNew.validate('form__input-email', 'email');
+    // console.log(formNew);
 };
