@@ -1,0 +1,63 @@
+body {
+	font-family: Lato, Calibri, Arial, sans-serif;
+	font-size: 16px;
+}
+
+.wrapper {
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.form {
+	margin: 0 auto;
+	margin-top: 20px;
+	max-width: 60%;
+	box-sizing: border-box;
+	background: #e7eaed;
+	padding: 20px;
+	border: rgba(0, 0, 0, .3) 1px solid;
+}
+
+.form__text:focus {
+	outline: none;
+	border: #007dc7 1px solid;
+}
+
+.form__header {
+	font-size: 18px;
+	font-style: italic;
+}
+
+/* Текстовое поле */
+.form__text {
+	font-size: 14px;
+	background: #FFFFFF;
+	width: 100%;
+	height: calc(100vh - 220px);
+	border: rgba(0, 0, 0, .3) 1px solid;
+	box-sizing: border-box;
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 15px;
+	overflow: hidden;
+	/*resize: none;*/
+}
+
+/* Кнопка */
+.form__button {
+	font-size: 16px;
+	height: 50px;
+	width: 50%;
+	border: rgba(0, 0, 0, .3) 1px solid;
+	box-sizing: border-box;
+	padding: 10px;
+	background: #007dc7;
+	color: #FFF;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.form__button-clear {
+	background: #c750ac;
+}
