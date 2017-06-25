@@ -23,7 +23,7 @@ Form.prototype.render = function () {
     return this.value;
 };
 
-// Обработка текста формы регулярным выражением
+// Обработка текста формы
 Form.prototype.correction = function () {
     var reg, value = this.value;
 
