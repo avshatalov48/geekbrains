@@ -45,15 +45,15 @@ Form.prototype.validate = function (myIds, myTypes) {
         switch (myType) {
             case "name":
                 // Имя
-                reg = /^[a-zA-Za-яА-Я]+$/;
+                reg = /^[A-zА-я]+$/;
                 break;
             case "phone":
                 // +7(000)000-0000
-                reg = /^\+[0-9]\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/;
+                reg = /^\+[7|8]{1}\([0-9]{3}\)[0-9]{3}-[0-9]{4}$/;
                 break;
             case "email":
                 // mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru
-                reg = /^([a-za-я0-9_-]+\.)*[a-za-я0-9_-]+@[a-za-я0-9_-]+(\.[a-za-я0-9_-]+)*\.[a-za-я]{2,6}$/;
+                reg = /^([A-zА-я0-9_-]+\.)*[A-zА-я0-9_-]+@[A-zА-я0-9_-]+(\.[A-zА-я0-9_-]+)*\.[A-zА-я]{2,6}$/;
                 break;
         }
 
