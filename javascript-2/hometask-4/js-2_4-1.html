@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="author" content="Alexander Shatalov">
+	<title>Alexander Shatalov > JavaScript 2 > Lesson 4 > Exercise 1</title>
+	<script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<!-- The integrity and crossorigin attributes are used for Subresource Integrity (SRI) checking. This allows browsers to ensure that resources hosted on third-party servers have not been tampered with. Use of SRI is recommended as a best-practice, whenever libraries are loaded from a third-party source. Read more at srihash.org -->
+	<style>
+		.main {
+			margin: 20px auto;
+			width: 30%;
+		}
+
+		.tabs {
+			background-color: #34aac7;
+		}
+
+		ul {
+			padding: 0px;
+			margin: 0px;
+			background: #85c799;
+		}
+
+		li {
+			display: inline-block;
+			list-style-type: none;
+			padding: 5px;
+		}
+
+		.tab {
+			padding: 5px;
+			text-align: justify;
+		}
+
+		.titles .active {
+			font-weight: bold;
+			background-color: #34aac7;
+		}
+	</style>
+
+	<script>
+		$(document).ready(function() {
+			var $tabs = $('.tabs .tab');
+			var ACTIVE = 'active';
+			var ACTIVE_DOT = '.' + ACTIVE;
+			$tabs.not(ACTIVE_DOT).hide();
+
+			// Обработка клика <ul>
+			$('ul.titles').on('click', 'li:not(.active)', function() {
+				// Заголовки
+				$(this).addClass('active').siblings().removeClass('active');
+				// Тексты
+				$tabs.hide().eq($(this).index()).show().addClass('active').siblings().removeClass('active');
+			});
+		});
+	</script>
+
+</head>
+
+<body>
+<div class="main">
+	<ul class="titles">
+		<li class="title active">.show()</li>
+		<li class="title">.toggle()</li>
+		<li class="title">.hide()</li>
+		<li class="title">.eq()</li>
+		<li class="title">.siblings()</li>
+	</ul>
+	<div class="tabs">
+		<div class="tab active">
+			<!-- <b>.show()</b> -->
+			С помощью этой функции можно плавно показывать и скрывать выбранные элементы на странице, за счет изменения размера и прозрачности.
+		</div>
+		<div class="tab">
+			<!-- <b>.toggle()</b> -->
+			Показывает или скрывает элементы в наборе объекта jQuery.
+		</div>
+		<div class="tab">
+			<!-- <b>.hide()</b> -->
+			С помощью этой функции можно плавно показывать и скрывать выбранные элементы на странице, за счет изменения размера и прозрачности.
+		</div>
+		<div class="tab">
+			<!-- <b>.eq()</b> -->
+			Возвращает элемент, идущий под заданным номером в наборе выбранных элементов.
+		</div>
+		<div class="tab">
+			<!-- <b>.siblings()</b> -->
+			Осуществляет поиск элементов, являющихся соседними для выбранных элементов (под соседними понимаются элементы, которые имеют общего родителя). При этом, сами выбранные элементы в результат не включаются.
+		</div>
+	</div>
+</div>
+</body>
+
+</html>
