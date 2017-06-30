@@ -21,13 +21,15 @@
 		ul {
 			padding: 0px;
 			margin: 0px;
-			background: #85c799;
 		}
 
 		li {
+			cursor: pointer;
 			display: inline-block;
 			list-style-type: none;
 			padding: 5px;
+			margin: 0px;
+			background: #85c799;
 		}
 
 		.tab {
@@ -48,12 +50,12 @@
 			var ACTIVE_DOT = '.' + ACTIVE;
 			$tabs.not(ACTIVE_DOT).hide();
 
-			// Обработка клика <ul>
-			$('ul.titles').on('click', 'li:not(.active)', function() {
+			// Обработка при клике по <ul>
+			$('ul.titles').on('click', 'li:not(ACTIVE_DOT)', function() {
 				// Заголовки
-				$(this).addClass('active').siblings().removeClass('active');
+				$(this).addClass(ACTIVE).siblings().removeClass(ACTIVE);
 				// Тексты
-				$tabs.hide().eq($(this).index()).show().addClass('active').siblings().removeClass('active');
+				$tabs.hide().eq($(this).index()).show().addClass(ACTIVE).siblings().removeClass(ACTIVE);
 			});
 		});
 	</script>

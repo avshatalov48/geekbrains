@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<meta name="robots" content="noindex, nofollow">
-	<meta name="author" content="Alexander Shatalov">
-	<link rel="stylesheet" href="js-2_4-2.css">
-	<title>Alexander Shatalov > JavaScript 2 > Lesson 3 > Exercise 3</title>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="js-2_4-2.css">
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 3 > Exercise 3</title>
 </head>
+
 <body>
-<div id="wrapper">
-		<form id="form" class="form">
-			<div class="form__header">Заполните форму обратной связи</div>
-			<input id="form__input-name" class="form__input"  name="name" placeholder="Имя..." type="text" required/>
-			<div id="form__message-name" class="form__message"></div>
-			<input id="form__input-phone" class="form__input"  name="phone" placeholder="Номер телефона..." type="text" required/>
-			<div id="form__message-phone" class="form__message"></div>
-			<input id="form__input-email" class="form__input"  name="emailaddress" placeholder="E-mail..." type="text" required/>
-			<div id="form__message-email" class="form__message"></div>
-			<select id="form__message-town" name="towns" class="form__input">
-				<option value="" disabled>Город проживания...</option>
-				<option value="">БОМЖ</option>
-			</select>
-			<textarea id="form__text" name="text" class="form__text" rows="20" cols="40" placeholder="Текст..."></textarea>
-			<input id="form__button-clear" class="form__button form__button-clear" name="reset" type="reset" value="Сброс"/><input id="form__button-load" class="form__button form__button-load" name="load" type="button" value="Загрузить"/><input id="form__button-submit" class="form__button" name="submit" type="submit" value="Отправить"/>
-		</form>
-</div>
-<script src="js-2_4-2.js"></script>
+    <div id="wrapper">
+        <form id="form" class="form">
+            <div class="form__header">Заполните форму обратной связи</div>
+            <input id="form__name" class="form__input" name="name" placeholder="Имя..." type="text" required/>
+            <div id="form__message-name" class="form__message"></div>
+            <input id="form__phone" class="form__input" name="phone" placeholder="Номер телефона..." type="text" required/>
+            <div id="form__message-phone" class="form__message"></div>
+            <input id="form__email" class="form__input" name="emailaddress" placeholder="E-mail..." type="text" required/>
+            <div id="form__message-email" class="form__message"></div>
+            <select id="form__town" name="town" class="form__input">
+                <option value="" disabled>Город проживания...</option>
+            </select>
+            <textarea id="form__text" name="text" class="form__text" rows="20" cols="40" placeholder="Текст..."></textarea>
+            <div id="form__message-text" class="form__message"></div>
+            <!-- между <input> не должно быть пробелов, иначе перескочит на другую строку -->
+            <input id="form__button-clear" class="form__button form__button-clear" name="reset" type="reset" value="Сброс" /><input id="form__button-load" class="form__button form__button-load" name="load" type="button" value="Загрузить" /><input id="form__button-submit" class="form__button" name="submit" type="submit" value="Отправить" />
+        </form>
+    </div>
+    <script src="js-2_4-2.js"></script>
 </body>
+
 </html>
