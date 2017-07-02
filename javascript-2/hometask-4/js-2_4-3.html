@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" href="js-2_4-3.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 4 > Exercise 3</title>
+</head>
+
+<body>
+    <div id="wrapper">
+        <form id="form" class="form">
+            <div class="form__header">Заполните форму обратной связи</div>
+            <input id="form__name" class="form__input" name="name" placeholder="Имя..." title="Имя, минимум 2 буквы" type="text" required/>
+            <div id="form__message-name" class="form__message"></div>
+            <input id="form__phone" class="form__input" name="phone" placeholder="Номер телефона..." title="+7(000)000-0000" type="text" required/>
+            <div id="form__message-phone" class="form__message"></div>
+            <input id="form__email" class="form__input" name="emailaddress" placeholder="E-mail..." title="mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru" type="text" required/>
+            <div id="form__message-email" class="form__message"></div>
+            <input id="form__town" class="form__input" name="town" placeholder="Город проживания..." title="Город" type="text" required/>
+            <textarea id="form__text" name="text" class="form__text" rows="20" cols="40" placeholder="Текст..." title="Текст, минимум 10 символов"></textarea>
+            <div id="form__message-text" class="form__message"></div>
+            <!-- между <input> не должно быть пробелов, иначе перескочит на другую строку -->
+            <input id="form__button-clear" class="form__button form__button-clear" name="reset" type="reset" value="Сброс" /><input id="form__button-load" class="form__button form__button-load" name="load" type="button" value="Загрузить" /><input id="form__button-submit" class="form__button" name="submit" type="submit" value="Отправить" />
+        </form>
+    </div>
+    <script src="js-2_4-3.js"></script>
+</body>
+
+</html>

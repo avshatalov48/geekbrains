@@ -1,0 +1,84 @@
+body, form, input, textarea {
+	font-family: Lato, Calibri, Arial, sans-serif;
+	font-size: 16px;
+	box-sizing: border-box;
+}
+
+.wrapper {
+	text-align: center;
+	width: 80%;
+	margin: 0 auto;
+}
+
+.form {
+	margin: 0 auto;
+	margin-top: 20px;
+	max-width: 50%;
+	background: #e7eaed;
+	padding: 20px;
+	border: rgba(0, 0, 0, .3) 1px solid;
+}
+
+.form__text:focus, .form__input:focus {
+	outline: none;
+	border: #007dc7 1px solid;
+}
+
+.form__header {
+	font-size: 18px;
+	font-style: italic;
+}
+
+.form__message {
+	font-size: 14px;
+	color: #c750ac;
+	font-style: italic;
+}
+
+/* Текстовое поле */
+.form__text {
+	font-size: 18px;
+	background: #FFFFFF;
+	width: 100%;
+	min-height: 100px;
+	height: calc(100vh - 470px);
+	border: rgba(0, 0, 0, .3) 1px solid;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 15px;
+	overflow: hidden;
+	resize: none;
+}
+
+/* Поля ввода */
+.form__input {
+	font-size: 18px;
+	height: 50px;
+	width: 100%;
+	border: rgba(0, 0, 0, .3) 1px solid;
+	background: #FFFFFF;
+	padding: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+/* Кнопки */
+.form__button {
+	font-size: 18px;
+	height: 50px;
+	width: 33.33%;
+	border: rgba(0, 0, 0, .3) 1px solid;
+	padding: 10px;
+	background: #007dc7;
+	color: #FFF;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+.form__button-clear {
+	background: #c750ac;
+}
+
+.form__button-load {
+	background: #85c799;
+}
