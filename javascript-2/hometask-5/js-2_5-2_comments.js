@@ -106,6 +106,8 @@ Comments.prototype.submit = function (idComment, text) {
 Comments.prototype.list = function () {
     $('#comments__list').remove();
 
+	if (this.countComments < 1) { return; }
+
     var commentsDiv = $('<div />', {
         id: 'comments__list',
         html: '<br><hr><br>СПИСОК ВСЕХ ОТЗЫВОВ:<br> '
