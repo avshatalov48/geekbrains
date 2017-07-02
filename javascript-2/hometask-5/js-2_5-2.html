@@ -5,56 +5,68 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-    <title>Alexander Shatalov > JavaScript 2 > Lesson 5 > Exercise 2</title>
-    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="js-2_5-2_container.js"></script>
-    <script src="js-2_5-2_review.js"></script>
-    <script>
-    $(document).ready(function() {
-        // Создаем экземпляр класса
-        var review = new Review();
-        // Отрисовка корзины
-        review.render('#review_wrapper');
-
-        // Покупка по нажатию кнопки "Купить"
-        $('.buyme').on('click', function() {
-            // Функция parseInt() принимает строку в качестве аргумента и возвращает целое число в соответствии с указанным основанием системы счисления.
-            // Получаем id элемента из "good_123", "good" отбрасываем
-            var idProduct = parseInt($(this).attr('id').split('_')[1]);
-            var quantity = 1;
-            // Выхватываем стоимость товара
-            var price = parseInt($(this).parent().find('.product-price').text());
-            // Добавляем в корзину
-            review.add(idProduct, quantity, price);
-        });
-
-        // Удаление
-        $('.delme').on('click', function() {
-            var idProduct = parseInt($(this).attr('id').split('_')[1]);
-            var quantity = 1;
-            var price = parseInt($(this).parent().find('.product-price').text());
-            review.del(idProduct, quantity, price);
-        });
-
-    });
-    </script>
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 5 > Exercise 3</title>
 
     <style>
-        #review_wrapper, .good {
+        #comments__wrapper, #comments__buttons, .comments {
             text-align: center;
             width: 80%;
             margin: 0 auto;
         }
     </style>
+
+    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="js-2_5-2_container.js"></script>
+    <script src="js-2_5-2_comments.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        var comments = new Comments();
+        comments.render('#comments__wrapper');
+
+        // Добавить
+        $('.comments-add').on('click', function() {
+            var idComment = parseInt($(this).attr('id').split('_')[1]);
+            var text = $(this).parent().parent().find('.comments-text').text();
+            comments.add(idComment, text);
+        });
+
+        // Удалить
+        $('.comments-delete').on('click', function() {
+            var idComment = parseInt($(this).attr('id').split('_')[1]);
+            var text = $(this).parent().parent().find('.comments-text').text();
+            comments.del(idComment, text);
+        });
+
+        // Одобрить
+        $('.comments-submit').on('click', function() {
+            var idComment = parseInt($(this).attr('id').split('_')[1]);
+            var text = $(this).parent().parent().find('.comments-text').text();
+            comments.submit(idComment, text);
+        });
+
+        // Показать
+        $('.comments-list').on('click', function() {
+            comments.list();
+        });
+
+    });
+    </script>
 </head>
 
 <body>
-    <div id="review_wrapper"></div>
-    <div class="good">
-        <p>Товар №123</p>
-        <p>Цена: <span class="product-price">150</span> руб.</p>
-        <button class="buyme" id="good-add_123" data-product="123">Купить</button>
-        <button class="delme" id="good-del_123" data-product="123">Удалить</button>
+    <div id="comments__wrapper">
+        <!-- Шапка -->
+    </div>
+    <div class="comments">
+        <p>Отзыв №123</p>
+        <p>Текст: <span class="comments-text">Текст отзыва</span></p>
+    </div>
+    <div id="comments__buttons">
+        <button class="comments-add" id="comments-add_123">Добавить отзыв</button>
+        <button class="comments-delete" id="comments-delete_123">Удалить отзыв</button>
+        <button class="comments-submit" id="comments-submit_123">Одобрить отзыв</button>
+        <button class="comments-list" id="comments-list_123">Показать все отзывы</button>
     </div>
 </body>
 

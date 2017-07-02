@@ -93,12 +93,7 @@ Basket.prototype.add = function (idProduct, quantity, price) {
 // Удаление товара
 Basket.prototype.del = function (idProduct, quantity, price) {
     // Если в корзине ничего нет, нечего и удалять. Выходим из функции.
-    if (this.countGoods == 0) return;
-
-    var basketItem = {
-        "id_product": idProduct,
-        "price": price
-    };
+    if (this.countGoods < 1) return;
 
     // Уменьшаем количество товаров
     for (var i = 1; i <= quantity; i++) {
@@ -108,7 +103,7 @@ Basket.prototype.del = function (idProduct, quantity, price) {
     // Уменьшаем стоимость
     this.amount -= price * quantity;
     // Удаляем товар из массива
-    this.basketItems.pop(basketItem);
+    this.basketItems.pop();
     // Обновляем данные
     this.refresh();
 };

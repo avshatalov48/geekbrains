@@ -1,0 +1,11 @@
+{
+  "result": 1,
+  "comments": [
+    {
+      "id_comment": 123,
+      "text": "Текст отзыва",
+      "submit": 1
+    }
+  ],
+  "count": 1
+}
