@@ -5,16 +5,16 @@
     <meta charset="utf-8">
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
-    <title>Alexander Shatalov > JavaScript 2 > Lesson 5 > Exercise 1</title>
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 5 > Exercise 2</title>
     <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="js-2_5-1_container.js"></script>
-    <script src="js-2_5-1_basket.js"></script>
+    <script src="js-2_5-2_container.js"></script>
+    <script src="js-2_5-2_review.js"></script>
     <script>
     $(document).ready(function() {
         // Создаем экземпляр класса
-        var basket = new Basket();
+        var review = new Review();
         // Отрисовка корзины
-        basket.render('#basket_wrapper');
+        review.render('#review_wrapper');
 
         // Покупка по нажатию кнопки "Купить"
         $('.buyme').on('click', function() {
@@ -25,7 +25,7 @@
             // Выхватываем стоимость товара
             var price = parseInt($(this).parent().find('.product-price').text());
             // Добавляем в корзину
-            basket.add(idProduct, quantity, price);
+            review.add(idProduct, quantity, price);
         });
 
         // Удаление
@@ -33,14 +33,14 @@
             var idProduct = parseInt($(this).attr('id').split('_')[1]);
             var quantity = 1;
             var price = parseInt($(this).parent().find('.product-price').text());
-            basket.del(idProduct, quantity, price);
+            review.del(idProduct, quantity, price);
         });
 
     });
     </script>
 
     <style>
-        #basket_wrapper, .good {
+        #review_wrapper, .good {
             text-align: center;
             width: 80%;
             margin: 0 auto;
@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <div id="basket_wrapper"></div>
+    <div id="review_wrapper"></div>
     <div class="good">
         <p>Товар №123</p>
         <p>Цена: <span class="product-price">150</span> руб.</p>
