@@ -3,9 +3,19 @@
   "comments": [
     {
       "id_comment": 123,
-      "text": "Текст отзыва",
-      "submit": 1
+      "text": "Текст отзыва 123",
+      "submit": true
+    },
+    {
+      "id_comment": 124,
+      "text": "Текст отзыва 124",
+      "submit": false
+    },
+    {
+      "id_comment": 125,
+      "text": "Текст отзыва 125",
+      "submit": false
     }
   ],
-  "count": 1
+  "count": 3
 }

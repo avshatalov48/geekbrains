@@ -6,55 +6,13 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="author" content="Alexander Shatalov">
     <title>Alexander Shatalov > JavaScript 2 > Lesson 5 > Exercise 3</title>
-
-    <style>
-        #comments__wrapper, #comments__buttons, .comments {
-            text-align: center;
-            width: 80%;
-            margin: 0 auto;
-        }
-    </style>
-
+    <link rel="stylesheet" href="js-2_5-2.css">
     <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="js-2_5-2_container.js"></script>
     <script src="js-2_5-2_comments.js"></script>
-
-    <script>
-    $(document).ready(function() {
-        var comments = new Comments();
-        comments.render('#comments__wrapper');
-
-        // Добавить
-        $('.comments-add').on('click', function() {
-            var idComment = parseInt($(this).attr('id').split('_')[1]);
-            var text = $(this).parent().parent().find('.comments-text').text();
-            comments.add(idComment, text);
-        });
-
-        // Удалить
-        $('.comments-delete').on('click', function() {
-            var idComment = parseInt($(this).attr('id').split('_')[1]);
-            var text = $(this).parent().parent().find('.comments-text').text();
-            comments.del(idComment, text);
-        });
-
-        // Одобрить
-        $('.comments-submit').on('click', function() {
-            var idComment = parseInt($(this).attr('id').split('_')[1]);
-            var text = $(this).parent().parent().find('.comments-text').text();
-            comments.submit(idComment, text);
-        });
-
-        // Показать
-        $('.comments-list').on('click', function() {
-            comments.list();
-        });
-
-    });
-    </script>
 </head>
 
 <body>
+    <!-- Для отображения результатов выполнения, после каждой операции можно, либо смотреть результаты в консоли, либо нажимать кнопку "Показать все отзывы". -->
     <div id="comments__wrapper">
         <!-- Шапка -->
     </div>
