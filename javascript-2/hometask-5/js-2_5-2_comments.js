@@ -84,7 +84,7 @@ Comments.prototype.add = function (idComment, text, userMessage) {
 };
 
 // Удаление отзыва
-Comments.prototype.del = function (idComment, text) {
+Comments.prototype.del = function () {
     if (this.countComments < 1) { this.refresh(); return; }
     this.countComments--;
     this.commentsItems.pop();
@@ -92,13 +92,8 @@ Comments.prototype.del = function (idComment, text) {
 };
 
 // Одобрение отзыва
-Comments.prototype.submit = function (idComment, text) {
-    var commentsItem = {
-        "id_comment": idComment,
-        "text": text,
-        "submit": true
-    };
-    this.commentsItems[this.countComments-1] = commentsItem;
+Comments.prototype.submit = function () {
+    this.commentsItems[this.countComments-1].submit = true;
     this.refresh();
 };
 
@@ -156,16 +151,12 @@ $(document).ready(function() {
 
     // Кнопка - Удалить
     $('.comments-delete').on('click', function() {
-        var idComment = parseInt($(this).attr('id').split('_')[1]);
-        var text = $(this).parent().parent().find('.comments-text').text();
-        comments.del(idComment, text);
+        comments.del();
     });
 
     // Кнопка - Одобрить
     $('.comments-submit').on('click', function() {
-        var idComment = parseInt($(this).attr('id').split('_')[1]);
-        var text = $(this).parent().parent().find('.comments-text').text();
-        comments.submit(idComment, text);
+        comments.submit();
     });
 
     // Кнопка - Показать все отзывы
