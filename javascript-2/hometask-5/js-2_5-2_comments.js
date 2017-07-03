@@ -105,15 +105,15 @@ Comments.prototype.list = function () {
 
     var commentsDiv = $('<div />', {
         id: 'comments__list',
-        html: '<br><hr><br>СПИСОК ВСЕХ ОТЗЫВОВ:<br> '
+        html: '<br><hr><br>СПИСОК ВСЕХ ОТЗЫВОВ:<br>&nbsp;'
     });
 
     for (var item in this.commentsItems) {
        var comment = this.commentsItems[item],
        commentsItemsDiv = $('<div />', {
-            html: '<p>Отзыв №' + comment.id_comment + '</p>'
+            html: '<hr width="50%"><p>Отзыв №' + comment.id_comment + '</p>'
             + '<p>Текст: <span class="comments-text-list">' + comment.text + '</span></p>'
-            + '<p>Отзыв одобрен: ' + comment.submit + '</p><br>'
+            + '<p>Отзыв одобрен: ' + comment.submit + '</p>'
         });
         commentsItemsDiv.appendTo(commentsDiv);
     }
@@ -145,8 +145,8 @@ $(document).ready(function() {
     // Кнопка - Добавить
     $('.comments-add').on('click', function() {
         var idComment = parseInt($(this).attr('id').split('_')[1]);
-        var text = $(this).parent().parent().find('.comments-text').text();
-        comments.add(idComment, text, 'Ваш отзыв был передан на модерацию');
+        var text = $(this).parent().parent().find('.comments-text').val();
+        comments.add(idComment, text, 'Ваш отзыв был передан на модерацию!');
     });
 
     // Кнопка - Удалить
