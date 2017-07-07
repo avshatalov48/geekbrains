@@ -85,6 +85,7 @@ $RECYCLE.BIN/
 
 # My add - Remove .idea from GIT:
 .idea/
+bower_components/
 
 # User-specific stuff:
 .idea/**/workspace.xml
