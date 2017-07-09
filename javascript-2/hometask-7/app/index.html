@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="author" content="Alexander Shatalov">
+    <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    <script src="./js/libs.min.js"></script>
+    <title>Alexander Shatalov > JavaScript 2 > Lesson 7
+    </title>
+  </head>
+  <body>
+    <div class="wrapper"><!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an<strong>outdated</strong>browser. Please<a href="http://browsehappy.com/">upgrade your browser</a>to improve your experience.</p><![endif]-->
+      <form class="form" id="form">
+        <div class="form__header">Заполните форму обратной связи</div>
+        <input class="form__input" id="form__name" name="name" placeholder="Имя..." title="Имя, минимум 2 буквы" type="text" required="">
+        <div class="form__message" id="form__message-name"></div>
+        <input class="form__input" id="form__birthday" name="birthday" placeholder="Дата рождения..." title="ДД.ММ.ГГГГ" type="text" required="">
+        <div class="form__message" id="form__message-birthday"></div>
+        <input class="form__input" id="form__phone" name="phone" placeholder="Номер телефона..." title="+7(000)000-0000" type="text" required="">
+        <div class="form__message" id="form__message-phone"></div>
+        <input class="form__input" id="form__email" name="emailaddress" placeholder="E-mail..." title="mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru" type="text" required="">
+        <div class="form__message" id="form__message-email"></div>
+        <input class="form__input" id="form__town" name="town" placeholder="Город проживания..." title="Город" type="text" required="">
+        <div class="form__message" id="form__message-town"></div>
+        <textarea class="form__text" id="form__text" name="text" rows="20" cols="40" placeholder="Текст..." title="Текст, минимум 10 символов"></textarea>
+        <div class="form__message" id="form__message-text"></div>
+        <!-- между <input> не должно быть пробелов, иначе перескочит на другую строку-->
+        <div class="form__buttons">
+          <input class="form__button form__button-clear" id="form__button-clear" name="reset" type="reset" value="Сброс">
+          <input class="form__button form__button-load" id="form__button-load" name="load" type="button" value="Загрузить">
+          <input class="form__button" id="form__button-submit" name="submit" type="submit" value="Отправить">
+        </div>
+      </form>
+    </div>
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>

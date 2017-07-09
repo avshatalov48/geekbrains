@@ -1,0 +1,14 @@
+{
+  "name": "hometask-7",
+  "homepage": "https://github.com/avshatalov48/geekbrains",
+  "authors": [
+    "Alexander Shatalov"
+  ],
+  "description": "Alexander Shatalov > JavaScript 2 > Lesson 7",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery-ui": "^1.12.1"
+  }
+}
