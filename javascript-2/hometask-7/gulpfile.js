@@ -1,21 +1,31 @@
-var gulp = require('gulp'),
+// Конфигурация проекта
+var config = {
+    app: './app',
+    dist: './dist'
+};
 
+var gulp = require('gulp'),
+    // Основные
     scss = require('gulp-scss'),
     pug = require('gulp-pug'),
     browsersync = require('browser-sync'),
 
-    plumber = require('gulp-plumber'), // Отслеживание ошибок в Gulp // https://www.npmjs.com/package/gulp-plumber
+    // Для Gulp
+    plumber = require('gulp-plumber'), // Отслеживание ошибок в Gulp
     clearCache = require('gulp-cache'),
     notify = require('gulp-notify'),
-    newer = require('gulp-newer'), // Запускает таски только для изменившихся файлов // https://www.npmjs.com/package/gulp-newer
-    lec = require ('gulp-line-ending-corrector'), // Gulp Plugin for Line Ending Corrector (A utility that makes sure your files have consistent line endings)
+    newer = require('gulp-newer'), // Запускает таски только для изменившихся файлов
+    lec = require ('gulp-line-ending-corrector'), // Корректор конца строк
 
+    // Автодополнения
     autoprefixer = require('gulp-autoprefixer'),
 
+    // Минификаторы
     htmlmin = require('gulp-htmlmin'),
     uglify = require('gulp-uglify'),
     cssnano = require('gulp-cssnano'),
 
+    // Работа с файлами
     concat = require('gulp-concat'),
     rename = require('gulp-rename'),
     del = require('del');
@@ -30,7 +40,7 @@ gulp.task('clearCache', function() {
 
 // SCSS
 gulp.task('scss', function(){
-    return gulp.src(['app/scss/**/styles.scss', 'app/bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
+    return gulp.src([config.app + '/scss/**/styles.scss', config.app + '/bower_components/jquery-ui/themes/smoothness/jquery-ui.css'])
         .pipe(plumber())
         .pipe(scss())
         .on('error', notify.onError(function(error) {
@@ -47,7 +57,7 @@ gulp.task('scss', function(){
             'Safari >= 6']))
         .pipe(concat('styles.css'))
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('app/css/'))
+        .pipe(gulp.dest(config.app + '/css/'))
         .pipe(browsersync.reload({
             stream: true
         }));
@@ -55,7 +65,7 @@ gulp.task('scss', function(){
 
 // Pug
 gulp.task('pug', function() {
-    return gulp.src('app/pug/pages/*.pug')
+    return gulp.src(config.app + '/pug/pages/*.pug')
         .pipe(plumber())
         .pipe(pug({
             pretty: true
@@ -64,14 +74,14 @@ gulp.task('pug', function() {
             return 'Pug: ' + error.message;
         }))
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('app'));
+        .pipe(gulp.dest(config.app));
 });
 
-// Browsersync
+// BrowserSync
 gulp.task('browsersync', function() {
     browsersync({
         server: {
-            baseDir: 'app'
+            baseDir: config.app
         },
     });
 });
@@ -79,13 +89,14 @@ gulp.task('browsersync', function() {
 // JS
 gulp.task('scripts', function() {
     return gulp.src([
-            'app/bower_components/jquery/dist/jquery.min.js',
-            'app/bower_components/jquery-ui/jquery-ui.min.js'
+            config.app + '/bower_components/jquery/dist/jquery.min.js',
+            config.app + '/bower_components/jquery-ui/jquery-ui.min.js',
+            config.app + '/bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js'
         ])
         .pipe(plumber())
         .pipe(concat('libs.min.js'))
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('app/js'))
+        .pipe(gulp.dest(config.app + '/js'))
         .pipe(browsersync.reload({
             stream: true
         }));
@@ -93,38 +104,38 @@ gulp.task('scripts', function() {
 
 // Watch
 gulp.task('watch', ['browsersync', 'scss', 'pug', 'scripts'], function() {
-    gulp.watch('app/scss/**/*.scss', ['scss']);
-    gulp.watch('app/pug/**/*.pug', ['pug']);
-    gulp.watch(['app/js/*.js', '!app/js/scripts.min.js'], ['scripts']);
+    gulp.watch(config.app + '/scss/**/*.scss', ['scss']);
+    gulp.watch(config.app + '/pug/**/*.pug', ['pug']);
+    gulp.watch([config.app + '/js/*.js', '!' + config.app + '/js/scripts.min.js'], ['scripts']);
 });
 
-// Очистка папки сборки - dev
+// Очистка папки готовой сборки
 gulp.task('clean', function() {
-    return del.sync('dev');
+    return del.sync(config.dist);
 });
 
 // Сборка проекта
 gulp.task('build', ['clean', 'scss', 'scripts'], function() {
-    var buildCss = gulp.src('app/css/*.css')
+    var buildCss = gulp.src(config.app + '/css/*.css')
         .pipe(cssnano())
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('dev/css'));
+        .pipe(gulp.dest(config.dist + '/css'));
 
-    var buildJson = gulp.src('app/fonts/*.*')
-        .pipe(gulp.dest('dev/fonts'));
+    var buildJson = gulp.src(config.app + '/fonts/*.*')
+        .pipe(gulp.dest(config.dist + '/fonts'));
 
-    var buildJson = gulp.src('app/img/*.*')
-        .pipe(gulp.dest('dev/img'));
+    var buildJson = gulp.src(config.app + '/img/*.*')
+        .pipe(gulp.dest(config.dist + '/img'));
 
-    var buildJson = gulp.src('app/json/*.json')
-        .pipe(gulp.dest('dev/json'));
+    var buildJson = gulp.src(config.app + '/json/*.json')
+        .pipe(gulp.dest(config.dist + '/json'));
 
-    var buildJs = gulp.src('app/js/*.js')
+    var buildJs = gulp.src(config.app + '/js/*.js')
         .pipe(uglify())
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('dev/js'));
+        .pipe(gulp.dest(config.dist + '/js'));
 
-    var buildHtml = gulp.src('app/*.html')
+    var buildHtml = gulp.src(config.app + '/*.html')
         .pipe(htmlmin({
             minifyCSS: true,
             minifyJS: true,
@@ -132,5 +143,5 @@ gulp.task('build', ['clean', 'scss', 'scripts'], function() {
             removeComments: true
         }))
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
-        .pipe(gulp.dest('dev/'));
+        .pipe(gulp.dest(config.dist + '/'));
 });

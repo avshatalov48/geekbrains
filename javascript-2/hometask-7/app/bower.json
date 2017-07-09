@@ -9,6 +9,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "jquery-ui": "^1.12.1"
+    "jquery-ui": "^1.12.1",
+    "jquery.maskedinput": "^1.4.1"
   }
 }

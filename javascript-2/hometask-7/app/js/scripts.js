@@ -155,6 +155,7 @@ window.onload = function() {
     }
 
     // Дата рождения
+    $.datepicker.setDefaults($.datepicker.regional["ru"]);
     $('#form__birthday').datepicker({
         dateFormat: 'dd.mm.yy',
         dayNamesMin: ['ВС', 'ПН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СБ'],
@@ -163,5 +164,10 @@ window.onload = function() {
         changeYear: true,
         firstDay: 1
     });
+
+    // Маски для полей
+    // https://github.com/digitalBush/jquery.maskedinput
+    $("#form__birthday").mask('99.99.9999', {placeholder: 'дд.мм.гггг' });
+    $("#form__phone").mask('+7(999)999-9999', {placeholder: '+7(000)000-0000' });
 
 };
