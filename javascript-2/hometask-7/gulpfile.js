@@ -1,9 +1,3 @@
-// Конфигурация проекта
-var config = {
-    app: './app',
-    dist: './dist'
-};
-
 var gulp = require('gulp'),
     // Основные
     scss = require('gulp-scss'),
@@ -30,13 +24,23 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     del = require('del');
 
+
+// Конфигурация проекта
+var config = {
+    app: './app',
+    dist: './dist'
+};
+
+
 // Таск по умолчанию
 gulp.task('default', ['watch']);
+
 
 // Очистка кеша
 gulp.task('clearCache', function() {
     return clearCache.clearAll();
 });
+
 
 // SCSS
 gulp.task('scss', function(){
@@ -63,6 +67,7 @@ gulp.task('scss', function(){
         }));
 });
 
+
 // Pug
 gulp.task('pug', function() {
     return gulp.src(config.app + '/pug/pages/*.pug')
@@ -77,14 +82,16 @@ gulp.task('pug', function() {
         .pipe(gulp.dest(config.app));
 });
 
+
 // BrowserSync
 gulp.task('browsersync', function() {
     browsersync({
         server: {
             baseDir: config.app
-        },
+        }
     });
 });
+
 
 // JS
 gulp.task('scripts', function() {
@@ -102,6 +109,7 @@ gulp.task('scripts', function() {
         }));
 });
 
+
 // Watch
 gulp.task('watch', ['browsersync', 'scss', 'pug', 'scripts'], function() {
     gulp.watch(config.app + '/scss/**/*.scss', ['scss']);
@@ -109,33 +117,41 @@ gulp.task('watch', ['browsersync', 'scss', 'pug', 'scripts'], function() {
     gulp.watch([config.app + '/js/*.js', '!' + config.app + '/js/scripts.min.js'], ['scripts']);
 });
 
+
 // Очистка папки готовой сборки
 gulp.task('clean', function() {
     return del.sync(config.dist);
 });
 
+
 // Сборка проекта
-gulp.task('build', ['clean', 'scss', 'scripts'], function() {
+gulp.task('build', ['clean', 'scss', 'pug', 'scripts'], function() {
     var buildCss = gulp.src(config.app + '/css/*.css')
+        .pipe(plumber())
         .pipe(cssnano())
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
         .pipe(gulp.dest(config.dist + '/css'));
 
-    var buildJson = gulp.src(config.app + '/fonts/*.*')
+    var buildFonts = gulp.src(config.app + '/fonts/*.*')
+        .pipe(plumber())
         .pipe(gulp.dest(config.dist + '/fonts'));
 
-    var buildJson = gulp.src(config.app + '/img/*.*')
+    var buildImg = gulp.src(config.app + '/img/*.*')
+        .pipe(plumber())
         .pipe(gulp.dest(config.dist + '/img'));
 
     var buildJson = gulp.src(config.app + '/json/*.json')
+        .pipe(plumber())
         .pipe(gulp.dest(config.dist + '/json'));
 
     var buildJs = gulp.src(config.app + '/js/*.js')
+        .pipe(plumber())
         .pipe(uglify())
         .pipe(lec({verbose:true, eolc: 'LF', encoding:'utf8'}))
         .pipe(gulp.dest(config.dist + '/js'));
 
     var buildHtml = gulp.src(config.app + '/*.html')
+        .pipe(plumber())
         .pipe(htmlmin({
             minifyCSS: true,
             minifyJS: true,
