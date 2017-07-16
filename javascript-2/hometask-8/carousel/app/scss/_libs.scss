@@ -1,0 +1,14 @@
+// ------- normalize.css
+@import "../bower_components/normalize-libsass/_normalize.scss";
+
+// <clearfix>
+// https://css-tricks.com/snippets/css/clear-fix/
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+// </clearfix>

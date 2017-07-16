@@ -1,0 +1,46 @@
+extends ../layout/main
+
+block title
+	| Alexander Shatalov > JavaScript 2 > Lesson 8 > Carousel
+
+block content
+	.carousel
+		.carousel__content.clearfix
+			.carousel__nav
+				.carousel__nav-arrows
+					a.carousel__nav-arrows-links(href='#') <
+			.carousel__products
+				.carousel__products-images
+				.carousel__products-titles СмартФон 1
+				.carousel__products-prices 100$
+			.carousel__nav
+				.carousel__nav-arrows
+					a.carousel__nav-arrows-links(href='#') >
+		.carousel__dots
+			.carousel__dots-items
+				a.carousel__dots-items-links(href='#')
+					.carousel__dots-items-links-rounds.carousel__dots-items-links-rounds_active
+				a.carousel__dots-items-links(href='#')
+					.carousel__dots-items-links-rounds
+				a.carousel__dots-items-links(href='#')
+					.carousel__dots-items-links-rounds
+
+	//form#form.form
+	//	.form__header Заполните форму обратной связи
+	//	input#form__name.form__input(name='name', placeholder='Имя...', title='Имя, минимум 2 буквы', type='text', required='')
+	//	#form__message-name.form__message
+	//	input#form__birthday.form__input(name='birthday', placeholder='Дата рождения...', title='ДД.ММ.ГГГГ', type='text', required='')
+	//	#form__message-birthday.form__message
+	//	input#form__phone.form__input(name='phone', placeholder='Номер телефона...', title='+7(000)000-0000', type='text', required='')
+	//	#form__message-phone.form__message
+	//	input#form__email.form__input(name='emailaddress', placeholder='E-mail...', title='mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru', type='text', required='')
+	//	#form__message-email.form__message
+	//	input#form__town.form__input(name='town', placeholder='Город проживания...', title='Город', type='text', required='')
+	//	#form__message-town.form__message
+	//	textarea#form__text.form__text(name='text', rows='20', cols='40', placeholder='Текст...', title='Текст, минимум 10 символов')
+	//	#form__message-text.form__message
+		// между <input> не должно быть пробелов, иначе кнопки перескочат на другую строку
+		//.form__buttons
+		//	input#form__button-clear.form__button.form__button-clear(name='reset', type='reset', value='Сброс')
+		//	input#form__button-load.form__button.form__button-load(name='load', type='button', value='Загрузить')
+		//	input#form__button-submit.form__button(name='submit', type='submit', value='Отправить')

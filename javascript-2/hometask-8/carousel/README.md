@@ -1,0 +1,1 @@
+## Alexander Shatalov > JavaScript 2 > Lesson 8 > Carousel
