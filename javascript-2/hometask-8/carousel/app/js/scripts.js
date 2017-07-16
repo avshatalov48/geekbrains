@@ -10,16 +10,10 @@ Container.prototype.render = function () {
 
 function Carousel() {
     Container.call(this, "carousel");
+    this.widthCarousel = 1024;
+    this.productsSlide = 5;
     this.countProducts = 0;
     this.productsItems = [];
-
-    // количество отзывов
-    // this.countCarousel = 0;
-
-    // массив для хранения отзывов
-    // this.commentsItems = [];
-
-    // Получаем изначальные элементы из JSON
     this.loadCarouselItems();
 }
 
@@ -54,8 +48,6 @@ Carousel.prototype.render = function(root) {
 
 // Получаем изначальные элементы из JSON
 Carousel.prototype.loadCarouselItems = function() {
-    // var appendId = '#' + this.id + '_items';
-
     $.get({
         url: './json/carousel.json',
         dataType: 'json',
@@ -64,17 +56,16 @@ Carousel.prototype.loadCarouselItems = function() {
         },
         success: function(data) {
             console.log ('JSON load: Ок!');
-            // Количество отзывов
+            this.widthCarousel = data.widthCarousel;
+            this.productsSlide = data.productsSlide;
             this.countProducts = data.products.length;
-            // Перебираем JSON и добавляем в массив
             for (var item in data.products) {
                 this.productsItems.push(data.products[item]);
             }
-            console.log (data, data.products.length, this.productsItems);
+            console.log (data);
         },
         context: this
     });
-
 };
 
 // Добавление отзыва
@@ -147,11 +138,22 @@ Carousel.prototype.loadCarouselItems = function() {
     }
 };*/
 
-// Загрузка документа
+// Запуск функции, после загрузки документа
 $(document).ready(function() {
     var carousel = new Carousel();
-    // comments.render('#comments__wrapper');
-    //
+
+    carousel.render('.carousel__products');
+
+    // Кнопка - Влево
+    $('.carousel__nav-arrows-links_left').on('click', function() {
+        console.log ('Влево');
+    });
+
+    // Кнопка - Вправо
+    $('.carousel__nav-arrows-links_right').on('click', function() {
+        console.log ('Вправо');
+    });
+
     // // Кнопка - Добавить
     // $('.comments-add').on('click', function() {
     //     var idComment = parseInt($(this).attr('id').split('_')[1]);
