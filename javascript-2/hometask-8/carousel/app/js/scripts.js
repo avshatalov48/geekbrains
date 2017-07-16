@@ -26,26 +26,38 @@ function Carousel() {
 Carousel.prototype = Object.create(Container.prototype);
 Carousel.prototype.constructor = Carousel;
 
-/*Carousel.prototype.render = function(root) {
-    var commentsDiv = $('<div />', {
-        id: this.id,
-        text: 'ОТЗЫВЫ:'
-    });
+Carousel.prototype.render = function(root) {
+    // for (var item in data.products) {
+    //     this.productsItems.push(data.products[item]);
+    // }
 
-    var commentsItemsDiv = $('<div />', {
-        id: this.id + '_items'
-    });
-
-    commentsItemsDiv.appendTo(commentsDiv);
-    commentsDiv.appendTo(root);
-};*/
+    // .carousel__products-container
+    //     .carousel__products-items
+    //     .carousel__products-items-images
+    //     .carousel__products-items-titles СмартФон 1
+    //     .carousel__products-items-descriptions 32Gb
+    //     .carousel__products-items-prices 10$
+    //     .carousel__products-items-basket В корзину
+    //
+    // var commentsDiv = $('<div />', {
+    //     id: this.id,
+    //     text: 'ОТЗЫВЫ:'
+    // });
+    //
+    // var commentsItemsDiv = $('<div />', {
+    //     id: this.id + '_items'
+    // });
+    //
+    // commentsItemsDiv.appendTo(commentsDiv);
+    // commentsDiv.appendTo(root);
+};
 
 // Получаем изначальные элементы из JSON
 Carousel.prototype.loadCarouselItems = function() {
     // var appendId = '#' + this.id + '_items';
 
     $.get({
-        url: './json/products.json',
+        url: './json/carousel.json',
         dataType: 'json',
         error: function() {
             console.log ('JSON load: Error!');

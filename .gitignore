@@ -86,6 +86,9 @@ $RECYCLE.BIN/
 # My add - Remove .idea from GIT:
 .idea/
 bower_components/
+node_modules/
+.gulp-scss-cache/
+.sass-cache/
 
 # User-specific stuff:
 .idea/**/workspace.xml
