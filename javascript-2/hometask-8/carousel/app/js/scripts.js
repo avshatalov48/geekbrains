@@ -146,12 +146,12 @@ $(document).ready(function() {
 
     // Кнопка - Влево
     $('.carousel__nav-arrows-links_left').on('click', function() {
-        console.log ('Влево');
+        console.log ('Влево', $('.carousel__products-string').css({"left": "+=208.5"}));
     });
 
     // Кнопка - Вправо
     $('.carousel__nav-arrows-links_right').on('click', function() {
-        console.log ('Вправо');
+        console.log ('Вправо', $('.carousel__products-string').css({"left": "-=208.5"}));
     });
 
     // // Кнопка - Добавить
