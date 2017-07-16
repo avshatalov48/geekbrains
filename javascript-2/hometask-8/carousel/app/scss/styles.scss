@@ -45,12 +45,21 @@ body {
 		float: left;
 		width: 90%;
 
-		&-items {
+		&-container {
 			float: left;
 			width: 20%;
 			padding: 10px;
 			box-sizing: border-box;
-			//border: 1px solid;
+		}
+
+		&-items:hover {
+			box-sizing: border-box;
+			border: 1px solid #007DC7;
+		}
+
+		&-items {
+			box-sizing: border-box;
+			border: 1px solid #EDEDED;
 
 			&-images {
 				width: 100%;
@@ -116,10 +125,12 @@ body {
 					width: 10px;
 					height: 10px;
 					background-color: white;
-					border: none;
+					border: solid 2px #007DC7;
 					border-radius: 50%;
 
 					&_active {
+						//background-color: white;
+						//border: solid 2px white;
 						background-color: #007DC7;
 					}
 				}
@@ -146,11 +157,12 @@ body {
 			width: 30px;
 			height: 30px;
 			background-color: #007DC7;
-			border: 1px solid white;
+			border: 2px solid white;
 			border-radius: 50%;
 
 			&-links {
 				display: table-cell;
+				font-weight: 400;
 				text-align: center;
 				vertical-align: middle;
 				cursor: pointer;
