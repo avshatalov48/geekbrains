@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext");
 /**
 * 1. Set default font family to sans-serif.
 * 2. Prevent iOS and IE text size adjust after device orientation
@@ -368,80 +369,104 @@ th {
   clear: both;
   height: 0; }
 
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 300; }
+
 .wrapper {
   margin: 0 auto;
+  margin-top: 20px;
   padding: 0;
   height: 100%;
   max-width: 1170px;
   min-width: 320px;
-  background-color: ghostwhite; }
+  background-color: #EDEDED; }
 
-/** {
-	box-sizing: border-box;
-	padding: 0px;
-	margin: 0px;
-}*/
 .carousel {
-  background-color: silver;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  border: solid 1px #007DC7; }
+  .carousel__content {
+    background-color: #EDEDED; }
   .carousel__products {
     display: block;
     float: left;
     width: 90%; }
-    .carousel__products-images {
-      width: 150px;
-      height: 150px;
-      background: url(../img/smartphone_001.png) 100% 100% no-repeat;
-      -webkit-background-size: cover;
-              background-size: cover; }
+    .carousel__products-items {
+      float: left;
+      width: 20%;
+      padding: 10px;
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box; }
+      .carousel__products-items-images {
+        width: 100%;
+        height: 250px;
+        background: url(../img/smartphone_001.png) 100% 100% no-repeat;
+        background-position: center;
+        -webkit-background-size: cover;
+                background-size: cover;
+        background-color: #E6E9EC;
+        text-align: center; }
+      .carousel__products-items-titles {
+        text-align: center;
+        background-color: #DAE3EA;
+        font-weight: 400;
+        font-size: 18px; }
+      .carousel__products-items-descriptions {
+        text-align: center;
+        background-color: #E6E9EC; }
+      .carousel__products-items-prices {
+        text-align: center;
+        background-color: #DAE3EA; }
+      .carousel__products-items-basket {
+        text-align: center;
+        background-color: #007DC7;
+        color: white; }
   .carousel__dots {
-    background-color: whitesmoke;
-    position: relative;
+    background-color: #DAE3EA;
+    display: table;
+    width: 100%;
     height: 30px; }
     .carousel__dots-items {
-      position: absolute;
-      -webkit-transform: translate(-50%, -50%);
-          -ms-transform: translate(-50%, -50%);
-           -o-transform: translate(-50%, -50%);
-              transform: translate(-50%, -50%);
-      top: 50%;
-      left: 50%; }
+      display: table-cell;
+      text-align: center;
+      vertical-align: middle; }
       .carousel__dots-items-links {
-        text-decoration: none; }
+        cursor: pointer; }
         .carousel__dots-items-links-rounds {
           display: inline-block;
           width: 10px;
           height: 10px;
-          background-color: gray;
+          background-color: white;
           border: none;
           border-radius: 50%; }
           .carousel__dots-items-links-rounds_active {
-            background-color: black; }
+            background-color: #007DC7; }
   .carousel__nav {
-    display: inline-block;
     float: left;
-    width: 5%; }
+    width: 5%;
+    height: 353px;
+    display: table; }
+    .carousel__nav-container {
+      display: table-cell;
+      vertical-align: middle; }
     .carousel__nav-arrows {
       margin: 0 auto;
-      position: relative;
+      display: table;
       width: 30px;
       height: 30px;
-      background-color: gray;
+      background-color: #007DC7;
       border: 1px solid white;
       border-radius: 50%; }
       .carousel__nav-arrows-links {
-        position: absolute;
-        -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-             -o-transform: translate(-50%, -50%);
-                transform: translate(-50%, -50%);
-        top: 50%;
-        left: 50%;
-        color: white;
-        font-weight: normal;
-        text-decoration: none; }
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        cursor: pointer;
+        color: white; }
 
 /*==========  Desktop First Method  ==========*/
 /* Large Devices, Wide Screens */

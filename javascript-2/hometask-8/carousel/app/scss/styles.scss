@@ -15,63 +15,112 @@
 
 // ------- Проект
 
+body {
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+}
+
 .wrapper {
 	margin: 0 auto;
+	margin-top: 20px;
 	padding: 0;
 	height: 100%;
 	max-width: 1170px;
 	min-width: 320px;
-	background-color: ghostwhite;
+	background-color: #EDEDED;
 }
 
-/** {
-	box-sizing: border-box;
-	padding: 0px;
-	margin: 0px;
-}*/
-
 .carousel {
-	background-color: silver;
 	box-sizing: border-box;
+	border: solid 1px #007DC7;;
 
+	&__content {
+		background-color: #EDEDED;
+	}
+
+	// <Товары>
 	&__products {
 		display: block;
 		float: left;
 		width: 90%;
 
-		&-images {
-			width: 150px;
-			height: 150px;
-			background: url(../img/smartphone_001.png) 100% 100% no-repeat;
-			background-size: cover;
+		&-items {
+			float: left;
+			width: 20%;
+			padding: 10px;
+			box-sizing: border-box;
+			//border: 1px solid;
+
+			&-images {
+				width: 100%;
+				height: 250px;
+				background: url(../img/smartphone_001.png) 100% 100% no-repeat;
+				background-position: center;
+				background-size: cover;
+				background-color: #E6E9EC;
+				text-align: center;
+			}
+
+			&-titles {
+				text-align: center;
+				background-color: #DAE3EA;
+				font-weight: 400;
+				font-size: 18px;
+				//padding: 0 10px;
+				//box-sizing: border-box;
+			}
+
+			&-descriptions {
+				text-align: center;
+				background-color: #E6E9EC;
+				//padding: 0 10px;
+				//box-sizing: border-box;
+			}
+
+			&-prices {
+				text-align: center;
+				background-color: #DAE3EA;
+				//padding: 0 10px;
+				//box-sizing: border-box;
+			}
+
+			&-basket {
+				text-align: center;
+				background-color: #007DC7;
+				color: white;
+				//padding: 0 10px;
+				//box-sizing: border-box;
+			}
 		}
 	}
+	// </Товары>
 
 	// <Кругляшки>
 	&__dots {
-		background-color: whitesmoke;
-		position: relative;
+		background-color: #DAE3EA;
+		display: table;
+		width: 100%;
 		height: 30px;
 
 		&-items {
-			position: absolute;
-			transform: translate(-50%, -50%);
-			top: 50%;
-			left: 50%;
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
 
 			&-links {
-				text-decoration: none;
+				cursor: pointer;
 
 				&-rounds {
 					display: inline-block;
 					width: 10px;
 					height: 10px;
-					background-color: gray;
+					background-color: white;
 					border: none;
 					border-radius: 50%;
 
 					&_active {
-						background-color: black;
+						background-color: #007DC7;
 					}
 				}
 			}
@@ -81,29 +130,31 @@
 
 	// <Стрелки>
 	&__nav {
-		display: inline-block;
 		float: left;
 		width: 5%;
-		//height: 100px;
-		//min-width: 40px;
+		height: 353px;
+		display: table;
+
+		&-container {
+			display: table-cell;
+			vertical-align: middle;
+		}
 
 		&-arrows {
 			margin: 0 auto;
-			position: relative;
+			display: table;
 			width: 30px;
 			height: 30px;
-			background-color: gray;
+			background-color: #007DC7;
 			border: 1px solid white;
 			border-radius: 50%;
 
 			&-links {
-				position: absolute;
-				transform: translate(-50%, -50%);
-				top: 50%;
-				left: 50%;
+				display: table-cell;
+				text-align: center;
+				vertical-align: middle;
+				cursor: pointer;
 				color: white;
-				font-weight: normal;
-				text-decoration: none;
 			}
 		}
 	}
