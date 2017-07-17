@@ -10,8 +10,11 @@ Container.prototype.render = function () {
 
 function Carousel() {
     Container.call(this, "carousel");
-    this.widthCarousel = 1024;
-    this.productsSlide = 5;
+    this.widthCarousel = 0;
+    this.widthProduct = 0;
+    this.widthString = 0;
+    this.leftString = 0;
+    this.productsSlide = 0;
     this.countProducts = 0;
     this.productsItems = [];
     this.loadCarouselItems();
@@ -19,6 +22,23 @@ function Carousel() {
 
 Carousel.prototype = Object.create(Container.prototype);
 Carousel.prototype.constructor = Carousel;
+
+Carousel.prototype.arrows = function(direction) {
+    if (direction == 'right') {
+        this.leftString += this.widthProduct;
+    } else {
+        this.leftString -= this.widthProduct;
+    }
+    if (this.leftString > 0) {
+        this.leftString = 0;
+    }
+    // if (this.leftString < -this.widthString) {
+    //     this.leftString = -this.widthString;
+    // }
+
+    $('.carousel__products-string').css({"left": this.leftString});
+    console.log (this);
+};
 
 Carousel.prototype.render = function(root) {
     // for (var item in data.products) {
@@ -59,10 +79,15 @@ Carousel.prototype.loadCarouselItems = function() {
             this.widthCarousel = data.widthCarousel;
             this.productsSlide = data.productsSlide;
             this.countProducts = data.products.length;
+            this.widthProduct = this.widthCarousel / this.productsSlide;
+            this.widthString = this.widthProduct * this.countProducts;
             for (var item in data.products) {
                 this.productsItems.push(data.products[item]);
             }
-            console.log (data);
+            console.log (this);
+            // console.log (data);
+            // console.log (data.products);
+            // console.log (this.productsItems);
         },
         context: this
     });
@@ -146,13 +171,15 @@ $(document).ready(function() {
 
     // Кнопка - Влево
     $('.carousel__nav-arrows-links_left').on('click', function() {
-        console.log ('Влево', $('.carousel__products-string').css({"left": "+=208.5"}));
+        carousel.arrows('left');
     });
 
     // Кнопка - Вправо
     $('.carousel__nav-arrows-links_right').on('click', function() {
-        console.log ('Вправо', $('.carousel__products-string').css({"left": "-=208.5"}));
+        carousel.arrows('right');
     });
+
+    // console.log ('123 ', carousel);
 
     // // Кнопка - Добавить
     // $('.comments-add').on('click', function() {

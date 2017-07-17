@@ -28,12 +28,14 @@ body {
 	height: 100%;
 	max-width: 1170px;
 	min-width: 320px;
-	background-color: #EDEDED;
+	//background-color: #EDEDED;
 }
 
 .carousel {
+	//margin: 0 auto;
+	//width: auto;
 	box-sizing: border-box;
-	border: solid 1px #007DC7;;
+	border: solid 1px #007DC7;
 
 	&__content {
 		background-color: #EDEDED;
@@ -48,7 +50,7 @@ body {
 
 		&-string {
 			position: relative;
-			transition: all ease 1s;
+			transition: all ease 0.75s;
 			left: 0px;
 			width: 3200px;
 		}

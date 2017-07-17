@@ -380,8 +380,7 @@ body {
   padding: 0;
   height: 100%;
   max-width: 1170px;
-  min-width: 320px;
-  background-color: #EDEDED; }
+  min-width: 320px; }
 
 .carousel {
   -webkit-box-sizing: border-box;
@@ -397,9 +396,9 @@ body {
     overflow: hidden; }
     .carousel__products-string {
       position: relative;
-      -webkit-transition: all ease 1s;
-      -o-transition: all ease 1s;
-      transition: all ease 1s;
+      -webkit-transition: all ease 0.75s;
+      -o-transition: all ease 0.75s;
+      transition: all ease 0.75s;
       left: 0px;
       width: 3200px; }
     .carousel__products-container {
