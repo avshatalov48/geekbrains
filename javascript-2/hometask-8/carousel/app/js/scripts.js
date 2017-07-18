@@ -18,6 +18,7 @@ function Carousel() {
     this.countProducts = 0;
     this.productsItems = [];
     this.loadCarouselItems();
+    this.render();
 }
 
 Carousel.prototype = Object.create(Container.prototype);
@@ -25,45 +26,83 @@ Carousel.prototype.constructor = Carousel;
 
 Carousel.prototype.arrows = function(direction) {
     if (direction == 'right') {
-        this.leftString += this.widthProduct;
-    } else {
         this.leftString -= this.widthProduct;
+    } else {
+        this.leftString += this.widthProduct;
     }
     if (this.leftString > 0) {
         this.leftString = 0;
     }
-    // if (this.leftString < -this.widthString) {
-    //     this.leftString = -this.widthString;
-    // }
+    if (this.leftString < (this.widthProduct*this.productsSlide-this.widthString)) {
+         this.leftString = this.widthProduct*this.productsSlide-this.widthString;
+    }
 
     $('.carousel__products-string').css({"left": this.leftString});
-    console.log (this);
+    // console.log (this.leftString, this.widthString);
 };
 
 Carousel.prototype.render = function(root) {
-    // for (var item in data.products) {
-    //     this.productsItems.push(data.products[item]);
-    // }
 
-    // .carousel__products-container
+    // var mas = this.productsItems;
+    // console.log (this.countProducts, this.productsItems, this.productsItems[0]);
+
+    //   .carousel__products-container
     //     .carousel__products-items
-    //     .carousel__products-items-images
-    //     .carousel__products-items-titles СмартФон 1
-    //     .carousel__products-items-descriptions 32Gb
-    //     .carousel__products-items-prices 10$
-    //     .carousel__products-items-basket В корзину
-    //
-    // var commentsDiv = $('<div />', {
-    //     id: this.id,
-    //     text: 'ОТЗЫВЫ:'
-    // });
-    //
-    // var commentsItemsDiv = $('<div />', {
-    //     id: this.id + '_items'
-    // });
-    //
-    // commentsItemsDiv.appendTo(commentsDiv);
-    // commentsDiv.appendTo(root);
+    //       .carousel__products-items-images
+    //       .carousel__products-items-titles СмартФон 1
+    //       .carousel__products-items-descriptions 32Gb
+    //       .carousel__products-items-prices 10$
+    //       .carousel__products-items-basket В корзину
+
+    var stringDiv = $('<div />', {
+        class: 'carousel__products-string',
+        width: this.widthString
+    });
+    stringDiv.appendTo(root);
+
+    for (var item in this.productsItems) {
+
+        var containerDiv = $('<div />', {
+            class: 'carousel__products-container'
+        });
+        containerDiv.appendTo(stringDiv);
+
+        var itemsDiv = $('<div />', {
+            class: 'carousel__products-items'
+        });
+        itemsDiv.appendTo(containerDiv);
+
+        var itemsImagesDiv = $('<div />', {
+            class: 'carousel__products-items-images',
+            style: 'background-image: url(' + this.productsItems[item].image + ')'
+        });
+        itemsImagesDiv.appendTo(itemsDiv);
+
+        var itemsTitlesDiv = $('<div />', {
+            class: 'carousel__products-items-titles',
+            text: this.productsItems[item].title
+        });
+        itemsTitlesDiv.appendTo(itemsDiv);
+
+        var itemsDescriptionsDiv = $('<div />', {
+            class: 'carousel__products-items-descriptions',
+            text: this.productsItems[item].description
+        });
+        itemsDescriptionsDiv.appendTo(itemsDiv);
+
+        var itemsPricesDiv = $('<div />', {
+            class: 'carousel__products-items-prices',
+            text: this.productsItems[item].price
+        });
+        itemsPricesDiv.appendTo(itemsDiv);
+
+        var itemsBasketDiv = $('<div />', {
+            class: 'carousel__products-items-basket',
+            text: 'В корзину'
+        });
+        itemsBasketDiv.appendTo(itemsDiv);
+
+    }
 };
 
 // Получаем изначальные элементы из JSON
@@ -84,13 +123,15 @@ Carousel.prototype.loadCarouselItems = function() {
             for (var item in data.products) {
                 this.productsItems.push(data.products[item]);
             }
-            console.log (this);
+            // console.log (this);
             // console.log (data);
             // console.log (data.products);
             // console.log (this.productsItems);
+            this.render('.carousel__products');
         },
         context: this
     });
+
 };
 
 // Добавление отзыва
@@ -167,7 +208,8 @@ Carousel.prototype.loadCarouselItems = function() {
 $(document).ready(function() {
     var carousel = new Carousel();
 
-    carousel.render('.carousel__products');
+    // console.log ('carousel: ', carousel);
+
 
     // Кнопка - Влево
     $('.carousel__nav-arrows-links_left').on('click', function() {
