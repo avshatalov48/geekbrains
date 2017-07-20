@@ -32,6 +32,7 @@ body {
 }
 
 .carousel {
+	//display: none;
 	margin: 0 auto;
 	width: auto;
 	box-sizing: border-box;
@@ -52,7 +53,7 @@ body {
 			position: relative;
 			transition: all ease 0.75s;
 			left: 0px;
-			width: 3200px;
+			width: 10000px;
 		}
 
 		&-container {
@@ -128,6 +129,7 @@ body {
 			vertical-align: middle;
 
 			&-links {
+
 				cursor: pointer;
 
 				&-rounds {

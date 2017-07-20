@@ -13,6 +13,7 @@ function Carousel() {
     this.widthCarousel = 0;
     this.leftString = 0;
     this.productsSlide = 0;
+    this.productsFirst = 0;
     this.countProducts = 0;
     this.productsItems = [];
     this.widthCarouselNav = function() {
@@ -23,12 +24,13 @@ function Carousel() {
         return $('.carousel__products-container').width()+20;
     };
     this.widthString = function () {
-        var widthString = (this.widthProduct()+20) * this.countProducts;
+        var widthString = (this.widthProduct()) * this.countProducts;
         $('.carousel__products-string').css({'width': widthString});
         return widthString;
     };
     this.loadCarouselItems();
     this.render();
+    this.renderDots();
     this.keyDown();
 }
 
@@ -38,36 +40,39 @@ Carousel.prototype.constructor = Carousel;
 Carousel.prototype.arrows = function(direction) {
     if (direction == 'right') {
         this.leftString -= this.widthProduct();
+        this.productsFirst++;
     } else {
         this.leftString += this.widthProduct();
+        this.productsFirst--;
     }
     if (this.leftString > 0) {
         this.leftString = 0;
+        this.productsFirst = 1;
     }
     if (this.leftString < (this.widthProduct()*this.productsSlide-this.widthString())) {
-         this.leftString = this.widthProduct()*this.productsSlide-this.widthString();
+        this.leftString = (this.widthProduct())*this.productsSlide-this.widthString();
+        this.productsFirst = this.countProducts - this.productsSlide + 1;
     }
 
     $('.carousel__products-string').css({'left': this.leftString});
+
+    console.log(this.productsFirst, this.leftString, this.widthCarouselNav(), this.widthProduct(), this.widthString());
+
+    this.renderDots('.carousel__dots-items');
 };
 
 
 Carousel.prototype.render = function(root) {
+
     $('.carousel').css({'width': this.widthCarousel});
+    this.widthCarouselNav();
+    this.widthProduct();
+    this.widthString();
 
-    console.log(this.widthCarouselNav(), this.widthProduct(), this.widthString());
-
-    // Очищаем старое содержимое
+    // Отрисовка товаров
     $(root).empty();
 
-    // var stringDiv = $('<div />', {
-    //     class: 'carousel__products-string',
-    //     width: this.widthString()
-    // });
-    // stringDiv.appendTo(root);
-
     for (var item in this.productsItems) {
-
         var containerDiv = $('<div />', {
             class: 'carousel__products-container'
         });
@@ -107,8 +112,41 @@ Carousel.prototype.render = function(root) {
             text: 'В корзину'
         });
         itemsBasketDiv.appendTo(itemsDiv);
-
     }
+};
+
+
+Carousel.prototype.renderDots = function(root) {
+    // Отрисовка кругляшков
+    $(root).empty();
+
+    console.log ('dots:', Math.round((this.productsFirst + 1)/ this.productsSlide));
+
+    for (var i=1; i <= this.countProducts / this.productsSlide; i++) {
+
+        var active = '';
+        if (Math.round((this.productsFirst + 3) / this.productsSlide) == i) {
+            active = ' carousel__dots-items-links-rounds_active';
+        }
+
+        // span.carousel__dots-items-links
+        //     .carousel__dots-items-links-rounds.carousel__dots-items-links-rounds_active
+        // span.carousel__dots-items-links
+        //     .carousel__dots-items-links-rounds
+        // span.carousel__dots-items-links
+        //     .carousel__dots-items-links-rounds
+
+        var dotsItemsLinks = $('<span />', {
+            class: 'carousel__dots-items-links'
+        });
+        dotsItemsLinks.appendTo(root);
+
+        var dotsItemsLinksRounds = $('<span />', {
+            class: 'carousel__dots-items-links-rounds' + active
+        });
+        dotsItemsLinksRounds.appendTo(dotsItemsLinks);
+    }
+
 };
 
 
@@ -129,6 +167,7 @@ Carousel.prototype.loadCarouselItems = function() {
                 this.productsItems.push(data.products[item]);
             }
             this.render('.carousel__products-string');
+            this.renderDots('.carousel__dots-items');
         },
         context: this
     });
@@ -154,14 +193,11 @@ Carousel.prototype.keyDown = function() {
 // Запуск функции, после загрузки документа
 $(document).ready(function() {
     var carousel = new Carousel();
+    // $('.carousel').show();
 
     // Кнопка - Влево
-    $('.carousel__nav-arrows-links_left').on('click', function() {
-        carousel.arrows('left');
-    });
+    $('.carousel__nav-arrows-links_left').on('click', function() { carousel.arrows('left'); });
 
     // Кнопка - Вправо
-    $('.carousel__nav-arrows-links_right').on('click', function() {
-        carousel.arrows('right');
-    });
+    $('.carousel__nav-arrows-links_right').on('click', function() { carousel.arrows('right'); });
 });
