@@ -40,6 +40,7 @@ body {
 
 	&__content {
 		background-color: #EDEDED;
+		border-bottom: solid 1px #007DC7;
 	}
 
 	// <Товары>
@@ -109,6 +110,7 @@ body {
 				text-align: center;
 				background-color: #007DC7;
 				color: white;
+				cursor: pointer;
 				//padding: 0 10px;
 				//box-sizing: border-box;
 			}
@@ -130,6 +132,7 @@ body {
 
 			&-links {
 
+				padding: 0px 2px;
 				cursor: pointer;
 
 				&-rounds {
@@ -166,19 +169,24 @@ body {
 		&-arrows {
 			margin: 0 auto;
 			display: table;
-			width: 30px;
-			height: 30px;
+			width: 35px;
+			height: 35px;
 			background-color: #007DC7;
 			border: 2px solid white;
 			border-radius: 50%;
 
 			&-links {
+				font-size: 20px;
 				display: table-cell;
 				font-weight: 400;
 				text-align: center;
 				vertical-align: middle;
 				cursor: pointer;
 				color: white;
+				&_right {
+				}
+				&_left {
+				}
 			}
 		}
 	}

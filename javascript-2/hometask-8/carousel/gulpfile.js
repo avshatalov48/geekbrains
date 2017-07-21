@@ -138,7 +138,7 @@ gulp.task('build', ['clean', 'scss', 'pug', 'scripts'], function() {
         .pipe(plumber())
         .pipe(gulp.dest(config.dist + '/fonts'));
 
-    var buildImg = gulp.src(config.app + '/img/*.*')
+    var buildImg = gulp.src([config.app + '/img/**/*.*', '!' + config.app + '/img/**/*.psd'])
         .pipe(plumber())
         .pipe(gulp.dest(config.dist + '/img'));
 

@@ -390,7 +390,8 @@ body {
           box-sizing: border-box;
   border: solid 1px #007DC7; }
   .carousel__content {
-    background-color: #EDEDED; }
+    background-color: #EDEDED;
+    border-bottom: solid 1px #007DC7; }
   .carousel__products {
     display: block;
     float: left;
@@ -443,7 +444,8 @@ body {
       .carousel__products-items-basket {
         text-align: center;
         background-color: #007DC7;
-        color: white; }
+        color: white;
+        cursor: pointer; }
   .carousel__dots {
     background-color: #DAE3EA;
     display: table;
@@ -454,6 +456,7 @@ body {
       text-align: center;
       vertical-align: middle; }
       .carousel__dots-items-links {
+        padding: 0px 2px;
         cursor: pointer; }
         .carousel__dots-items-links-rounds {
           display: inline-block;
@@ -475,12 +478,13 @@ body {
     .carousel__nav-arrows {
       margin: 0 auto;
       display: table;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       background-color: #007DC7;
       border: 2px solid white;
       border-radius: 50%; }
       .carousel__nav-arrows-links {
+        font-size: 20px;
         display: table-cell;
         font-weight: 400;
         text-align: center;
