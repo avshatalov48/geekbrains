@@ -44,8 +44,8 @@ gulp.task('clearCache', function() {
 
 // SCSS
 gulp.task('scss', function(){
-    return gulp.src([config.app + '/scss/**/styles.scss', config.app
-    // + '/bower_components/jquery-ui/themes/smoothness/jquery-ui.css'
+    return gulp.src([config.app + '/scss/**/styles.scss',
+        config.app + '/bower_components/jquery-ui/themes/smoothness/jquery-ui.css'
     ])
         .pipe(plumber())
         .pipe(scss())
@@ -98,8 +98,8 @@ gulp.task('browsersync', function() {
 // JS
 gulp.task('scripts', function() {
     return gulp.src([
-            config.app + '/bower_components/jquery/dist/jquery.min.js'
-            // config.app + '/bower_components/jquery-ui/jquery-ui.min.js',
+            config.app + '/bower_components/jquery/dist/jquery.min.js',
+            config.app + '/bower_components/jquery-ui/jquery-ui.min.js'
             // config.app + '/bower_components/jquery.maskedinput/dist/jquery.maskedinput.min.js'
         ])
         .pipe(plumber())

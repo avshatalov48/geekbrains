@@ -66,6 +66,7 @@ Carousel.prototype.arrows = function (direction) {
 Carousel.prototype.render = function (root) {
 
     $('.carousel').css({'width': this.widthCarousel});
+
     this.widthCarouselNav();
     this.widthProduct();
     this.widthString();
@@ -74,18 +75,42 @@ Carousel.prototype.render = function (root) {
     $(root).empty();
 
     for (var item in this.productsItems) {
-        var containerDiv = $('<div />', {
-            class: 'carousel__products-container'
+
+        var containerDivClass = 'carousel__products-container',
+            containerDivId = containerDivClass + '_' + item,
+            containerDiv = $('<div />', {
+            class: containerDivClass,
+            id: containerDivId
         });
         containerDiv.appendTo(root);
+
+        // Draggable для товаров
+        $('#' + containerDivId).draggable({
+            revert: 'invalid',
+            helper: function(){
+                var copy = $(this).clone();
+                return copy;},
+            appendTo: 'body',
+            scroll: false,
+            // Скрываем прежний товар при перетаскивании
+            start: function() {
+                $(this).css({'opacity': 0});
+            },
+            stop: function() {
+                $(this).css({'opacity': 100});
+            }
+        });
 
         var itemsDiv = $('<div />', {
             class: 'carousel__products-items'
         });
         itemsDiv.appendTo(containerDiv);
 
-        var itemsImagesDiv = $('<div />', {
-            class: 'carousel__products-items-images',
+        var itemsImagesDivClass = 'carousel__products-items-images',
+            itemsImagesDivId = itemsImagesDivClass + '_' + item,
+            itemsImagesDiv = $('<div />', {
+            class: itemsImagesDivClass,
+            id: itemsImagesDivId,
             style: 'background-image: url(' + this.productsItems[item].image + ')'
         });
         itemsImagesDiv.appendTo(itemsDiv);
@@ -162,7 +187,7 @@ Carousel.prototype.loadCarouselItems = function () {
             console.log('JSON load: Error!');
         },
         success: function (data) {
-            console.log('JSON load: Ок!');
+            console.log('JSON-file load: Ок!');
             this.widthCarousel = data.widthCarousel;
             this.productsSlide = data.productsSlide;
             this.countProducts = data.products.length;
@@ -171,10 +196,10 @@ Carousel.prototype.loadCarouselItems = function () {
             }
             this.render('.carousel__products-string');
             this.renderDots('.carousel__dots-items');
+            $('.carousel').css({'opacity': 100});
         },
         context: this
     });
-
 };
 
 

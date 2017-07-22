@@ -32,7 +32,7 @@ body {
 }
 
 .carousel {
-	//display: none;
+	opacity: 0;
 	margin: 0 auto;
 	width: auto;
 	box-sizing: border-box;
@@ -142,6 +142,7 @@ body {
 					background-color: white;
 					border: solid 2px #007DC7;
 					border-radius: 50%;
+					margin-top: 4px;
 
 					&_active {
 						//background-color: white;
@@ -191,8 +192,71 @@ body {
 		}
 	}
 	// </Стрелки>
-
 }
+
+// <Корзина>
+// <Таблица товаров>
+
+.basket__table {
+	display: table;
+	width: 80%;
+	margin: 0 auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #EDEDED;
+	border: 1px solid #007DC7;
+	border-collapse: collapse;
+
+	&-row {
+		display: table-row;
+		border: 1px solid #007DC7;
+
+		&_header {
+			background-color: #007DC7;
+			color: white;
+		}
+
+		&_products {
+			&:nth-child(odd) {
+				background-color: #DAE3EA;
+			}
+		}
+
+		&_sum {
+			background-color: #007DC7;
+			color: white;
+		}
+	}
+
+	&-cell {
+		display: table-cell;
+		text-align: center;
+		border: 1px solid #007DC7;
+		padding: 0px 10px;
+
+		&_titles {
+			width: 25%;
+		}
+		&_descriptions {
+			width: 25%;
+		}
+		&_prices {
+			width: 25%;
+		}
+		&_del {
+			width: 25%;
+		}
+		&_total {
+			width: 100%;
+			font-weight: 400;
+			text-align: right;
+		}
+
+	}
+}
+
+// </Таблица товаров>
+// </Корзина>
 
 // ------- Общие стили
 @import "_common_styles.scss";
