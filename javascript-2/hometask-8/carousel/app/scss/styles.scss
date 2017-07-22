@@ -19,6 +19,7 @@ body {
 	font-family: 'Roboto Condensed', sans-serif;
 	font-size: 16px;
 	font-weight: 300;
+	counter-reset: numbers;
 }
 
 .wrapper {
@@ -27,7 +28,7 @@ body {
 	padding: 0;
 	height: 100%;
 	max-width: 1170px;
-	min-width: 320px;
+	min-width: 1170px;
 	//background-color: #EDEDED;
 }
 
@@ -197,61 +198,100 @@ body {
 // <Корзина>
 // <Таблица товаров>
 
-.basket__table {
-	display: table;
+.basket {
+	border: solid 1px white;
+	box-sizing: border-box;
 	width: 80%;
 	margin: 0 auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
-	background-color: #EDEDED;
-	border: 1px solid #007DC7;
-	border-collapse: collapse;
 
-	&-row {
-		display: table-row;
+	&__symbol {
+		font-weight: 400;
+		font-size: 20px;
+		color: #007DC7;;
+		text-align: center;
+	}
+
+	&__table {
+		width: 100%;
+		display: table;
+		background-color: #EDEDED;
 		border: 1px solid #007DC7;
+		border-collapse: collapse;
 
-		&_header {
-			background-color: #007DC7;
-			color: white;
-		}
+		&-row {
+			display: table-row;
+			border: 1px solid #007DC7;
 
-		&_products {
-			&:nth-child(odd) {
-				background-color: #DAE3EA;
+			&_header {
+				background-color: #007DC7;
+				color: white;
+			}
+
+			&_products {
+				&:nth-child(odd) {
+					background-color: #DAE3EA;
+				}
+			}
+
+			&_sum {
+				background-color: #007DC7;
+				color: white;
 			}
 		}
 
-		&_sum {
-			background-color: #007DC7;
-			color: white;
-		}
-	}
+		&-cell {
+			display: table-cell;
+			text-align: center;
+			vertical-align: middle;
+			border: 1px solid #007DC7;
+			padding: 0px 10px;
 
-	&-cell {
-		display: table-cell;
-		text-align: center;
-		border: 1px solid #007DC7;
-		padding: 0px 10px;
+			.basket__table-row_products &_numbers:before {
+				counter-increment: numbers;
+				content: counter(numbers);
+			}
 
-		&_titles {
-			width: 25%;
-		}
-		&_descriptions {
-			width: 25%;
-		}
-		&_prices {
-			width: 25%;
-		}
-		&_del {
-			width: 25%;
-		}
-		&_total {
-			width: 100%;
-			font-weight: 400;
-			text-align: right;
-		}
+			&_numbers {
+				width: 10%;
+			}
 
+			&_titles {
+				width: 20%;
+			}
+
+			&_photos {
+				width: 10%;
+				text-align: center;
+			}
+
+			.basket__table-row_products &_photos {
+				height: 90px;
+				background: url(../img/smartphone_001.png) 100% 100% no-repeat;
+				background-position: center;
+				background-size: cover;
+			}
+
+			&_descriptions {
+				width: 30%;
+			}
+
+			&_prices {
+				width: 15%;
+			}
+
+			&_del {
+				cursor: pointer;
+				width: 15%;
+			}
+
+			&_total {
+				font-weight: 400;
+				text-align: right;
+			}
+
+		}
 	}
 }
 
