@@ -1,5 +1,7 @@
 // To Do:
-// - Сделать фотографии-заглушки
+// + Кнопки "В корзину" задействовать
+// + Сделать фотографии-заглушки
+// + Под ИТОГО - кнопка "Оформить", "Купить"
 // + Уникальные id т.к. удаляет сразу несколько товаров или менять-добавлять количество
 // + Валюта
 // + После удаления элементов, id становятся не уникальными
@@ -8,15 +10,18 @@
 // + Пересчет итоговой суммы
 // + Убрать img/temp из Gulp
 
+
 function Container() {
     this.id = '';
     this.className = '';
     this.htmlCode = '';
 }
 
+
 Container.prototype.render = function () {
     return this.htmlCode;
 };
+
 
 function Carousel() {
     Container.call(this, "carousel");
@@ -27,6 +32,7 @@ function Carousel() {
     this.productsFirst = 1;
     this.countProducts = 0;
     this.productsItems = [];
+
     this.widthCarouselNav = function () {
         return $('.carousel__nav').width();
     };
@@ -38,12 +44,14 @@ function Carousel() {
         $('.carousel__products-string').css({'width': widthString});
         return widthString;
     };
+
     this.loadCarouselItems();
     this.render();
     this.renderDots();
 
     this.productsBasket = [];
     this.delBasket();
+    this.addBasket();
     this.amountBasket();
     this.totalBasket();
     this.renderBasket();
@@ -85,7 +93,10 @@ Carousel.prototype.arrows = function (direction) {
 // </Боковые кнопки "Стрелки">
 
 
+// <Отрисовка карусели с товарами>
 Carousel.prototype.render = function (root) {
+
+    var _this = this;
 
     $('.carousel').css({'width': this.widthCarousel});
 
@@ -114,7 +125,7 @@ Carousel.prototype.render = function (root) {
             },
             appendTo: 'body',
             scroll: false,
-            // Скрываем прежний товар при перетаскивании
+            // Скрываем прежний товар при перетаскивании, с сохранением пространства
             start: function () {
                 $(this).css({'opacity': 0});
             },
@@ -155,13 +166,25 @@ Carousel.prototype.render = function (root) {
         });
         itemsPricesDiv.appendTo(itemsDiv);
 
-        var itemsBasketDiv = $('<div />', {
-            class: 'carousel__products-items-basket',
+        var itemsBasketDivClass = 'carousel__products-items-basket',
+            itemsBasketDivId = itemsBasketDivClass + '_' + item,
+            itemsBasketDiv = $('<div />', {
+            class: itemsBasketDivClass,
+            id: itemsBasketDivId,
             text: 'В корзину'
         });
         itemsBasketDiv.appendTo(itemsDiv);
+
+        // <В корзину>
+        $('#' + itemsBasketDivId).on('click', function () {
+            _this.addBasket(_this, this.id);
+            _this.renderBasket('.basket__table');
+        });
+        // </В корзину>
+
     }
 };
+// </Отрисовка карусели с товарами>
 
 
 // <Отрисовка кругляшков>
@@ -210,6 +233,7 @@ Carousel.prototype.renderBasket = function (root) {
     if (this.productsBasket.length > 0) {
 
         $(root).css({'display': 'table'});
+        $('.basket__button').css({'display': 'block'});
 
         // <Шапка таблицы товаров>
         var basketTableRowHeaderClass = 'basket__table-row basket__table-row_header',
@@ -417,6 +441,7 @@ Carousel.prototype.renderBasket = function (root) {
         // </Футер таблицы товаров>
     } else {
         $(root).css({'display': 'none'});
+        $('.basket__button').css({'display': 'none'});
     }
 };
 // </Отрисовка таблицы товаров>
@@ -517,46 +542,55 @@ Carousel.prototype.keyDown = function () {
 // </Обработка нажатия клавиш>
 
 
-// <Запуск функции, после загрузки документа>
+// <Добавление товара в корзину>
+Carousel.prototype.addBasket = function (_this, dropItemId) {
+    if (typeof(dropItemId)=='string') {
+        var dropItem = $('#' + dropItemId).attr('id').split('_')[3];
+        // <Проверка на дубликаты товаров>
+        var duplicate = false;
+        for (var item in _this.productsBasket){
+            if (_this.productsBasket[item].number == dropItem) {
+                duplicate = true;
+                _this.productsBasket[item].count++;
+            }
+        }
+        if (!duplicate) {
+            _this.productsBasket.push({number: parseInt(dropItem), count: 1});
+        }
+        // </Проверка на дубликаты товаров>
+    }
+};
+// </Добавление товара в корзину>
+
+
+// <Ready - Запуск функции, после загрузки документа>
 $(document).ready(function () {
-    var carousel = new Carousel();
+    var carousel = new Carousel(),
+        _this = carousel;
 
     // Кнопка - Влево
     $('.carousel__nav-arrows-links_left').on('click', function () {
-        carousel.arrows('left');
+        _this.arrows('left');
     });
 
     // Кнопка - Вправо
     $('.carousel__nav-arrows-links_right').on('click', function () {
-        carousel.arrows('right');
+        _this.arrows('right');
+    });
+
+    // Кнопка - Оформить заказ
+    $('.basket__button').on('click', function () {
+        $('.' + this.className).effect('bounce', { times: 3 }, 'slow');
     });
 
     // Droppable для корзины
     $('.basket').droppable({
         drop: function (event, ui) {
             $('.basket').css('border', 'solid 1px white');
-            var dropItemId = ui.draggable[0].id,
-                dropItem = $('#' + dropItemId).attr('id').split('_')[3],
-                duplicate = false;
-
-            // <Проверка на дубликаты товаров>
-            for (var item in carousel.productsBasket){
-                if (carousel.productsBasket[item].number == dropItem) {
-                    duplicate = true;
-                    carousel.productsBasket[item].count++;
-                }
-            }
-            if (!duplicate) {
-                carousel.productsBasket.push({number: parseInt(dropItem), count: 1});
-            }
-            // </Проверка на дубликаты товаров>
-
-            carousel.renderBasket('.basket__table');
-
-            // console.log(carousel.productsBasket, dropItem, carousel.productsItems[dropItem]);
+            _this.addBasket(_this, ui.draggable[0].id);
+            _this.renderBasket('.basket__table');
         },
         over: function (event, ui) {
-            // $('.basket').effect('pulsate', 1000)
             $('.basket').css('border', 'solid 1px #007DC7');
         },
         out: function (event, ui) {
@@ -565,4 +599,4 @@ $(document).ready(function () {
     });
 
 });
-// </Запуск функции, после загрузки документа>
+// </Ready - Запуск функции, после загрузки документа>

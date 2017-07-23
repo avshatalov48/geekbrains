@@ -10,3 +10,5 @@ console.log(isPalindrome("levels")); // logs 'false'
 console.log(isPalindrome("A car, a man, a maraca")); // logs 'true'
 
 Решение должно быть не более 80 символов. При подсчете учитывается только тело функции, то что между фигурными скобками. Учитываются пробелы, переводы строк и т.д.
+
+![Preview](palindrome.png "Preview")
