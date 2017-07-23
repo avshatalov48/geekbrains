@@ -1,3 +1,13 @@
+// To Do:
+// - Сделать фотографии-заглушки
+// + Уникальные id т.к. удаляет сразу несколько товаров или менять-добавлять количество
+// + Валюта
+// + После удаления элементов, id становятся не уникальными
+// + Вынести в отдельный метод
+// + Удалять из массива
+// + Пересчет итоговой суммы
+// + Убрать img/temp из Gulp
+
 function Container() {
     this.id = '';
     this.className = '';
@@ -11,6 +21,7 @@ Container.prototype.render = function () {
 function Carousel() {
     Container.call(this, "carousel");
     this.widthCarousel = 0;
+    this.currency = '';
     this.leftString = 0;
     this.productsSlide = 0;
     this.productsFirst = 1;
@@ -32,16 +43,21 @@ function Carousel() {
     this.renderDots();
 
     this.productsBasket = [];
-
+    this.delBasket();
+    this.amountBasket();
+    this.totalBasket();
     this.renderBasket();
 
     this.keyDown();
     this.arrows();
 }
 
+
 Carousel.prototype = Object.create(Container.prototype);
 Carousel.prototype.constructor = Carousel;
 
+
+// <Боковые кнопки "Стрелки">
 Carousel.prototype.arrows = function (direction) {
     if (direction == 'right') {
         this.leftString -= this.widthProduct();
@@ -66,6 +82,7 @@ Carousel.prototype.arrows = function (direction) {
 
     this.renderDots('.carousel__dots-items');
 };
+// </Боковые кнопки "Стрелки">
 
 
 Carousel.prototype.render = function (root) {
@@ -76,7 +93,6 @@ Carousel.prototype.render = function (root) {
     this.widthProduct();
     this.widthString();
 
-    // Отрисовка товаров
     $(root).empty();
 
     for (var item in this.productsItems) {
@@ -84,24 +100,25 @@ Carousel.prototype.render = function (root) {
         var containerDivClass = 'carousel__products-container',
             containerDivId = containerDivClass + '_' + item,
             containerDiv = $('<div />', {
-            class: containerDivClass,
-            id: containerDivId
-        });
+                class: containerDivClass,
+                id: containerDivId
+            });
         containerDiv.appendTo(root);
 
         // Draggable для товаров (хитрости, из-за overflow: hidden;)
         $('#' + containerDivId).draggable({
             revert: 'invalid',
-            helper: function(){
+            helper: function () {
                 var copy = $(this).clone();
-                return copy;},
+                return copy;
+            },
             appendTo: 'body',
             scroll: false,
             // Скрываем прежний товар при перетаскивании
-            start: function() {
+            start: function () {
                 $(this).css({'opacity': 0});
             },
-            stop: function() {
+            stop: function () {
                 $(this).css({'opacity': 100});
             }
         });
@@ -114,10 +131,10 @@ Carousel.prototype.render = function (root) {
         var itemsImagesDivClass = 'carousel__products-items-images',
             itemsImagesDivId = itemsImagesDivClass + '_' + item,
             itemsImagesDiv = $('<div />', {
-            class: itemsImagesDivClass,
-            id: itemsImagesDivId,
-            style: 'background-image: url(' + this.productsItems[item].image + ')'
-        });
+                class: itemsImagesDivClass,
+                id: itemsImagesDivId,
+                style: 'background-image: url(' + this.productsItems[item].image + ')'
+            });
         itemsImagesDiv.appendTo(itemsDiv);
 
         var itemsTitlesDiv = $('<div />', {
@@ -134,7 +151,7 @@ Carousel.prototype.render = function (root) {
 
         var itemsPricesDiv = $('<div />', {
             class: 'carousel__products-items-prices',
-            text: this.productsItems[item].price + '$'
+            text: this.productsItems[item].price + this.currency
         });
         itemsPricesDiv.appendTo(itemsDiv);
 
@@ -147,10 +164,10 @@ Carousel.prototype.render = function (root) {
 };
 
 
+// <Отрисовка кругляшков>
 Carousel.prototype.renderDots = function (root) {
     var _this = this;
 
-    // Отрисовка кругляшков
     $(root).empty();
 
     for (var item = 1; item <= this.countProducts / this.productsSlide; ++item) {
@@ -181,15 +198,18 @@ Carousel.prototype.renderDots = function (root) {
     }
 
 };
+// </Отрисовка кругляшков>
 
 
+// <Отрисовка таблицы товаров>
 Carousel.prototype.renderBasket = function (root) {
     var _this = this;
 
-    // Отрисовка таблицы товаров
     $(root).empty();
 
-    if (this.productsBasket.length>0) {
+    if (this.productsBasket.length > 0) {
+
+        $(root).css({'display': 'table'});
 
         // <Шапка таблицы товаров>
         var basketTableRowHeaderClass = 'basket__table-row basket__table-row_header',
@@ -233,6 +253,20 @@ Carousel.prototype.renderBasket = function (root) {
             });
         basketTableCellPrices.appendTo(basketTableRowHeader);
 
+        var basketTableCellAmountClass = 'basket__table-cell basket__table-cell_amount',
+            basketTableCellAmount = $('<span />', {
+                class: basketTableCellAmountClass,
+                text: 'Кол-во'
+            });
+        basketTableCellAmount.appendTo(basketTableRowHeader);
+
+        var basketTableCellCountClass = 'basket__table-cell basket__table-cell_count',
+            basketTableCellCount = $('<span />', {
+                class: basketTableCellCountClass,
+                text: 'Сумма'
+            });
+        basketTableCellCount.appendTo(basketTableRowHeader);
+
         var basketTableCellDelClass = 'basket__table-cell basket__table-cell_del',
             basketTableCellDel = $('<span />', {
                 class: basketTableCellDelClass,
@@ -243,10 +277,9 @@ Carousel.prototype.renderBasket = function (root) {
 
 
         // <Содержимое таблицы товаров>
-        var total = 0;
         for (var product in this.productsBasket) {
 
-            var item = this.productsBasket[product];
+            var item = this.productsBasket[product].number;
 
             var basketTableRowProductsClass = 'basket__table-row basket__table-row_products',
                 basketTableRowProducts = $('<div />', {
@@ -254,65 +287,105 @@ Carousel.prototype.renderBasket = function (root) {
                 });
             basketTableRowProducts.appendTo(root);
 
-            var basketTableCellNumbersClass = 'basket__table-cell basket__table-cell_numbers',
-                basketTableCellNumbers = $('<span />', {
-                    class: basketTableCellNumbersClass
-                    // text: parseInt(product)+1
-                });
+            basketTableCellNumbersClass = 'basket__table-cell basket__table-cell_numbers';
+            basketTableCellNumbers = $('<span />', {
+                class: basketTableCellNumbersClass
+                // text: parseInt(product)+1
+            });
             basketTableCellNumbers.appendTo(basketTableRowProducts);
 
-            var basketTableCellTitlesClass = 'basket__table-cell basket__table-cell_titles',
-                basketTableCellTitles = $('<span />', {
-                    class: basketTableCellTitlesClass,
-                    text: this.productsItems[item].title
-                });
+            basketTableCellTitlesClass = 'basket__table-cell basket__table-cell_titles';
+            basketTableCellTitles = $('<span />', {
+                class: basketTableCellTitlesClass,
+                text: this.productsItems[item].title
+            });
             basketTableCellTitles.appendTo(basketTableRowProducts);
 
-            var basketTableCellPhotosClass = 'basket__table-cell basket__table-cell_photos',
-                basketTableCellPhotos = $('<span />', {
-                    class: basketTableCellPhotosClass,
-                    style: 'background-image: url(' + this.productsItems[item].image + ')'
-                    // text: this.productsItems[item].image
-                });
+            basketTableCellPhotosClass = 'basket__table-cell basket__table-cell_photos';
+            basketTableCellPhotos = $('<span />', {
+                class: basketTableCellPhotosClass,
+                style: 'background-image: url(' + this.productsItems[item].image + ')'
+                // text: this.productsItems[item].image
+            });
             basketTableCellPhotos.appendTo(basketTableRowProducts);
 
-            var basketTableCellDescriptionsClass = 'basket__table-cell basket__table-cell_descriptions',
-                basketTableCellDescriptions = $('<span />', {
-                    class: basketTableCellDescriptionsClass,
-                    text: this.productsItems[item].description
-                });
+            basketTableCellDescriptionsClass = 'basket__table-cell basket__table-cell_descriptions';
+            basketTableCellDescriptions = $('<span />', {
+                class: basketTableCellDescriptionsClass,
+                text: this.productsItems[item].description
+            });
             basketTableCellDescriptions.appendTo(basketTableRowProducts);
 
 
-            var price = this.productsItems[item].price,
-                basketTableCellPricesClass = 'basket__table-cell basket__table-cell_prices',
-                basketTableCellPrices = $('<span />', {
-                    class: basketTableCellPricesClass,
-                    text: price + '$'
-                });
+            var price = this.productsItems[item].price;
+            basketTableCellPricesClass = 'basket__table-cell basket__table-cell_prices';
+            basketTableCellPrices = $('<span />', {
+                class: basketTableCellPricesClass,
+                text: price + this.currency
+            });
             basketTableCellPrices.appendTo(basketTableRowProducts);
 
-            total += price;
+            basketTableCellAmountClass = 'basket__table-cell basket__table-cell_amount';
+            basketTableCellAmount = $('<span />', {
+                class: basketTableCellAmountClass,
+                text: ''
+            });
+            basketTableCellAmount.appendTo(basketTableRowProducts);
 
-            var basketTableCellDelClass = 'basket__table-cell basket__table-cell_del',
-                basketTableCellDelId = 'basket__table-cell' + '_' + item,
-                basketTableCellDel = $('<span />', {
-                    class: basketTableCellDelClass,
-                    id: basketTableCellDelId,
-                    text: 'Удалить'
+            var value = this.productsBasket[product].count,
+                basketTableCellAmountInputClass = 'basket__table-cell_amount-input',
+                basketTableCellAmountInputId = 'basket__table-cell_amount-input' + '_' + item,
+                basketTableCellAmountInput = $('<input />', {
+                    id: basketTableCellAmountInputId,
+                    class: basketTableCellAmountInputClass,
+                    maxlength: 2,
+                    type: 'number',
+                    min: 1,
+                    max: 10,
+                    value: value
                 });
+            basketTableCellAmountInput.appendTo(basketTableCellAmount);
+
+
+            // Отслеживание изменений количества товаров в корзине
+            $('#' + basketTableCellAmountInputId).on('click keyup input', function () {
+                // Проверка максильного количества введенных в поле символов
+                if (this.value.length > this.maxLength) {
+                     this.value = this.value.slice(0, this.maxLength)
+                } else {
+                     _this.amountBasket(this.id);
+                }
+            });
+
+
+            var basketTableCellCountId = 'basket__table-cell_count' + '_' + item;
+            basketTableCellCountClass = 'basket__table-cell basket__table-cell_count';
+            basketTableCellCount = $('<span />', {
+                id: basketTableCellCountId,
+                class: basketTableCellCountClass,
+                text: price * value + this.currency
+            });
+            basketTableCellCount.appendTo(basketTableRowProducts);
+
+
+            basketTableCellDelClass = 'basket__table-cell basket__table-cell_del';
+            basketTableCellDel = $('<span />', {
+                class: basketTableCellDelClass
+            });
             basketTableCellDel.appendTo(basketTableRowProducts);
 
+            var basketTableCellDelButtonClass = 'basket__table-cell_del-button',
+                basketTableCellDelButtonId = 'basket__table-cell_del-button' + '_' + item,
+                basketTableCellDelButton = $('<span />', {
+                    class: basketTableCellDelButtonClass,
+                    id: basketTableCellDelButtonId,
+                    text: 'Удалить'
+                });
+            basketTableCellDelButton.appendTo(basketTableCellDel);
+
             // Удаление товара
-            $('#' + basketTableCellDelId).on('click', function () {
-                $('#' + this.id).parent().remove();
-                // _this.renderBasket('.basket__table');
-                // To Do:
-                // 1) Вынести в отдельный метод
-                // 2) Удалять из массива
-                // 3) Пересчет итоговой суммы
-                // 4) Сделать фотографии-заглушки
-                // 5) Убрать img/temp из Gulp
+            $('#' + basketTableCellDelButtonId).on('click', function () {
+                _this.delBasket(this.id);
             });
 
         }
@@ -326,7 +399,7 @@ Carousel.prototype.renderBasket = function (root) {
             });
         basketTableRowSum.appendTo(root);
 
-        for (var i = 1; i <= 5; i++) {
+        for (var i = 1; i <= 7; i++) {
             var basketTableCellClass = 'basket__table-cell',
                 basketTableCell = $('<span />', {
                     class: basketTableCellClass,
@@ -338,15 +411,69 @@ Carousel.prototype.renderBasket = function (root) {
         var basketTableCellTotalClass = 'basket__table-cell basket__table-cell_total',
             basketTableCellTotal = $('<span />', {
                 class: basketTableCellTotalClass,
-                text: 'ИТОГО: ' + total + '$'
+                text: this.totalBasket()
             });
         basketTableCellTotal.appendTo(basketTableRowSum);
         // </Футер таблицы товаров>
+    } else {
+        $(root).css({'display': 'none'});
     }
 };
+// </Отрисовка таблицы товаров>
 
 
-// Получаем изначальные элементы из JSON
+// <Пересчет ИТОГО>
+Carousel.prototype.totalBasket = function () {
+    var total = 0;
+    for (var item in this.productsBasket){
+        var number =  this.productsBasket[item].number;
+        total += this.productsItems[number].price * this.productsBasket[item].count;
+    }
+    return 'ИТОГО: ' + total + this.currency;
+};
+// </Пересчет ИТОГО>
+
+
+// <Количество товаров в корзине>
+Carousel.prototype.amountBasket = function (id) {
+    if (typeof(id)=='string') {
+
+        var value = $('#' + id).val(),
+            itemId = id.split('_')[4],
+            product = this.productsItems[itemId],
+            newPrice = product.price * value + this.currency;
+
+        for (var item in this.productsBasket){
+            if (this.productsBasket[item].number == itemId) {
+                this.productsBasket[item].count = value;
+            }
+        }
+
+        $('#' + 'basket__table-cell_count' + '_' + itemId).text(newPrice);
+        $('.basket__table-cell_total').text(this.totalBasket());
+        // console.log(itemId, product, value, newPrice);
+    }
+};
+// </Количество товаров в корзине>
+
+
+// <Удаление товара из корзины>
+Carousel.prototype.delBasket = function (id) {
+    if (typeof(id)=='string') {
+        var itemId = id.split('_')[4];
+        for (var item in this.productsBasket){
+            if (this.productsBasket[item].number == itemId) {
+                this.productsBasket.splice(item, 1);
+            }
+        }
+        $('#' + id).parent().parent().remove();
+        this.renderBasket('.basket__table');
+    }
+};
+// </Удаление товара из корзины>
+
+
+// <Получаем изначальные элементы из файла JSON>
 Carousel.prototype.loadCarouselItems = function () {
     $.get({
         url: './json/carousel.json',
@@ -358,6 +485,7 @@ Carousel.prototype.loadCarouselItems = function () {
             console.log('JSON-file load: Ок!');
             this.widthCarousel = data.widthCarousel;
             this.productsSlide = data.productsSlide;
+            this.currency = data.currency;
             this.countProducts = data.products.length;
             for (var item in data.products) {
                 this.productsItems.push(data.products[item]);
@@ -370,9 +498,10 @@ Carousel.prototype.loadCarouselItems = function () {
         context: this
     });
 };
+// </Получаем изначальные элементы из файла JSON>
 
 
-// Обработка нажатия клавиш
+// <Обработка нажатия клавиш>
 Carousel.prototype.keyDown = function () {
     var _this = this,
         directions = {
@@ -385,9 +514,10 @@ Carousel.prototype.keyDown = function () {
         }
     })
 };
+// </Обработка нажатия клавиш>
 
 
-// Запуск функции, после загрузки документа
+// <Запуск функции, после загрузки документа>
 $(document).ready(function () {
     var carousel = new Carousel();
 
@@ -403,18 +533,36 @@ $(document).ready(function () {
 
     // Droppable для корзины
     $('.basket').droppable({
-        drop: function(event, ui) {
+        drop: function (event, ui) {
             $('.basket').css('border', 'solid 1px white');
             var dropItemId = ui.draggable[0].id,
-                dropItem = $('#' + dropItemId).attr('id').split('_')[3];
-            carousel.productsBasket.push(dropItem);
+                dropItem = $('#' + dropItemId).attr('id').split('_')[3],
+                duplicate = false;
+
+            // <Проверка на дубликаты товаров>
+            for (var item in carousel.productsBasket){
+                if (carousel.productsBasket[item].number == dropItem) {
+                    duplicate = true;
+                    carousel.productsBasket[item].count++;
+                }
+            }
+            if (!duplicate) {
+                carousel.productsBasket.push({number: parseInt(dropItem), count: 1});
+            }
+            // </Проверка на дубликаты товаров>
+
             carousel.renderBasket('.basket__table');
-            console.log(carousel.productsBasket, dropItem, carousel.productsItems[dropItem]);
+
+            // console.log(carousel.productsBasket, dropItem, carousel.productsItems[dropItem]);
         },
-        over: function(event, ui) {
+        over: function (event, ui) {
             // $('.basket').effect('pulsate', 1000)
             $('.basket').css('border', 'solid 1px #007DC7');
+        },
+        out: function (event, ui) {
+            $('.basket').css('border', 'solid 1px white');
         }
     });
 
 });
+// </Запуск функции, после загрузки документа>

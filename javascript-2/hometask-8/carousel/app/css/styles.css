@@ -536,9 +536,9 @@ body {
         counter-increment: numbers;
         content: counter(numbers); }
       .basket__table-cell_numbers {
-        width: 10%; }
+        width: 7.5%; }
       .basket__table-cell_titles {
-        width: 20%; }
+        width: 15%; }
       .basket__table-cell_photos {
         width: 10%;
         text-align: center; }
@@ -549,12 +549,25 @@ body {
         -webkit-background-size: cover;
                 background-size: cover; }
       .basket__table-cell_descriptions {
-        width: 30%; }
+        width: 25%; }
       .basket__table-cell_prices {
-        width: 15%; }
+        width: 11.25%; }
+      .basket__table-cell_amount {
+        width: 7.5%;
+        text-align: center; }
+        .basket__table-cell_amount-input {
+          width: 100%; }
+      .basket__table-cell_count {
+        width: 11.25%; }
       .basket__table-cell_del {
-        cursor: pointer;
-        width: 15%; }
+        width: 12.5%;
+        text-align: center; }
+        .basket__table-cell_del-button {
+          cursor: pointer;
+          background-color: #007DC7;
+          color: white;
+          border: 1px solid white;
+          padding: 2px 10px; }
       .basket__table-cell_total {
         font-weight: 400;
         text-align: right; }

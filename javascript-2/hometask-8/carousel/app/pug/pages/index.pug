@@ -47,41 +47,6 @@ block content
 							.carousel__products-items-descriptions 32Gb
 							.carousel__products-items-prices 50$
 							.carousel__products-items-basket В корзину
-					//.carousel__products-container
-					//	.carousel__products-items
-					//		.carousel__products-items-images
-					//		.carousel__products-items-titles СмартФон 1
-					//		.carousel__products-items-descriptions 32Gb
-					//		.carousel__products-items-prices 10$
-					//		.carousel__products-items-basket В корзину
-					//.carousel__products-container
-					//	.carousel__products-items
-					//		.carousel__products-items-images
-					//		.carousel__products-items-titles СмартФон 2
-					//		.carousel__products-items-descriptions 32Gb
-					//		.carousel__products-items-prices 20$
-					//		.carousel__products-items-basket В корзину
-					//.carousel__products-container
-					//	.carousel__products-items
-					//		.carousel__products-items-images
-					//		.carousel__products-items-titles СмартФон 3
-					//		.carousel__products-items-descriptions 32Gb
-					//		.carousel__products-items-prices 30$
-					//		.carousel__products-items-basket В корзину
-					//.carousel__products-container
-					//	.carousel__products-items
-					//		.carousel__products-items-images
-					//		.carousel__products-items-titles СмартФон 4
-					//		.carousel__products-items-descriptions 32Gb
-					//		.carousel__products-items-prices 40$
-					//		.carousel__products-items-basket В корзину
-					//.carousel__products-container
-					//	.carousel__products-items
-					//		.carousel__products-items-images
-					//		.carousel__products-items-titles СмартФон 5
-					//		.carousel__products-items-descriptions 32Gb
-					//		.carousel__products-items-prices 50$
-					//		.carousel__products-items-basket В корзину
 			.carousel__nav
 				.carousel__nav-container
 					.carousel__nav-arrows
@@ -95,7 +60,7 @@ block content
 				span.carousel__dots-items-links
 					.carousel__dots-items-links-rounds
 	.basket
-		.basket__symbol Перетащите выбранный товар в корзину!
+		.basket__symbol Перенесите выбранный товар в корзину!
 			br
 			img(src='./img/trolly_180px.png')
 		.basket__table
@@ -105,6 +70,8 @@ block content
 				span.basket__table-cell.basket__table-cell_photos Фото
 				span.basket__table-cell.basket__table-cell_descriptions Описание
 				span.basket__table-cell.basket__table-cell_prices Цена
+				span.basket__table-cell.basket__table-cell_amount Кол-во
+				span.basket__table-cell.basket__table-cell_count Сумма
 				span.basket__table-cell.basket__table-cell_del Операция
 			.basket__table-row.basket__table-row_products
 				span.basket__table-cell.basket__table-cell_numbers
@@ -112,25 +79,17 @@ block content
 				span.basket__table-cell.basket__table-cell_photos
 				span.basket__table-cell.basket__table-cell_descriptions 32Gb
 				span.basket__table-cell.basket__table-cell_prices 10$
-				span.basket__table-cell.basket__table-cell_del X
-			.basket__table-row.basket__table-row_products
-				span.basket__table-cell.basket__table-cell_numbers
-				span.basket__table-cell.basket__table-cell_titles СмартФон 1
-				span.basket__table-cell.basket__table-cell_photos
-				span.basket__table-cell.basket__table-cell_descriptions 32Gb
-				span.basket__table-cell.basket__table-cell_prices 10$
-				span.basket__table-cell.basket__table-cell_del X
-			.basket__table-row.basket__table-row_products
-				span.basket__table-cell.basket__table-cell_numbers
-				span.basket__table-cell.basket__table-cell_titles СмартФон 1
-				span.basket__table-cell.basket__table-cell_photos
-				span.basket__table-cell.basket__table-cell_descriptions 32Gb
-				span.basket__table-cell.basket__table-cell_prices 10$
-				span.basket__table-cell.basket__table-cell_del X
+				span.basket__table-cell.basket__table-cell_amount
+					input.basket__table-cell_amount-input(type='number', value=1, min=1, max=10)
+				span.basket__table-cell.basket__table-cell_count 10$
+				span.basket__table-cell.basket__table-cell_del
+					span.basket__table-cell_del-button Удалить
 			.basket__table-row.basket__table-row_sum
 				span.basket__table-cell
 				span.basket__table-cell
 				span.basket__table-cell
 				span.basket__table-cell
 				span.basket__table-cell
-				span.basket__table-cell.basket__table-cell_total ИТОГО: 1000$
+				span.basket__table-cell
+				span.basket__table-cell
+				span.basket__table-cell.basket__table-cell_total ИТОГО: 70$

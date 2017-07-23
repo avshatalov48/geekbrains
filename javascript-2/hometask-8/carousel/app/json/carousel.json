@@ -2,6 +2,7 @@
   "widthCarousel": 1170,
   "heightCarousel": 385,
   "productsSlide": 5,
+  "currency": "$",
   "products": [
     {
       "image": "./img/smartphone_001.png",
