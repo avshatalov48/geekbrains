@@ -1,7 +1,7 @@
 {
-  "name": "exercise-1",
+  "name": "exercise-2",
   "version": "1.0.0",
-  "description": "GeekBrains. ReactJS. Lesson 2. Exercise 1.",
+  "description": "GeekBrains. ReactJS. Lesson 2. Exercise 2.",
   "main": "",
   "scripts": {
     "server": "webpack-dev-server",
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/avshatalov48/geekbrains/tree/master/react-js/hometask-2/exercise-1"
+    "url": "https://github.com/avshatalov48/geekbrains/tree/master/react-js/hometask-2/exercise-2"
   },
   "keywords": [
     "Install",
