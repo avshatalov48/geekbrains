@@ -1,7 +1,7 @@
 {
-  "name": "exercise-2",
+  "name": "exercise-3",
   "version": "1.0.0",
-  "description": "GeekBrains. ReactJS. Lesson 2. Exercise 2.",
+  "description": "GeekBrains. ReactJS. Lesson 2. Exercise 3.",
   "main": "",
   "scripts": {
     "server": "webpack-dev-server",
