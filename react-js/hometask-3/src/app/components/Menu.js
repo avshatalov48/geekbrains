@@ -3,26 +3,27 @@ import React from 'react';
 export default class Menu extends React.Component
 {
     render(){
-        // вывод props в консоль
-        console.log(this.props);
-
-        // проброска пунктов меню в массиве через props
-        // каждый элемент должен обладать уникальным ключем - key - он не отображается в HTML
         let items = this.props.items.map((item, index) => {
-            return <li key={index}>{item}</li>;
+            return (
+                <li role="presentation" key={index} class={item.class}>
+                    <a href={item.link}>{item.title}</a>
+                </li>
+                );
         });
 
         return (
             <div>
                 {this.props.children}
-                <p>{this.props.description}</p>
-                <ul>
+                <div class="page-header">
+                    <h1>
+                    {this.props.title}
+                    </h1>
+                </div>
+                <ul class="nav nav-pills">
                     {items}
                 </ul>
-                {this.props.title}
+                <hr></hr>
             </div>
         );
     }
 }
-
-//export default Menu; //Способ 1
