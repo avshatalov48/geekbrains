@@ -1,4 +1,5 @@
 {
+  "effects": "all ease 0.25s",
   "widthCarousel": 1170,
   "heightCarousel": 385,
   "productsSlide": 5,

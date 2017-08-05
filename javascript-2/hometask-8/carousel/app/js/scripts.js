@@ -1,4 +1,5 @@
 // To Do:
+// + Добавлена возможность управления эффектом transition, его параметрами
 // + Кнопки "В корзину" задействовать
 // + Сделать фотографии-заглушки
 // + Под ИТОГО - кнопка "Оформить", "Купить"
@@ -25,6 +26,7 @@ Container.prototype.render = function () {
 
 function Carousel() {
     Container.call(this, "carousel");
+    this.effects = true;
     this.widthCarousel = 0;
     this.currency = '';
     this.leftString = 0;
@@ -33,12 +35,25 @@ function Carousel() {
     this.countProducts = 0;
     this.productsItems = [];
 
+    this.effectsString = function () {
+        if (this.effects!='') {
+            var effectsString = {
+                '-webkit-transition': this.effects,
+                '-o-transition': this.effects,
+                'transition': this.effects
+            };
+            $('.carousel__products-string').css(effectsString);
+        }
+    };
+
     this.widthCarouselNav = function () {
         return $('.carousel__nav').width();
     };
+
     this.widthProduct = function () {
         return $('.carousel__products-container').width() + 20;
     };
+
     this.widthString = function () {
         var widthString = (this.widthProduct()) * this.countProducts;
         $('.carousel__products-string').css({'width': widthString});
@@ -100,6 +115,7 @@ Carousel.prototype.render = function (root) {
 
     $('.carousel').css({'width': this.widthCarousel});
 
+    this.effectsString();
     this.widthCarouselNav();
     this.widthProduct();
     this.widthString();
@@ -504,10 +520,11 @@ Carousel.prototype.loadCarouselItems = function () {
         url: './json/carousel.json',
         dataType: 'json',
         error: function () {
-            console.log('JSON load: Error!');
+            console.log('JSON file settings load: Error!');
         },
         success: function (data) {
-            console.log('JSON-file load: Ок!');
+            console.log('JSON file settings load: Ок!');
+            this.effects = data.effects;
             this.widthCarousel = data.widthCarousel;
             this.productsSlide = data.productsSlide;
             this.currency = data.currency;

@@ -401,9 +401,6 @@ body {
     overflow: hidden; }
     .carousel__products-string {
       position: relative;
-      -webkit-transition: all ease 0.75s;
-      -o-transition: all ease 0.75s;
-      transition: all ease 0.75s;
       left: 0px;
       width: 10000px; }
     .carousel__products-container {
