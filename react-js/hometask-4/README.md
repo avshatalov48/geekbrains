@@ -9,10 +9,10 @@ Virtual DOM; состояние компонентов; как задавать 
 Выполнить страницу с компонентами:
 1. Просмотреть приложенные ниже ссылки с примерами реализации:
 
-https://getbootstrap.com/examples/blog/
-https://blackrockdigital.github.io/startbootstrap-clean-blog/
-https://blackrockdigital.github.io/startbootstrap-blog-post/
-https://blackrockdigital.github.io/startbootstrap-blog-home/
+- https://getbootstrap.com/examples/blog/
+- https://blackrockdigital.github.io/startbootstrap-clean-blog/
+- https://blackrockdigital.github.io/startbootstrap-blog-post/
+- https://blackrockdigital.github.io/startbootstrap-blog-home/
 
 2. Необходимо декомпозировать (разбить) страницу на наборы компонентов.
 

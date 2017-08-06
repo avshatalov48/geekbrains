@@ -1,9 +1,10 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin'),
+    WebpackNotifierPlugin = require('webpack-notifier');
 
 module.exports = {
     entry: {
@@ -28,13 +29,6 @@ module.exports = {
                     plugins: ['react-html-attrs', 'transform-decorators-legacy']
                 }
             },
-            // {
-            //     test: /\.(jpg|png|gif|svg)$/,
-            //     loader: 'file-loader',
-            //     options: {
-            //         name: 'images/[name].[ext]'
-            //     },
-            // },
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'
@@ -61,11 +55,16 @@ module.exports = {
         extensions: ['', '.js', '.jsx', '.sass', '.css']
     },
     plugins: [
+        // Плагин Webpack, который не дает перезаписать скрипты при наличии в них ошибок
         new webpack.NoErrorsPlugin(),
+
+        // https://www.npmjs.com/package/html-webpack-plugin
+        // HTML Webpack Plugin - позволяет генерировать html файл с уже подключенным скриптом
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html'),
             filename: path.join(__dirname, 'dist', 'index.html')
         }),
+
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,
@@ -73,7 +72,17 @@ module.exports = {
                 baseDir: ['dist']
             }
         }),
+
+        // https://www.npmjs.com/package/copy-webpack-plugin
+        new CopyWebpackPlugin([
+            {
+                from: './src/app/static'
+            }
+        ]),
+
         new CleanWebpackPlugin(['dist']),
 
+        // https://www.npmjs.com/package/webpack-notifier
+        new WebpackNotifierPlugin({title: 'WebPack'})
     ]
 };

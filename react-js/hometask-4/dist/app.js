@@ -82,6 +82,28 @@
 	var app = document.getElementById('app');
 
 	// <Пункты меню>
+
+	// var itemsMenu = [];
+	// let xhr = new XMLHttpRequest();
+	// xhr.open( 'GET', './json/menu.json', true);
+	// xhr.send();
+	//
+	// xhr.onreadystatechange = function() {
+	//     if (xhr.readyState != 4) return;
+	//
+	//     if (xhr.status != 200) {
+	//         console.log('Console: Error', xhr.status, xhr.statusText);
+	//     } else {
+	//         // var items = [];
+	//         itemsMenu = JSON.parse(xhr.responseText);
+	//
+	//         // for (var i = 0; i < myItems.length; i++) {
+	//         //     items.push(myItems[i].title, myItems[i].link);
+	//         // }
+	//         console.log('1', itemsMenu);
+	//     }
+	// };
+
 	var itemsMenu = [{
 	    title: 'Главная',
 	    link: '#',
@@ -93,7 +115,7 @@
 	}, {
 	    title: 'Блог',
 	    link: '#',
-	    class: 'active'
+	    class: ''
 	}, {
 	    title: 'Контакты',
 	    link: '#',
@@ -108,34 +130,34 @@
 
 	// <Статьи>
 	var itemsArticles = [{
-	    title: 'Статья 1',
+	    title: 'Заголовок 1',
 	    author: 'Саша',
-	    image: 'http://wiki.western.edu/mcis/images/e/e0/React.png',
+	    image: './images/react-01.gif',
 	    text: 'Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета.'
 	}, {
-	    title: 'Статья 2',
+	    title: 'Заголовок 2',
 	    author: 'Петя',
-	    image: 'http://blogs.quovantis.com/wp-content/uploads/2017/01/React-JS-ES6-Setup-01-300x100.png',
+	    image: './images/react-02.gif',
 	    text: 'Самым известным «рыбным» текстом является знаменитый Lorem ipsum. Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum обязан древнеримскому философу Цицерону, ведь именно из его трактата «О пределах добра и зла» средневековый книгопечатник вырвал отдельные фразы и слова, получив текст-«рыбу», широко используемый и по сей день. Конечно, возникают некоторые вопросы, связанные с использованием Lorem ipsum на сайтах и проектах, ориентированных на кириллический контент – написание символов на латыни и на кириллице значительно различается.'
 	}, {
-	    title: 'Статья 3',
+	    title: 'Заголовок 3',
 	    author: 'Иван',
-	    image: 'http://joshujah.com/images/react-router.png',
+	    image: './images/react-03.gif',
 	    text: 'И даже с языками, использующими латинский алфавит, могут возникнуть небольшие проблемы: в различных языках те или иные буквы встречаются с разной частотой, имеется разница в длине наиболее распространенных слов. Отсюда напрашивается вывод, что все же лучше использовать в качестве «рыбы» текст на том языке, который планируется использовать при запуске проекта. Сегодня существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный неповторяющийся набор слов.'
 	}, {
-	    title: 'Статья 4',
+	    title: 'Заголовок 4',
 	    author: 'Вася',
-	    image: 'http://wiki.western.edu/mcis/images/e/e0/React.png',
+	    image: './images/react-01.gif',
 	    text: 'Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета.'
 	}, {
-	    title: 'Статья 5',
-	    author: 'Петя',
-	    image: 'http://blogs.quovantis.com/wp-content/uploads/2017/01/React-JS-ES6-Setup-01-300x100.png',
+	    title: 'Заголовок 5',
+	    author: 'Коля',
+	    image: './images/react-02.gif',
 	    text: 'Самым известным «рыбным» текстом является знаменитый Lorem ipsum. Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum обязан древнеримскому философу Цицерону, ведь именно из его трактата «О пределах добра и зла» средневековый книгопечатник вырвал отдельные фразы и слова, получив текст-«рыбу», широко используемый и по сей день. Конечно, возникают некоторые вопросы, связанные с использованием Lorem ipsum на сайтах и проектах, ориентированных на кириллический контент – написание символов на латыни и на кириллице значительно различается.'
 	}, {
-	    title: 'Статья 6',
-	    author: 'Иван',
-	    image: 'http://joshujah.com/images/react-router.png',
+	    title: 'Заголовок 6',
+	    author: 'Олег',
+	    image: './images/react-03.gif',
 	    text: 'И даже с языками, использующими латинский алфавит, могут возникнуть небольшие проблемы: в различных языках те или иные буквы встречаются с разной частотой, имеется разница в длине наиболее распространенных слов. Отсюда напрашивается вывод, что все же лучше использовать в качестве «рыбы» текст на том языке, который планируется использовать при запуске проекта. Сегодня существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный неповторяющийся набор слов.'
 	}];
 	// </Статьи>
@@ -154,6 +176,8 @@
 	        key: 'render',
 	        value: function render() {
 
+	            console.log('2', itemsMenu);
+
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -163,11 +187,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
-	                        _react2.default.createElement(
-	                            'div',
-	                            { className: 'col-xs-12' },
-	                            _react2.default.createElement(_Menu2.default, { items: itemsMenu, title: '\u0411\u043B\u043E\u0433' })
-	                        )
+	                        _react2.default.createElement(_Menu2.default, { items: itemsMenu })
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -22331,7 +22351,7 @@
 /* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22358,18 +22378,39 @@
 	    function Menu() {
 	        _classCallCheck(this, Menu);
 
-	        return _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+
+	        _this.state = {
+	            // Параметры пункта меню - Блог
+	            title: 'Блог',
+	            focused: 2
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Menu, [{
-	        key: "render",
+	        key: 'clickMenu',
+	        value: function clickMenu(index, title) {
+	            this.setState({
+	                focused: index,
+	                title: title
+	            });
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var items = this.props.items.map(function (item, index) {
+	                var style = '';
+	                if (_this2.state.focused == index) {
+	                    style = 'active';
+	                }
 	                return _react2.default.createElement(
-	                    "li",
-	                    { role: "presentation", key: index, className: item.class },
+	                    'li',
+	                    { role: 'presentation', key: index, className: style, onClick: _this2.clickMenu.bind(_this2, index, item.title) },
 	                    _react2.default.createElement(
-	                        "a",
+	                        'a',
 	                        { href: item.link },
 	                        item.title
 	                    )
@@ -22377,24 +22418,23 @@
 	            });
 
 	            return _react2.default.createElement(
-	                "div",
-	                null,
-	                this.props.children,
+	                'div',
+	                { className: 'col-xs-12' },
 	                _react2.default.createElement(
-	                    "div",
-	                    { className: "page-header" },
+	                    'div',
+	                    { className: 'page-header' },
 	                    _react2.default.createElement(
-	                        "h1",
+	                        'h1',
 	                        null,
-	                        this.props.title
+	                        this.state.title
 	                    )
 	                ),
 	                _react2.default.createElement(
-	                    "ul",
-	                    { className: "nav nav-pills" },
+	                    'ul',
+	                    { className: 'nav nav-pills' },
 	                    items
 	                ),
-	                _react2.default.createElement("hr", null)
+	                _react2.default.createElement('hr', null)
 	            );
 	        }
 	    }]);
@@ -22408,7 +22448,7 @@
 /* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
@@ -22435,60 +22475,100 @@
 	    function Articles() {
 	        _classCallCheck(this, Articles);
 
-	        return _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).apply(this, arguments));
+	        var _this = _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).apply(this, arguments));
+
+	        _this.state = {
+	            hideArticle: [],
+	            fullText: []
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Articles, [{
-	        key: "render",
+	        key: 'clickHide',
+	        value: function clickHide(index) {
+	            var newState = this.state.hideArticle;
+
+	            if (newState.indexOf(index) == -1) {
+	                newState.push(index);
+	                this.setState({
+	                    hideArticle: newState
+	                });
+	            }
+	            // console.log(this.state.hideArticle, index);
+	        }
+	    }, {
+	        key: 'clickFullText',
+	        value: function clickFullText(index) {
+	            var newState = this.state.fullText,
+	                item = newState.indexOf(index);
+
+	            if (item == -1) {
+	                newState.push(index);
+	            } else {
+	                newState.splice(item, 1);
+	            }
+
+	            this.setState({
+	                fullText: newState
+	            });
+	        }
+	    }, {
+	        key: 'render',
 	        value: function render() {
+	            var _this2 = this;
+
 	            var items = this.props.items.map(function (item, index) {
+	                var style = {},
+	                    text = item.text.substr(0, 100) + '...';
+	                if (_this2.state.fullText.indexOf(index) != -1) {
+	                    text = item.text;
+	                }
+	                if (_this2.state.hideArticle.indexOf(index) != -1) {
+	                    style = { display: 'none' };
+	                }
 	                return _react2.default.createElement(
-	                    "div",
-	                    { className: "col-xs-4", key: index },
+	                    'div',
+	                    { className: 'col-xs-4', key: index },
 	                    _react2.default.createElement(
-	                        "div",
-	                        { className: "thumbnail" },
-	                        _react2.default.createElement("img", { src: item.image, alt: item.title }),
+	                        'div',
+	                        { className: 'thumbnail', style: style },
+	                        _react2.default.createElement('img', { src: item.image, alt: item.title }),
 	                        _react2.default.createElement(
-	                            "div",
-	                            { className: "caption" },
+	                            'div',
+	                            { className: 'caption' },
 	                            _react2.default.createElement(
-	                                "h3",
+	                                'h3',
 	                                null,
 	                                item.title
 	                            ),
 	                            _react2.default.createElement(
-	                                "p",
-	                                { className: "text-justify" },
-	                                item.text
+	                                'p',
+	                                { className: 'text-justify' },
+	                                text
 	                            ),
 	                            _react2.default.createElement(
-	                                "p",
-	                                { className: "text-right" },
+	                                'p',
+	                                { className: 'text-right' },
 	                                _react2.default.createElement(
-	                                    "i",
+	                                    'i',
 	                                    null,
-	                                    "\u0410\u0432\u0442\u043E\u0440: ",
+	                                    '\u0410\u0432\u0442\u043E\u0440: ',
 	                                    item.author
 	                                )
 	                            ),
 	                            _react2.default.createElement(
-	                                "div",
-	                                { className: "btn-group", role: "group" },
+	                                'div',
+	                                { className: 'btn-group', role: 'group' },
 	                                _react2.default.createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-default" },
-	                                    "\u041A\u043E\u043C\u043C\u0435\u043D\u0442."
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-default', onClick: _this2.clickFullText.bind(_this2, index) },
+	                                    '\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435'
 	                                ),
 	                                _react2.default.createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-default" },
-	                                    "\u0420\u0435\u0434\u0430\u043A."
-	                                ),
-	                                _react2.default.createElement(
-	                                    "button",
-	                                    { type: "button", className: "btn btn-default" },
-	                                    "\u0423\u0434\u0430\u043B\u0438\u0442\u044C"
+	                                    'button',
+	                                    { type: 'button', className: 'btn btn-default', onClick: _this2.clickHide.bind(_this2, index) },
+	                                    '\u0421\u043A\u0440\u044B\u0442\u044C'
 	                                )
 	                            )
 	                        )
@@ -22497,14 +22577,9 @@
 	            });
 
 	            return _react2.default.createElement(
-	                "div",
+	                'div',
 	                null,
-	                this.props.children,
-	                _react2.default.createElement(
-	                    "div",
-	                    null,
-	                    items
-	                )
+	                items
 	            );
 	        }
 	    }]);
