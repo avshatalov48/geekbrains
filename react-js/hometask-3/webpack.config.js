@@ -1,9 +1,9 @@
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-var CleanWebpackPlugin = require('clean-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    BrowserSyncPlugin = require('browser-sync-webpack-plugin'),
+    CleanWebpackPlugin = require('clean-webpack-plugin'),
+    CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: {
@@ -54,11 +54,14 @@ module.exports = {
         extensions: ['', '.js', '.jsx', '.sass', '.css']
     },
     plugins: [
+        // Плагин Webpack, который не дает перезаписать скрипты при наличии в них ошибок
         new webpack.NoErrorsPlugin(),
+
         new HtmlWebpackPlugin({
             template: path.join(__dirname, 'src', 'index.html'),
             filename: path.join(__dirname, 'dist', 'index.html')
         }),
+
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,
@@ -66,7 +69,14 @@ module.exports = {
                 baseDir: ['dist']
             }
         }),
-        new CleanWebpackPlugin(['dist']),
 
+        // https://www.npmjs.com/package/copy-webpack-plugin
+        new CopyWebpackPlugin([
+            {
+                from: './src/app/static'
+            }
+        ]),
+
+        new CleanWebpackPlugin(['dist'])
     ]
 };

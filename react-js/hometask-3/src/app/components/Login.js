@@ -1,18 +1,17 @@
 import React from 'react';
 
-export default class Login extends React.Component
-{
-    render(){
+export default class Login extends React.Component {
+    render() {
         return (
             <div>
-                <hr></hr>
-                <input type="text" class="form-control" placeholder="Логин" aria-describedby="basic-addon1"></input>
-                <input type="text" class="form-control" placeholder="Пароль" aria-describedby="basic-addon2"></input>
-                <div class="btn-group" role="group">
-                    <button type="button" class="btn btn-default">Войти</button>
-                    <button type="button" class="btn btn-default">Регистрация</button>
+                <hr />
+                <input type="text" className="form-control" placeholder="Логин" aria-describedby="basic-addon1"/>
+                <input type="text" className="form-control" placeholder="Пароль" aria-describedby="basic-addon2"/>
+                <div className="btn-group" role="group">
+                    <button type="button" className="btn btn-default">Войти</button>
+                    <button type="button" className="btn btn-default">Регистрация</button>
                 </div>
-                <hr></hr>
+                <hr />
             </div>
         );
     }
