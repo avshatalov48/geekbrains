@@ -4,9 +4,32 @@ export default class Articles extends React.Component {
     constructor(){
         super(...arguments);
         this.state = {
+            articles: [],
             hideArticle: [],
             fullText: []
         };
+    }
+
+    componentWillMount(){
+        let _this = this;
+        let xhr = new XMLHttpRequest();
+        xhr.open( 'GET', './json/articles.json', true);
+        xhr.send();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+
+            if (xhr.status != 200) {
+                console.log('JSON: Error', xhr.status, xhr.statusText);
+            } else {
+                let getArticles = JSON.parse(xhr.responseText);
+                _this.setState({
+                    articles: getArticles.itemsArticles
+                });
+                console.log('JSON: Good', xhr.status, xhr.statusText);
+            }
+        };
+
     }
 
     clickHide(index) {
@@ -18,7 +41,6 @@ export default class Articles extends React.Component {
                 hideArticle: newState
             });
         }
-        // console.log(this.state.hideArticle, index);
     }
 
     clickFullText(index) {
@@ -37,7 +59,7 @@ export default class Articles extends React.Component {
     }
 
     render() {
-        let items = this.props.items.map((item, index) => {
+        let items = this.state.articles.map((item, index) => {
             let style = {},
             text = item.text.substr(0, 100) + '...';
             if (this.state.fullText.indexOf(index) != -1) {

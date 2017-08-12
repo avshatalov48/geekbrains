@@ -5,10 +5,36 @@ export default class Menu extends React.Component {
     constructor(){
         super(...arguments);
         this.state = {
+            // Содержимое пунктов меню
+            menu: [],
             // Параметры пункта меню - Блог
             title: 'Блог',
             focused: 2
         };
+    }
+
+    // componentWillMount() - Вызывается один раз на клиенте и сервере, непосредственно перед началом рендеринга. Если вызвать setState внутри этого метода, render() будет видеть обновлённое состояние и будет выполнять его только один раз, несмотря на изменение состояния.
+
+    componentWillMount(){
+        let _this = this;
+        let xhr = new XMLHttpRequest();
+        xhr.open( 'GET', './json/menu.json', true);
+        xhr.send();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+
+            if (xhr.status != 200) {
+                console.log('JSON: Error', xhr.status, xhr.statusText);
+            } else {
+                let getMenu = JSON.parse(xhr.responseText);
+                _this.setState({
+                    menu: getMenu.itemsMenu
+                });
+                console.log('JSON: Good', xhr.status, xhr.statusText);
+            }
+        };
+
     }
 
     clickMenu(index, title) {
@@ -19,8 +45,7 @@ export default class Menu extends React.Component {
     }
 
     render() {
-
-        let items = this.props.items.map((item, index) => {
+        let items = this.state.menu.map((item, index) => {
             let style = '';
             if (this.state.focused == index) {
                 style='active';

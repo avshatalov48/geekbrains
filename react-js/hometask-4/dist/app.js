@@ -76,92 +76,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import Info from './app/components/Info';
-
-
 	var app = document.getElementById('app');
-
-	// <Пункты меню>
-
-	// var itemsMenu = [];
-	// let xhr = new XMLHttpRequest();
-	// xhr.open( 'GET', './json/menu.json', true);
-	// xhr.send();
-	//
-	// xhr.onreadystatechange = function() {
-	//     if (xhr.readyState != 4) return;
-	//
-	//     if (xhr.status != 200) {
-	//         console.log('Console: Error', xhr.status, xhr.statusText);
-	//     } else {
-	//         // var items = [];
-	//         itemsMenu = JSON.parse(xhr.responseText);
-	//
-	//         // for (var i = 0; i < myItems.length; i++) {
-	//         //     items.push(myItems[i].title, myItems[i].link);
-	//         // }
-	//         console.log('1', itemsMenu);
-	//     }
-	// };
-
-	var itemsMenu = [{
-	    title: 'Главная',
-	    link: '#',
-	    class: ''
-	}, {
-	    title: 'Статьи',
-	    link: '#',
-	    class: ''
-	}, {
-	    title: 'Блог',
-	    link: '#',
-	    class: ''
-	}, {
-	    title: 'Контакты',
-	    link: '#',
-	    class: ''
-	}, {
-	    title: 'О нас',
-	    link: '#',
-	    class: ''
-	}];
-	// </Пункты меню>
-
-
-	// <Статьи>
-	var itemsArticles = [{
-	    title: 'Заголовок 1',
-	    author: 'Саша',
-	    image: './images/react-01.gif',
-	    text: 'Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета.'
-	}, {
-	    title: 'Заголовок 2',
-	    author: 'Петя',
-	    image: './images/react-02.gif',
-	    text: 'Самым известным «рыбным» текстом является знаменитый Lorem ipsum. Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum обязан древнеримскому философу Цицерону, ведь именно из его трактата «О пределах добра и зла» средневековый книгопечатник вырвал отдельные фразы и слова, получив текст-«рыбу», широко используемый и по сей день. Конечно, возникают некоторые вопросы, связанные с использованием Lorem ipsum на сайтах и проектах, ориентированных на кириллический контент – написание символов на латыни и на кириллице значительно различается.'
-	}, {
-	    title: 'Заголовок 3',
-	    author: 'Иван',
-	    image: './images/react-03.gif',
-	    text: 'И даже с языками, использующими латинский алфавит, могут возникнуть небольшие проблемы: в различных языках те или иные буквы встречаются с разной частотой, имеется разница в длине наиболее распространенных слов. Отсюда напрашивается вывод, что все же лучше использовать в качестве «рыбы» текст на том языке, который планируется использовать при запуске проекта. Сегодня существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный неповторяющийся набор слов.'
-	}, {
-	    title: 'Заголовок 4',
-	    author: 'Вася',
-	    image: './images/react-01.gif',
-	    text: 'Каждый веб-разработчик знает, что такое текст-«рыба». Текст этот, несмотря на название, не имеет никакого отношения к обитателям водоемов. Используется он веб-дизайнерами для вставки на интернет-страницы и демонстрации внешнего вида контента, просмотра шрифтов, абзацев, отступов и т.д. Так как цель применения такого текста исключительно демонстрационная, то и смысловую нагрузку ему нести совсем необязательно. Более того, нечитабельность текста сыграет на руку при оценке качества восприятия макета.'
-	}, {
-	    title: 'Заголовок 5',
-	    author: 'Коля',
-	    image: './images/react-02.gif',
-	    text: 'Самым известным «рыбным» текстом является знаменитый Lorem ipsum. Считается, что впервые его применили в книгопечатании еще в XVI веке. Своим появлением Lorem ipsum обязан древнеримскому философу Цицерону, ведь именно из его трактата «О пределах добра и зла» средневековый книгопечатник вырвал отдельные фразы и слова, получив текст-«рыбу», широко используемый и по сей день. Конечно, возникают некоторые вопросы, связанные с использованием Lorem ipsum на сайтах и проектах, ориентированных на кириллический контент – написание символов на латыни и на кириллице значительно различается.'
-	}, {
-	    title: 'Заголовок 6',
-	    author: 'Олег',
-	    image: './images/react-03.gif',
-	    text: 'И даже с языками, использующими латинский алфавит, могут возникнуть небольшие проблемы: в различных языках те или иные буквы встречаются с разной частотой, имеется разница в длине наиболее распространенных слов. Отсюда напрашивается вывод, что все же лучше использовать в качестве «рыбы» текст на том языке, который планируется использовать при запуске проекта. Сегодня существует несколько вариантов Lorem ipsum, кроме того, есть специальные генераторы, создающие собственные варианты текста на основе оригинального трактата, благодаря чему появляется возможность получить более длинный неповторяющийся набор слов.'
-	}];
-	// </Статьи>
-
 
 	var App = function (_React$Component) {
 	    _inherits(App, _React$Component);
@@ -176,8 +91,6 @@
 	        key: 'render',
 	        value: function render() {
 
-	            console.log('2', itemsMenu);
-
 	            return _react2.default.createElement(
 	                'div',
 	                null,
@@ -187,7 +100,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
-	                        _react2.default.createElement(_Menu2.default, { items: itemsMenu })
+	                        _react2.default.createElement(_Menu2.default, null)
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -196,7 +109,7 @@
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
-	                        _react2.default.createElement(_Articles2.default, { items: itemsArticles })
+	                        _react2.default.createElement(_Articles2.default, null)
 	                    )
 	                ),
 	                _react2.default.createElement(
@@ -22378,17 +22291,43 @@
 	    function Menu() {
 	        _classCallCheck(this, Menu);
 
-	        var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
+	        var _this2 = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).apply(this, arguments));
 
-	        _this.state = {
+	        _this2.state = {
+	            // Содержимое пунктов меню
+	            menu: [],
 	            // Параметры пункта меню - Блог
 	            title: 'Блог',
 	            focused: 2
 	        };
-	        return _this;
+	        return _this2;
 	    }
 
+	    // componentWillMount() - Вызывается один раз на клиенте и сервере, непосредственно перед началом рендеринга. Если вызвать setState внутри этого метода, render() будет видеть обновлённое состояние и будет выполнять его только один раз, несмотря на изменение состояния.
+
 	    _createClass(Menu, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            var _this = this;
+	            var xhr = new XMLHttpRequest();
+	            xhr.open('GET', './json/menu.json', true);
+	            xhr.send();
+
+	            xhr.onreadystatechange = function () {
+	                if (xhr.readyState != 4) return;
+
+	                if (xhr.status != 200) {
+	                    console.log('JSON: Error', xhr.status, xhr.statusText);
+	                } else {
+	                    var getMenu = JSON.parse(xhr.responseText);
+	                    _this.setState({
+	                        menu: getMenu.itemsMenu
+	                    });
+	                    console.log('JSON: Good', xhr.status, xhr.statusText);
+	                }
+	            };
+	        }
+	    }, {
 	        key: 'clickMenu',
 	        value: function clickMenu(index, title) {
 	            this.setState({
@@ -22399,16 +22338,16 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 
-	            var items = this.props.items.map(function (item, index) {
+	            var items = this.state.menu.map(function (item, index) {
 	                var style = '';
-	                if (_this2.state.focused == index) {
+	                if (_this3.state.focused == index) {
 	                    style = 'active';
 	                }
 	                return _react2.default.createElement(
 	                    'li',
-	                    { role: 'presentation', key: index, className: style, onClick: _this2.clickMenu.bind(_this2, index, item.title) },
+	                    { role: 'presentation', key: index, className: style, onClick: _this3.clickMenu.bind(_this3, index, item.title) },
 	                    _react2.default.createElement(
 	                        'a',
 	                        { href: item.link },
@@ -22475,16 +22414,39 @@
 	    function Articles() {
 	        _classCallCheck(this, Articles);
 
-	        var _this = _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).apply(this, arguments));
+	        var _this2 = _possibleConstructorReturn(this, (Articles.__proto__ || Object.getPrototypeOf(Articles)).apply(this, arguments));
 
-	        _this.state = {
+	        _this2.state = {
+	            articles: [],
 	            hideArticle: [],
 	            fullText: []
 	        };
-	        return _this;
+	        return _this2;
 	    }
 
 	    _createClass(Articles, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            var _this = this;
+	            var xhr = new XMLHttpRequest();
+	            xhr.open('GET', './json/articles.json', true);
+	            xhr.send();
+
+	            xhr.onreadystatechange = function () {
+	                if (xhr.readyState != 4) return;
+
+	                if (xhr.status != 200) {
+	                    console.log('JSON: Error', xhr.status, xhr.statusText);
+	                } else {
+	                    var getArticles = JSON.parse(xhr.responseText);
+	                    _this.setState({
+	                        articles: getArticles.itemsArticles
+	                    });
+	                    console.log('JSON: Good', xhr.status, xhr.statusText);
+	                }
+	            };
+	        }
+	    }, {
 	        key: 'clickHide',
 	        value: function clickHide(index) {
 	            var newState = this.state.hideArticle;
@@ -22495,7 +22457,6 @@
 	                    hideArticle: newState
 	                });
 	            }
-	            // console.log(this.state.hideArticle, index);
 	        }
 	    }, {
 	        key: 'clickFullText',
@@ -22516,15 +22477,15 @@
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var _this2 = this;
+	            var _this3 = this;
 
-	            var items = this.props.items.map(function (item, index) {
+	            var items = this.state.articles.map(function (item, index) {
 	                var style = {},
 	                    text = item.text.substr(0, 100) + '...';
-	                if (_this2.state.fullText.indexOf(index) != -1) {
+	                if (_this3.state.fullText.indexOf(index) != -1) {
 	                    text = item.text;
 	                }
-	                if (_this2.state.hideArticle.indexOf(index) != -1) {
+	                if (_this3.state.hideArticle.indexOf(index) != -1) {
 	                    style = { display: 'none' };
 	                }
 	                return _react2.default.createElement(
@@ -22562,12 +22523,12 @@
 	                                { className: 'btn-group', role: 'group' },
 	                                _react2.default.createElement(
 	                                    'button',
-	                                    { type: 'button', className: 'btn btn-default', onClick: _this2.clickFullText.bind(_this2, index) },
+	                                    { type: 'button', className: 'btn btn-default', onClick: _this3.clickFullText.bind(_this3, index) },
 	                                    '\u041F\u043E\u0434\u0440\u043E\u0431\u043D\u0435\u0435'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'button',
-	                                    { type: 'button', className: 'btn btn-default', onClick: _this2.clickHide.bind(_this2, index) },
+	                                    { type: 'button', className: 'btn btn-default', onClick: _this3.clickHide.bind(_this3, index) },
 	                                    '\u0421\u043A\u0440\u044B\u0442\u044C'
 	                                )
 	                            )
