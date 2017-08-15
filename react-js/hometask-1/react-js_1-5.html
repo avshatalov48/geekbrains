@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="author" content="Alexander Shatalov">
+	<title>Alexander Shatalov > React JS > Lesson 1 > Exercise 5 - Promises</title>
+
+	<script type="text/javascript">
+		'use strict';
+
+		// https://learn.javascript.ru/promise
+		// Promise – это специальный объект, который содержит своё состояние. Вначале pending («ожидание»), затем – одно из: fulfilled («выполнено успешно») или rejected («выполнено с ошибкой»).
+
+		let promises = [];
+
+		for (let number = 1; number <= 10; number++) {
+
+			let promise = new Promise((resolve, reject) => {
+
+				let xhr = new XMLHttpRequest();
+				xhr.open('GET', 'https://jsonplaceholder.typicode.com/users/' + number, true);
+				xhr.send();
+
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState != 4) {
+						return;
+					}
+
+					if (xhr.status != 200) {
+						reject('JSON: Error', xhr.status, xhr.statusText);
+					} else {
+						resolve(JSON.parse(xhr.responseText));
+					}
+				};
+
+			});
+
+			promise.then(
+					result => {
+						// запустится при вызове resolve
+						console.log('Promise №' + number + ':', promise);
+						promises.push(result);
+					},
+					error => {
+						// запустится при вызове reject
+						console.log(error)
+					}
+			);
+		}
+
+		console.log('Итоговый массив данных:', promises);
+
+	</script>
+</head>
+
+<body>
+	<p>Результаты выведены в консоль.</p>
+</body>
+
+</html>
