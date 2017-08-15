@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="robots" content="noindex, nofollow">
+	<meta name="author" content="Alexander Shatalov">
+	<title>Alexander Shatalov > React JS > Lesson 1 > Exercise 4 - Generator</title>
+
+	<script type="text/javascript">
+		'use strict';
+
+		// https://learn.javascript.ru/generator
+
+		// Для объявления генератора используется новая синтаксическая конструкция: function* (функция со звёздочкой).  Её называют «функция-генератор» (generator function).
+		function* generateSequence() {
+			// Ключевое слово yield используется для остановки и возобновления функции-генератора.
+			// https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/yield
+			yield prompt('Как Вас зовут? ', 'Кеша');
+			yield prompt('Сколько вам лет? ', '7');
+			return prompt('Где вы родились? ', 'Липецк');
+		}
+
+		let user = {};
+		let	generator = generateSequence();
+
+		// Основным методом генератора является next(). При вызове он возобновляет выполнение кода до ближайшего ключевого слова yield.
+		user.name = generator.next().value;
+		user.age = generator.next().value;
+		user.town = generator.next().value;
+
+		console.log(user);
+	</script>
+</head>
+
+<body>
+	<p>Результаты выведены в консоль.</p>
+</body>
+
+</html>
