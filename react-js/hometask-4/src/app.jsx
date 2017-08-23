@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Modal from './app/components/Modal';
 import Menu from './app/components/Menu';
 import Articles from './app/components/Articles';
 import Login from './app/components/Login';
@@ -32,6 +33,8 @@ class App extends React.Component {
                             <div className="col-xs-4" />
                         </div>
                     </div>
+                    {/* Окно приветствия */}
+                    <Modal />
                 </div>
         );
     }

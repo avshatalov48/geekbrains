@@ -56,15 +56,19 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _Menu = __webpack_require__(184);
+	var _Modal = __webpack_require__(184);
+
+	var _Modal2 = _interopRequireDefault(_Modal);
+
+	var _Menu = __webpack_require__(185);
 
 	var _Menu2 = _interopRequireDefault(_Menu);
 
-	var _Articles = __webpack_require__(185);
+	var _Articles = __webpack_require__(186);
 
 	var _Articles2 = _interopRequireDefault(_Articles);
 
-	var _Login = __webpack_require__(186);
+	var _Login = __webpack_require__(187);
 
 	var _Login2 = _interopRequireDefault(_Login);
 
@@ -126,7 +130,8 @@
 	                        ),
 	                        _react2.default.createElement('div', { className: 'col-xs-4' })
 	                    )
-	                )
+	                ),
+	                _react2.default.createElement(_Modal2.default, null)
 	            );
 	        }
 	    }]);
@@ -22285,6 +22290,99 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var Modal = function (_React$Component) {
+	    _inherits(Modal, _React$Component);
+
+	    function Modal() {
+	        _classCallCheck(this, Modal);
+
+	        return _possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+	    }
+
+	    // componentDidMount() - Вызывается сразу после того, как происходит инициализация компонента
+
+
+	    _createClass(Modal, [{
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            $("#myModalBox").modal('show');
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                { id: 'myModalBox', className: 'modal fade' },
+	                _react2.default.createElement(
+	                    'div',
+	                    { className: 'modal-dialog' },
+	                    _react2.default.createElement(
+	                        'div',
+	                        { className: 'modal-content' },
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-header' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'close', 'data-dismiss': 'modal', 'aria-hidden': 'true' },
+	                                '\xD7'
+	                            ),
+	                            _react2.default.createElement(
+	                                'h4',
+	                                { className: 'modal-title' },
+	                                '\u0411\u043B\u043E\u0433'
+	                            )
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-body' },
+	                            '\u041F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u0435\u043C \u0432\u0430\u0441 \u043D\u0430 \u043D\u0430\u0448\u0435\u043C \u0431\u043B\u043E\u0433\u0435!'
+	                        ),
+	                        _react2.default.createElement(
+	                            'div',
+	                            { className: 'modal-footer' },
+	                            _react2.default.createElement(
+	                                'button',
+	                                { type: 'button', className: 'btn btn-primary', 'data-dismiss': 'modal' },
+	                                '\u0417\u0430\u043A\u0440\u044B\u0442\u044C'
+	                            )
+	                        )
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Modal;
+	}(_react2.default.Component);
+
+	exports.default = Modal;
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	var Menu = function (_React$Component) {
 	    _inherits(Menu, _React$Component);
 
@@ -22384,7 +22482,7 @@
 	exports.default = Menu;
 
 /***/ }),
-/* 185 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22551,7 +22649,7 @@
 	exports.default = Articles;
 
 /***/ }),
-/* 186 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	"use strict";
