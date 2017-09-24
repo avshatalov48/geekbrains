@@ -4,40 +4,41 @@
 switch организовать вывод чисел от $a до 15.*/
 
 $a = rand(0,15);
+$b = "<br>";
 
-echo "a = $a<hr>";
+echo "a = $a" . $b;
 
 switch ($a) {
     case 0:
-        echo "0<br>";
+        echo "0" . $b;
     case 1:
-        echo "1<br>";
+        echo "1" . $b;
     case 2:
-        echo "2<br>";
+        echo "2" . $b;
     case 3:
-        echo "3<br>";
+        echo "3" . $b;
     case 4:
-        echo "4<br>";
+        echo "4" . $b;
     case 5:
-        echo "5<br>";
+        echo "5" . $b;
     case 6:
-        echo "6<br>";
+        echo "6" . $b;
     case 7:
-        echo "7<br>";
+        echo "7" . $b;
     case 8:
-        echo "8<br>";
+        echo "8" . $b;
     case 9:
-        echo "9<br>";
+        echo "9" . $b;
     case 10:
-        echo "10<br>";
+        echo "10" . $b;
     case 11:
-        echo "11<br>";
+        echo "11" . $b;
     case 12:
-        echo "12<br>";
+        echo "12" . $b;
     case 13:
-        echo "13<br>";
+        echo "13" . $b;
     case 14:
-        echo "14<br>";
+        echo "14" . $b;
     case 15:
-        echo "15<br>";
+        echo "15" . $b;
 }
