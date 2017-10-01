@@ -116,27 +116,6 @@
 
 <body>
 
-<!--<nav>
-  <ul class="topmenu">
-    <li><a href="" class="active">Главная</a>
-      <ul class="submenu">
-        <li><a href="">меню второго уровня</a></li>
-        <li><a href="" class="submenu-link">меню второго уровня</a>
-          <ul class="submenu">
-            <li><a href="">меню третьего уровня</a></li>
-            <li><a href="">меню третьего уровня</a></li>
-            <li><a href="">меню третьего уровня</a></li>
-          </ul>
-        </li>
-        <li><a href="">меню второго уровня</a></li>
-      </ul>
-    </li>
-    <li><a href="">Компания</a></li>
-    <li><a href="">Блог</a></li>
-    <li><a href="">Контакты</a></li>
-  </ul>
-</nav>-->
-
 <nav>
 
     <?php
@@ -147,28 +126,30 @@
      * Подумать, как можно реализовать меню с вложенными подменю? Попробовать его реализовать.
      */
 
-    // Пункт меню - Название, ссылка, класс, подменю
+    // Любое количество вложености. Рекурсия.
+    // Пункт меню - Название, ссылка, класс, наличие подменю, подменю
+
     $menu = [
         ["title" => "Главная", "href" => "#", "class" => "active", "submenu" => true, "items" =>
             [
-                ["title" => "Главная 1", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Главная 2", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Главная Подменю", "href" => "#", "class" => "", "submenu" => true, "items" =>
+                ["title" => "Главная 1", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Главная 2", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Главная Подменю", "href" => "#", "class" => " ", "submenu" => true, "items" =>
                     [
-                        ["title" => "Пункт 1", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 2", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 3", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Главная Подменю", "href" => "#", "class" => "", "submenu" => true, "items" =>
+                        ["title" => "Пункт 1", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 2", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 3", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Главная Подменю", "href" => "#", "class" => " ", "submenu" => true, "items" =>
                             [
-                                ["title" => "Пункт 1", "href" => "#", "class" => "", "submenu" => false],
-                                ["title" => "Пункт 2", "href" => "#", "class" => "", "submenu" => false],
-                                ["title" => "Пункт 3", "href" => "#", "class" => "", "submenu" => false],
-                                ["title" => "Главная Подменю", "href" => "#", "class" => "", "submenu" => true, "items" =>
+                                ["title" => "Пункт 1", "href" => "#", "class" => " ", "submenu" => false],
+                                ["title" => "Пункт 2", "href" => "#", "class" => " ", "submenu" => false],
+                                ["title" => "Пункт 3", "href" => "#", "class" => " ", "submenu" => false],
+                                ["title" => "Главная Подменю", "href" => "#", "class" => " ", "submenu" => true, "items" =>
                                     [
-                                        ["title" => "Пункт 1", "href" => "#", "class" => "", "submenu" => false],
-                                        ["title" => "Пункт 2", "href" => "#", "class" => "", "submenu" => false],
-                                        ["title" => "Пункт 3", "href" => "#", "class" => "", "submenu" => false],
-                                        ["title" => "Пункт 4", "href" => "#", "class" => "", "submenu" => false]
+                                        ["title" => "Пункт 1", "href" => "#", "class" => " ", "submenu" => false],
+                                        ["title" => "Пункт 2", "href" => "#", "class" => " ", "submenu" => false],
+                                        ["title" => "Пункт 3", "href" => "#", "class" => " ", "submenu" => false],
+                                        ["title" => "Пункт 4", "href" => "#", "class" => " ", "submenu" => false]
                                     ]
                                 ]
                             ]
@@ -177,106 +158,61 @@
                 ]
             ]
         ],
-        ["title" => "Компания", "href" => "#", "class" => "", "submenu" => true, "items" =>
+        ["title" => "Компания", "href" => "#", "class" => " ", "submenu" => true, "items" =>
             [
-                ["title" => "Компания 1", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Компания 2", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Компания 3", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Компания 4 Подменю", "href" => "#", "class" => "", "submenu" => true, "items" =>
+                ["title" => "Компания 1", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Компания 2", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Компания 3", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Компания 4 Подменю", "href" => "#", "class" => " ", "submenu" => true, "items" =>
                     [
-                        ["title" => "Пункт 1", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 2", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 3", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 4", "href" => "#", "class" => "", "submenu" => false]
+                        ["title" => "Пункт 1", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 2", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 3", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 4", "href" => "#", "class" => " ", "submenu" => false]
                     ]
                 ]
             ]
         ],
-        ["title" => "Блог", "href" => "#", "class" => "", "submenu" => true, "items" =>
+        ["title" => "Блог", "href" => "#", "class" => " ", "submenu" => true, "items" =>
             [
-                ["title" => "Блог 1", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Блог 2", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Блог 3", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Блог 4", "href" => "#", "class" => "", "submenu" => false],
-                ["title" => "Блог 5 Подменю", "href" => "#", "class" => "", "submenu" => true, "items" =>
+                ["title" => "Блог 1", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Блог 2", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Блог 3", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Блог 4", "href" => "#", "class" => " ", "submenu" => false],
+                ["title" => "Блог 5 Подменю", "href" => "#", "class" => " ", "submenu" => true, "items" =>
                     [
-                        ["title" => "Пункт 1", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 2", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 3", "href" => "#", "class" => "", "submenu" => false],
-                        ["title" => "Пункт 4", "href" => "#", "class" => "", "submenu" => false]
+                        ["title" => "Пункт 1", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 2", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 3", "href" => "#", "class" => " ", "submenu" => false],
+                        ["title" => "Пункт 4", "href" => "#", "class" => " ", "submenu" => false]
                     ]
                 ]
             ]
         ],
-        ["title" => "Контакты", "href" => "#", "class" => "", "submenu" => false]
+        ["title" => "Контакты", "href" => "#", "class" => " ", "submenu" => false]
     ];
-
-    function vardump($array)
-    {
-        echo "<pre>";
-        var_dump($array);
-        echo "</pre><hr>";
-    }
 
     function menuItem($array)
     {
         echo '<li><a href="' . $array['href'] . '" class="' . $array['class'] . '">' . $array['title'] . '</a>';
     }
 
-    /*    function submenuCreate($array, $class)
-        {
-            menuItem($array);
-            echo '<ul class="' . $class . '">';
-            foreach ($array['items'] as $keyMenu => $itemMenu) {
-                if ($itemMenu['submenu'] == true) {
-                    submenuCreate($itemMenu, "submenu");
-                } else {
-                    menuItem($itemMenu);
-                    echo '</li>';
-                }
-            }
-            echo '</ul></li>';
-        }*/
-
-    function menuCreate($array, $class = "topmenu")
+    function menuCreate($array, $class)
     {
-//        if ($class=="submenu") menuItem($array);
         echo '<ul class="' . $class . '">';
         foreach ($array as $keyMenu => $itemMenu) {
+            menuItem($itemMenu);
             if ($itemMenu['submenu'] == true) {
-                menuItem($itemMenu);
                 menuCreate($itemMenu['items'], "submenu");
-//                echo '</li>';
-            } else {
-                menuItem($itemMenu);
             }
             echo '</li>';
         }
         echo '</ul>';
     }
 
-    menuCreate($menu);
-
+    menuCreate($menu, "topmenu");
     ?>
 
-    <!--    <ul class="topmenu">
-            <li><a href="" class="active">Главная</a>
-                <ul class="submenu">
-                    <li><a href="">меню второго уровня</a></li>
-                    <li><a href="" class="submenu-link">меню второго уровня</a>
-                        <ul class="submenu">
-                            <li><a href="">меню третьего уровня</a></li>
-                            <li><a href="">меню третьего уровня</a></li>
-                            <li><a href="">меню третьего уровня</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="">меню второго уровня</a></li>
-                </ul>
-            </li>
-            <li><a href="">Компания</a></li>
-            <li><a href="">Блог</a></li>
-            <li><a href="">Контакты</a></li>
-        </ul>-->
 </nav>
 
 </body>
