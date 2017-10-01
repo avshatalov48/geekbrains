@@ -60,6 +60,7 @@ function translit($string)
                 $stringToArray[$key] = $trans;
                 break;
             } elseif ($character == mb_strtoupper($rus)) {
+                // mb_strtoupper — Приведение строки к верхнему регистру (Функции для работы с Многобайтными строками)
                 $stringToArray[$key] = mb_strtoupper($trans);
                 break;
             }

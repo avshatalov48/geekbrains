@@ -6,6 +6,8 @@ header("Content-type:text/html; charset=utf-8");
  *
  */
 
+define("LETTER", "К");
+
 $array = [
     "Московская область" => ["Москва", "Зеленоград", "Клин"],
     "Ленинградская область" => ["Санкт-Петербург", "Всеволожск", "Павловск", "Кронштадт"],
@@ -19,8 +21,9 @@ echo "<hr>";
 
 foreach ($array as $state => $towns) {
     foreach ($towns as $key => $value) {
-        $string = preg_split('//u', $value, -1, PREG_SPLIT_NO_EMPTY)[0];
-        if ($string == "К") {
+        // mb_substr — Возвращает часть строки.
+        // Корректно выполняет substr() для многобайтовых кодировок, учитывая количество символов.
+        if (mb_substr($value, 0, 1) == LETTER) {
             echo "$value\n";
             break;
         }
