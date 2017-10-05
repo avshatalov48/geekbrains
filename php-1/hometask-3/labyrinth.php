@@ -27,13 +27,13 @@
         }
 
         tr {
-            height: 64px;
+            height: 58px;
         }
 
         td {
             vertical-align: middle;
             text-align: center;
-            width: 64px;
+            width: 58px;
         }
 
         .wall {
@@ -46,7 +46,7 @@
 
         .smile {
             color: cornflowerblue;
-            font-size: 50px;
+            font-size: 48px;
         }
 
     </style>
