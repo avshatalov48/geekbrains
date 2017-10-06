@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <title>Alexander Shatalov > PHP 1 > Lesson 4 > Exercise 1</title>
+    <title>Alexander Shatalov > PHP 1 > Lesson 4 > Exercise 2</title>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
     <link href="./css/style.css" rel="stylesheet">
 </head>
@@ -27,15 +27,17 @@
     <?php
 
     /*
-     * 1. Создать галерею фотографий. Она должна состоять всего из одной странички,
-     * на которой пользователь видит все картинки в уменьшенном виде и форму для загрузки нового изображения.
-     * При клике на фотографию она должна открыться в браузере в новой вкладке.
-     * Размер картинок можно ограничивать с помощью свойства width.
-     * При загрузке изображения необходимо делать проверку на тип и размер файла.
+     * 2. (*) При загрузке изображения на сервер должна создаваться его уменьшенная копия,
+     * а на странице index.php должны выводиться именно копии. На реальных сайтах это активно используется для экономии трафика.
+     * При клике на уменьшенное изображение в браузере в новой вкладке должен открываться оригинал изображения.
+     * Функция изменения размера картинок дана в исходниках. Вам необходимо суметь встроить её в систему.
      */
 
     /*Файл конфигурации*/
     include "../config/main.php";
+
+    /*Генерация thumbnails*/
+    include "funcImgResize.php";
 
     function uploadsFiles()
     {
@@ -48,7 +50,11 @@
             } elseif ($file['size'] > 1048576) {
                 $message = "Слишком большой размер файла: " . $file['size'] . "! Не более 1Мб!";
             } else {
-                move_uploaded_file($file['tmp_name'], IMAGES_DIR . $file['name']);
+                $src = $file['tmp_name'];
+                $original = IMAGES_DIR . $file['name'];
+                $thumbs = IMAGES_THUMBS_DIR . $file['name'];
+                img_resize($src, $thumbs, 240, 160);
+                move_uploaded_file($src, $original);
                 $message = "Загрузка файла: " . $file['name'] . " успешно выполнена!";
             }
 
@@ -62,10 +68,10 @@
 
     function scanDirectory()
     {
-        $dir = opendir(IMAGES_DIR);
+        $dir = opendir(IMAGES_THUMBS_DIR);
         while ($filename = readdir($dir)) {
             if (!is_dir($filename)) {
-                $fileType = explode("/", mime_content_type(IMAGES_DIR . $filename))[0];
+                $fileType = explode("/", mime_content_type(IMAGES_THUMBS_DIR . $filename))[0];
                 if ($fileType == "image") {
                     $files[] = $filename;
                 }
@@ -83,13 +89,18 @@
         echo '</div>';
         echo '<div class="row">';
 
-        foreach (scanDirectory() as $fileName) {
-            $fileNameFull = IMAGES_DIR . $fileName;
-            echo '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 thumb">';
-            echo '<a href="' . $fileNameFull . '" target="_blank">';
-            echo '<img class="img-responsive" src="' . $fileNameFull . '"/></a></div>';
+        $files = scanDirectory();
+        if(count($files) > 0) {
+            foreach ($files as $fileName) {
+                $fileOriginal = IMAGES_DIR . $fileName;
+                $fileThumb = IMAGES_THUMBS_DIR . $fileName;
+                echo '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 thumb">';
+                echo '<a href="' . $fileOriginal . '" target="_blank">';
+                echo '<img class="img-responsive" src="' . $fileThumb . '"/></a></div>';
+            }
+        } else {
+            echo '<div class="page-header"><h4>Каталог пуст</h4></div>';
         }
-
         echo '</div>';
     }
 
