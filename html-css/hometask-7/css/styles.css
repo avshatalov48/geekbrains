@@ -1,0 +1,539 @@
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,900);
+
+/* Common */
+
+html, body, div, header, nav, section, footer, ul, li, h1, h2, form, a, p, strong, form, input, textarea {
+    box-sizing: border-box;
+}
+
+html, body, a, p, strong, form, input, textarea {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    color: rgba(33, 33, 33, 0.8);
+}
+
+body {
+    background-color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover, header a:hover,
+section a:hover, strong a:hover {
+    color: rgba(33, 33, 33, 1);
+}
+
+/* ClearFix */
+/* http://www.cssportal.com/css-snippets/clear-fix.php */
+
+.clear-fix:after {
+    font-size: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ' ';
+}
+
+.clear-fix {
+    display: inline-block;
+}
+
+/* start commented backslash hack \*/
+
+* html .clear-fix {
+    height: 1%;
+}
+
+.clear-fix {
+    display: block;
+}
+
+/* close commented backslash hack */
+
+.wrapper {
+    width: 100%;
+}
+
+/* Header */
+
+header {
+    background-image: url(../images/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 1000px;
+}
+
+.header__container-top {
+    height: 70px;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+}
+
+.header__logo {
+    float: left;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.header__logo a {
+    font-weight: bold;
+    font-size: 1.125rem;
+    color: inherit;
+    text-transform: uppercase;
+}
+
+.header__nav {
+    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.header__nav a {
+    font-weight: bold;
+    font-size: 1rem;
+    color: inherit;
+    text-transform: uppercase;
+}
+
+.header__nav ul li {
+    display: inline-block;
+    margin: 0px 10px 0px 10px;
+}
+
+.header__nav ul li:first-child {
+    margin: 0px 10px 0px 0px;
+}
+
+.header__nav ul li:last-child {
+    margin: 0px 0px 0px 10px;
+}
+
+.header__container-down {
+    max-width: 1170px;
+    margin: 0 auto;
+    margin-top: 373px;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+}
+
+.header__content {
+    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: right;
+}
+
+.header__content h1 {
+    font-weight: 900;
+    font-size: 4.5rem;
+    color: inherit;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+}
+
+.header__content hr {
+    width: 138px;
+    border: 0;
+    border-bottom: 4px solid rgba(33, 33, 33, 0.8);
+    margin: auto 4px auto auto;
+}
+
+.header__content p {
+    margin-top: 33px;
+    font-size: 1.125rem;
+    line-height: 34px;
+    max-width: 571px;
+    color: inherit;
+}
+
+.header__content a {
+    margin-top: 53px;
+    padding: 11px 85px;
+    display: inline-block;
+    border: solid 2px rgba(33, 33, 33, 0.8);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: inherit;
+    text-transform: lowercase;
+    margin-right: 2px;
+}
+
+.header__content a:hover {
+    border: solid 2px rgba(33, 33, 33, 1);
+    background-color: rgba(33, 33, 33, 0.1);
+}
+
+/* Section - Who & Why */
+
+.section__whowhy {
+    background-color: #ffffff;
+}
+
+.section__whowhy-container {
+    min-height: 490px;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+    text-align: center;
+}
+
+.section__whowhy-container img {
+    margin-top: 97px;
+    height: 39px;
+    width: 39px;
+}
+
+.section__whowhy-container h2 {
+    margin-top: 12px;
+    font-size: 1.688rem;
+    line-height: 34px;
+    font-weight: bold;
+}
+
+.section__whowhy-container p {
+    line-height: 33px;
+    letter-spacing: 0.5px;
+    max-width: 970px;
+    width: 83%;
+    margin: 53px auto 0px;
+}
+
+/* Section - Services */
+
+.section__services {
+    background-color: #efefef;
+}
+
+.section__services-container {
+    min-height: 375px;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+    text-align: center;
+}
+
+.section__services-item {
+    float: left;
+    width: 33.3%;
+    text-align: left;
+    /*box-sizing: content-box;*/
+    padding: 0 60px 0 60px;
+}
+
+.section__services-item img {
+    margin-top: 78px;
+}
+
+.section__services-item h3 {
+    margin-top: 14px;
+    font-size: 1.125rem;
+    line-height: 33px;
+    font-weight: 600;
+}
+
+.section__services-item p {
+    font-size: 1rem;
+    line-height: 1.625;
+    letter-spacing: 1px;
+    margin-top: 24px;
+}
+
+/* Section - Tweets */
+
+.section__tweets {
+    background-color: #ffffff;
+}
+
+.section__tweets-container {
+    min-height: 395px;
+    max-width: 1170px;
+    margin: 74px auto 0px;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+    text-align: center;
+}
+
+.section__tweets-container i {
+    display: block;
+    margin: 0 auto;
+    font-size: 1.875rem;
+    line-height: 1.1;
+}
+
+.section__tweets-container img {
+    display: block;
+    margin: 56px auto 0px;
+    height: 60px;
+    width: 60px;
+}
+
+.section__tweets-container p {
+    font-size: 1.250rem;
+    line-height: 1.9;
+    max-width: 836px;
+    /*width: 83%;*/
+    margin: 31px auto 0px;
+}
+
+.section__tweets-container strong {
+    display: block;
+    margin: 17px auto 0px;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 2.375;
+}
+
+/* Footer */
+
+footer {
+    background-color: #212121;
+}
+
+.footer__container {
+    padding: 80px 0 0 0;
+}
+
+/* Footer - Top */
+
+.footer__container-top {
+    height: 300px;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+}
+
+.footer__form {
+    float: left;
+    width: 46%;
+    text-align: left;
+}
+
+/* Form */
+
+input, textarea, option, select, .footer__form i {
+    font-size: 0.875rem; /* 14px */
+    color: #999999;
+    line-height: 1.714;
+    background: #212121;
+}
+
+/* Базовые стили формы */
+.footer__form form {
+    /*margin:0 auto;*/
+    text-align: left;
+    width: 430px;
+    /*box-sizing:border-box;*/
+    background: #212121;
+    /*padding:20px;*/
+    /*border-radius:5px;*/
+    /*background: RGBA(255,255,255,1);*/
+    /*box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);*/
+}
+
+/* Поля ввода */
+.footer__form-email, .footer__form-subject {
+    height: 28px;
+    width: 200px;
+    border: none;
+    border-bottom: #474747 1px solid;
+    box-sizing: border-box;
+    margin-top: 22px;
+}
+
+.footer__form-email {
+    margin-right: 25px;
+}
+
+/*.message:focus, .textbox:focus {
+    outline:none;
+    border: #007dc7 1px solid;
+    !*color: rgba(24,149,215,1);*!
+}*/
+
+/* Текстовое поле */
+.footer__form-message {
+    /*background: #FFFFFF;*/
+    width: 100%;
+    height: 28px;
+    border: none;
+    border-bottom: #474747 1px solid;
+    box-sizing: border-box;
+    /*font-size:1rem;*/
+    /*border-radius: 3px;*/
+    display: block;
+    /*padding:10px;*/
+    margin-top: 18px;
+    margin-bottom: 78px;
+    overflow: hidden;
+    resize: none;
+}
+
+/* Цвет placeholder в полях */
+
+/*
+input[type="email"]::-webkit-input-placeholder, input[type="email"]::-moz-placeholder,
+input[type="text"]::-webkit-input-placeholder, input[type="text"]::-moz-placeholder
+{
+    color: #ffffff;
+}
+*/
+
+/* Кнопка */
+.footer__form-button {
+    text-align: left;
+    background: #212121;
+    font-size: 0.875rem; /* 14px */
+    color: #999999;
+    line-height: 1.714;
+    border: none;
+    /* Курсор в виде руки */
+    cursor: pointer;
+
+    /*    float: left;
+        position: absolute;
+        bottom: 0;
+        left: 0;*/
+}
+
+/*.footer__form i {
+    position: absolute;
+    float: left;
+}*/
+
+.footer__form h3 {
+    font-size: 1.375rem; /* 22px */
+    color: #eeeeee;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0px 0px 21px 0px;
+    /*line-height: 1.727;*/
+}
+
+.footer__form p {
+    font-size: 0.875rem; /* 14px */
+    color: #999999;
+    line-height: 1.714;
+    width: 430px;
+    text-align: justify;
+}
+
+.footer__nav-column {
+    float: right;
+    width: 74px;
+    margin: 0 63px;
+    /*
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    */
+}
+
+.footer__nav-column a {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.714;
+    color: #999999;
+    text-transform: capitalize;
+}
+
+.footer__nav-column ul li {
+    list-style-type: none;
+    /*display: inline-block;*/
+    /*margin: 0px 10px 0px 10px;*/
+}
+
+.footer__nav-column ul li:first-child {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #dddddd;
+    font-size: 0.938rem; /* 15px */
+    line-height: 1.6;
+    margin: 0px 0px 26px 0px;
+}
+
+/* Footer - Down */
+
+.footer__container-down {
+    height: 110px;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    /* добавил width 98%, что контент не прилипал к краям */
+    width: 98%;
+    border-top: solid 1px #474747;
+}
+
+.footer__copyright {
+    float: left;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 48px;
+    margin: auto;
+}
+
+.footer__copyright p {
+    font-size: 0.875rem; /* 14px */
+    color: #aaaaaa;
+    line-height: 1.714;
+    text-align: left;
+}
+
+.footer__nav-container {
+
+}
+
+.footer__nav-down {
+    float: right;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 24px;
+    margin: auto;
+}
+
+.footer__nav-down a {
+    font-size: 0.813rem; /* 13px */
+    color: #aaaaaa;
+    line-height: 1.846;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.footer__nav-down ul {
+}
+
+.footer__nav-down ul li {
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0px 15px 0px 15px;
+}
+
+.footer__nav-down ul li:first-child {
+    margin: 0px 15px 0px 0px;
+}
+
+.footer__nav-down ul li:last-child {
+    margin: 0px 0px 0px 15px;
+}

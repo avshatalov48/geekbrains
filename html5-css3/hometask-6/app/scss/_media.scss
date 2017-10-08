@@ -1,0 +1,119 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+    .header__top-logo {
+        /* Убираю перекрывание кнопки и логотипа, т.к. становятся неактивными */
+        z-index: 15;
+        width: 60%;
+    }
+
+    .main__sections-image, .under-subscribe__sections-image {
+        width: 100%;
+    }
+
+    .header__top-menu-list {
+        display: none;
+        position: absolute;
+        width: auto;
+        z-index: 5;
+        right: 15px;
+        padding-right: 0px;
+        margin-right: 0px;
+        top: 33px;
+        text-align: right;
+    }
+
+    .header__top-menu-item_lifestyle {
+        border-top: 1px solid #f0f1f1;
+    }
+
+    .header__top-menu-item {
+        padding-right: 0px;
+        padding-left: 15px;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-bottom: 1px solid #f0f1f1;
+        display: block;
+    }
+
+    .header__top-menu-item-link {
+        font-size: 30px;
+    }
+
+    /* Footer XS */
+
+    .footer__left-menu-item {
+        padding: 15px 9px 0px 9px;
+    }
+
+    .footer__right-menu-item {
+        padding: 0px 9px 15px 9px;
+    }
+
+    .footer__left-menu-list, .footer__right-menu-list {
+        text-align: center;
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+    .subscribe__content-form {
+        width: 100%;
+        transition:.7s;
+    }
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+    .header__top-menu-list {
+        display: inline-block!important;
+        //transition:.7s;
+    }
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+ /* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}

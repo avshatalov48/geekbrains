@@ -1,0 +1,496 @@
+/* ------- Bootstrap v3.3.7:
++ Grid system
++ Buttons
++ Responsive utilities
++ normalize.css v3.0.3 ------- */
+@import "_bootstrap-grid-normalize.scss";
+
+/* ------- Font Awesome 4.7.0 ------- */
+/*@import "_font-awesome.scss";*/
+
+/* ------- Fonts ------- */
+@import "_fonts.scss";
+
+/* ------- Variables ------- */
+
+$font-primary: "Playfair Display", serif;
+$font-logo: "Inconsolata", monospace;
+$font-category: "Ubuntu", sans-serif;
+
+$color-primary: rgb(0, 0, 0);
+$color-background: #f0f0f0;
+$color-text: rgba(98, 98, 98, 0.9);
+$color-text-category: rgba(180, 173, 158, 0.9);
+$color-links: rgba(98, 98, 98, 0.9);
+$color-links-hover: rgba(180, 173, 158, 0.9);
+
+$min-width-layout: 300px;
+$max-width-layout: 1092px;
+
+/* ------- Common ------- */
+
+.hide {
+  display: none;
+
+}
+
+body {
+  font-family: $font-primary;
+  color: $color-primary;
+  background-color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+a {
+  color: $color-links;
+  text-decoration: none;
+
+  &:hover, &:active, &:focus {
+    color: $color-links-hover;
+    text-decoration: none;
+  }
+
+  &:link {
+    text-decoration: none;
+  }
+}
+
+/* Убираем обводку элементов в Chrome и Safari */
+input, textarea, select, button, a {
+  outline: none!important;
+}
+
+.wrapper {
+  min-width: $min-width-layout;
+  max-width: $max-width-layout;
+  margin: 0 auto;
+}
+
+/* ------- Header-Top ------- */
+
+.header__top {
+  position: relative;
+  width: 100%;
+  height: 95px;
+
+  /* ------- Header-Logo ------- */
+
+  &-logo {
+    position: absolute;
+    float: left;
+    left: 0;
+    bottom: 0;
+
+    &-link {
+      font-size: 30px;
+      font-family: $font-logo;
+      color: $color-primary;
+      text-transform: uppercase;
+      line-height: 0.8;
+      letter-spacing: 0.2em;
+    }
+
+  }
+
+  /* ------- Header-Menu ------- */
+
+  &-menu {
+    position: absolute;
+    float: right;
+    right: 0;
+    bottom: -5px;
+
+    &-button {
+      float:right;
+      background-color: transparent;
+      border: medium none;
+      font-size: 24px;
+      color: $color-links;
+      padding: 0px 0px 0px 0px;
+      margin: 0 0 3px 0;
+      /*z-index: 10;*/
+/*      &:hover {
+        color: $color-links-hover;
+    }*/
+      &-icon {
+        background-repeat: no-repeat;
+        background-image: url("../img/icons-sprite.png");
+        position: relative;
+        top: 5px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        opacity: 0.9;
+        background-position: -21px -26px;
+      }
+    }
+
+    &-list {
+      margin-bottom: 0px;
+      padding-left: 0px;
+      text-align: justify;
+      width: 100%;
+
+      /* Обнуляем для родителя*/
+      line-height: 0;
+      font-size: 1px; /* 1px для Opera */
+
+      /* Лекарство для IE6-7*/
+      text-justify: newspaper;
+      zoom: 1;
+
+      /* Включаем в работу последнюю строку*/
+      text-align-last: justify;
+    }
+
+    /* Hack Justify */
+    &-list:after {
+      width: 100%;
+      height: 1px;
+      visibility: hidden;
+      overflow: hidden;
+      content: '';
+      display: inline-block;
+    }
+
+    &-item {
+      display: inline-block;
+      list-style-type: none;
+      box-sizing: border-box;
+
+      &_lifestyle {
+        padding-left: 34px;
+      }
+
+      &_travel {
+        padding-right: 0px;
+      }
+
+      &-link {
+        font-size: 14px;
+        color: $color-links;
+        text-transform: uppercase;
+        line-height: 1.714;
+        text-align: center;
+      }
+    }
+
+  }
+
+}
+
+/* ------- Header-Bottom ------- */
+
+.header__bottom {
+  width: 100%;
+  /*height: 580px;*/
+
+  &-content {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+
+  &-col {
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
+
+  }
+
+  &-image {
+    width: 100%;
+  }
+
+}
+
+/* ------- Main & Under-Subscribe ------- */
+
+.main, .under-subscribe {
+  width: 100%;
+
+  /* ------- Sections - Common ------- */
+  &__sections {
+    padding-top: 45px;
+    width: 100%;
+
+    &-row {
+      max-width: 930px;
+      margin: 0 auto;
+    }
+
+    &-category {
+      padding-bottom: 0px;
+
+      &-link {
+        font-family: $font-category;
+        font-size: 14px;
+        color: $color-text-category;
+        text-transform: uppercase;
+        line-height: 1.2;
+        font-weight: 300;
+
+        &:hover, &:active {
+          color: $color-links-hover;
+        }
+      }
+    }
+
+    &-title {
+      font-size: 30px;
+      color: $color-text;
+      line-height: 1.2;
+      padding-bottom: 4px;
+      font-weight: 400;
+    }
+
+    &-article {
+      padding-top: 0px;
+      text-align: left;
+      color: $color-text;
+      font-size: 14px;
+      line-height: 1.714;
+    }
+
+    &-image {
+      padding-top: 77px;
+      padding-bottom: 8px;
+      /*width: 100%;*/
+      /*max-width: 100%;*/
+    }
+
+  }
+
+  /* ------- Section Intro ------- */
+  &__section-intro {
+    padding-top: 76px;
+
+    &-category_down {
+      padding-top: 31px;
+    }
+
+  }
+
+  /* ------- Section Fourth ------- */
+  &__section-fifth {
+    display: none;
+  }
+
+  /* ------- Button - Load More ------- */
+  &__btn-loadmore {
+    text-align: center;
+    padding-top: 110px;
+
+    &-link {
+      font-size: 20px;
+      line-height: 1.2;
+      background-color: transparent;
+      border: medium none;
+      color: $color-links;
+      border: #626262 solid 1px;
+      padding: 17px 32px;
+
+
+      &:hover {
+        color: $color-links-hover;
+        border-color: $color-links-hover;
+      }
+    }
+  }
+
+}
+
+
+
+
+/* ------- Subscribe ------- */
+
+.wrapper-subscribe {
+  margin-top: 122px;
+  width: 100%;
+  background-color: $color-background;
+}
+
+.subscribe {
+  min-width: $min-width-layout;
+  max-width: $max-width-layout;
+  /*height: 100px;*/
+  margin: 0 auto;
+  text-align: center;
+
+  &__container {
+    width: 100%;
+  }
+
+  &__content {
+    &-title {
+        padding-top: 42px;
+      &-link {
+        color: rgb(51, 51, 51);
+      }
+    }
+    &-form {
+      padding-top: 40px;
+      padding-bottom: 75px;
+      position: relative;
+      margin: 0px auto;
+      width: 400px;
+      &-email {
+        height: 40px;
+        width: 100%;
+        border: none;
+        border-bottom: solid 1px black;
+        background-color: $color-background;
+        color: $color-text;
+        line-height: 2.714;
+
+        &-icon {
+          background-repeat: no-repeat;
+          background-image: url("../img/icons-sprite.png");
+          background-position: -56px 0px;
+          position: absolute;
+          bottom: 86px;
+          right: 0px;
+          width: 32px;
+          height: 17px;
+          display: inline-block;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}
+
+/* Цвет PlaceHolder в полях */
+
+::-webkit-input-placeholder,
+::-moz-placeholder
+::-ms-placeholder,
+::placeholder {
+  color: $color-text;
+}
+
+
+/* ------- Footer ------- */
+
+.wrapper-footer {
+  margin-top: 122px;
+  width: 100%;
+  background-color: $color-background;
+}
+
+.footer {
+  min-width: $min-width-layout;
+  max-width: $max-width-layout;
+  /*height: 100px;*/
+  margin: 0 auto;
+
+  &__container {
+    width: 100%;
+  }
+
+  &__left, &__right {
+
+    &-menu {
+      //width: 100%;
+      //height: 100px;
+      //display: table;
+
+      &-list {
+        //display: table-cell;
+        //vertical-align: middle;
+      }
+
+      &-item {
+        display: inline-block;
+        list-style-type: none;
+        padding: 30px 9px;
+        box-sizing: border-box;
+
+        &-link {
+          font-size: 14px;
+          color: $color-links;
+          line-height: 1.714;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__left {
+
+    &-menu {
+
+      &-list {
+        padding-left: 0px;
+        text-align: left;
+      }
+
+      &-item {
+
+        &_terms {
+          padding-left: 0px;
+        }
+
+        &_privacy {
+          padding-right: 0px;
+        }
+
+      }
+    }
+  }
+
+  &__right {
+
+    &-menu {
+
+      &-list {
+        padding-right: 0px;
+        text-align: right;
+      }
+
+      &-item {
+
+        padding: 30px 4px;
+
+        &_follow {
+          padding-left: 0px;
+        }
+
+        &_instagram {
+          padding-right: 0px;
+        }
+
+        &-icon {
+          background-repeat: no-repeat;
+          background-image: url("../img/icons-sprite.png");
+          position: relative;
+          top: 5px;
+          width: 18px;
+          height: 18px;
+          display: inline-block;
+          opacity: 0.9;
+
+          &_facebook {
+            background-position: -28px 0px;
+          }
+
+          &_twitter {
+            background-position: 0px 0px;
+          }
+
+          &_instagram {
+            background-position: 1px -28px;
+          }
+
+        }
+
+      }
+    }
+  }
+
+}
+
+/* ------- Media ------- */
+@import "_media.scss";

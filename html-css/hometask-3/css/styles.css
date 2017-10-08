@@ -1,0 +1,521 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+
+/* http://www.cssportal.com/css-snippets/clear-fix.php */
+
+.clear-fix:after {
+    font-size: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ' ';
+}
+
+.clear-fix {
+    display: inline-block;
+}
+
+
+/* start commented backslash hack \*/
+
+* html .clear-fix {
+    height: 1%;
+}
+
+.clear-fix {
+    display: block;
+}
+
+
+/* close commented backslash hack */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    color: #fff;
+    background-color: #ededed;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header {
+    margin: 0;
+}
+
+.inner-header {
+    background-color: #007dc7;
+}
+
+.contacts {
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 42px;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.contacts-under {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: left;
+}
+
+.nameshop {
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 42px;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.slogan {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 16px;
+    text-align: center;
+}
+
+.cart {
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 42px;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.cart-under {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: right;
+}
+
+.menu {
+    margin: 0;
+}
+
+.inner-menu {
+    background-color: black;
+}
+
+.menu-items {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 22px;
+    width: 100%;
+    /*     float: left; */
+    padding: 10px;
+    text-align: center;
+}
+
+.menu-items nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.menu-items nav ul li a {
+    color: #fff;
+}
+
+.menu-items nav ul li a:hover {
+    /* color: #007dc7; */
+}
+
+.menu-items nav ul li a.active {
+    font-weight: 400;
+}
+
+.menu-items nav ul li a.under-construction {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.banner {
+    margin: 20px;
+    background-color: #ededed;
+}
+
+.inner-banner {
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 220px;
+    height: 240px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background: url(../images/banner-snowboards.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+
+/*.inner-banner a:hover {
+    font-size: 88px;
+    color: red;
+}*/
+
+.breadcrumbs {
+    margin: 20px;
+}
+
+.inner-breadcrumbs {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    /*height: 22px;*/
+    padding: 10px;
+    text-align: left;
+    color: black;
+    background-color: #e7eaed;
+}
+
+.inner-breadcrumbs a {
+    color: black;
+}
+
+.here-breadcrumbs {
+    color: #007dc7;
+}
+
+.main {
+    margin: 20px;
+    background-color: #ededed;
+}
+
+.items {
+    padding: 0 10px 0 10px;
+}
+
+.inner-items {
+    text-align: center;
+    background: rgba(0, 125, 199, .03);
+    /*line-height: 240px;*/
+}
+
+.inner-items a {
+    text-align: center;
+    color: #000;
+    /*    line-height: 240px;
+    font-size: 48px;
+    font-weight: bold;
+    */
+}
+
+.item-name {
+    font-weight: 400;
+    margin-bottom: 2px;
+    padding: 5px;
+    color: #007dc7;
+    background: rgba(0, 125, 199, .05);
+}
+
+.price {
+    font-weight: 400;
+    margin-top: 2px;
+    padding: 5px;
+    color: #000;
+    background: rgba(0, 125, 199, .05);
+}
+
+.description {
+    font-weight: 300;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px;
+    color: #000;
+    background: #e7eaed;
+}
+
+.description p {
+    font-weight: 300;
+    line-height: 36px;
+    padding: 0 80px;
+    text-align: justify;
+    text-indent: 30px;
+    color: black;
+}
+
+.description ul li {
+    line-height: 36px;
+    margin: 0;
+    /* убираем маркеры */
+    list-style-type: none;
+}
+
+.gis {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.buy {
+    font-weight: 300;
+    padding: 5px;
+    color: #fff;
+    background: #007dc7;
+}
+
+.item-1 {
+    float: left;
+    width: 20%;
+}
+
+.item-full {
+    float: left;
+    width: 50%;
+}
+
+.item-full .item-name {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 28px;
+    /*font-weight: 400;*/
+    color: #007dc7;
+}
+
+.inner-item-1 {
+    /*    background: url(../images/background_01.jpg);
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;*/
+}
+
+.products {
+    padding: 0 10px 0 10px;
+}
+
+.inner-products {
+    line-height: 240px;
+    text-align: center;
+}
+
+.inner-products a {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 240px;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-products a:hover {
+    /*font-size: 50px;*/
+}
+
+.products-1 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-1 {
+    background: url(../images/background_01.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-2 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-2 {
+    background: url(../images/background_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-3 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-3 {
+    background: url(../images/background_03.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-4 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-4 {
+    background: url(../images/background_04.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-5 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-5 {
+    background: url(../images/background_05.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-6 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-6 {
+    background: url(../images/background_06.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+
+/* figure img {
+    width: 100%;
+} */
+
+.content {
+    width: 100%;
+}
+
+.content a {
+    color: black;
+}
+
+.inner-content {
+    font-weight: 300;
+    line-height: 36px;
+    padding: 80px;
+    text-align: justify;
+    text-indent: 30px;
+    color: black;
+    background: rgba(0, 125, 199, .09);
+}
+
+.inner-content-bg {
+    background: url(../images/banner-snowboards-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.footer {
+    /* margin-top: 10px; */
+}
+
+.inner-footer {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 42px;
+    padding: 10px;
+    text-align: center;
+    background-color: #007dc7;
+}
+
+.footer-left {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+}
+
+.footer-right {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 45%;
+    padding: 10px;
+    text-align: right;
+}
+
+.footer-right a {
+    margin: 0 8px;
+}
+
+.footer-up {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 5%;
+    padding: 10px;
+    text-align: center;
+    color: #007dc7;
+    background-color: #e7eaed;
+}
+
+.footer-up a {
+    margin: 0 8px;
+    color: #007dc7;
+}
+
+.option {
+    font-weight: 400;
+}
+
+.wrapper {
+    min-width: 1150px;
+}
+
+form {
+    width: 600px;
+}
+
+input {
+    font-size: 18px;
+    font-weight: 200;
+    width: 400px;
+    height: 30px;
+    /*margin-bottom: 12px;*/
+    /*padding-left: 10px;*/
+    border: 1px solid #a0a0a0;
+    /*    background-color: #f5f5f5;*/
+}
+
+
+/*.button {
+    font-size: 24px;
+    font-weight: 300;
+    display: block;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 11px 51px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff!important;
+    background-color: #007dc7;
+}*/

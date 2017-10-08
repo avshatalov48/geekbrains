@@ -1,0 +1,142 @@
+// Подключаем шрифты
+@import "_fonts.scss";
+
+// Подключаем стили библиотек
+@import "_libs.scss";
+
+// Подключаем переменные
+@import "_vars.scss";
+
+// Подключаем миксины
+@import "_mixins.scss";
+
+// Подключаем спрайты (просто раскомментируем импорт при появлении PNG спрайтов)
+// @import "_sprite.scss";
+
+// ------- Project
+
+html {
+	font-size: 14px;
+	letter-spacing: 2px;
+	color: rgba(255, 255, 255, 0.7);
+	// overflow: hidden;
+	// line-height: 1;
+}
+
+
+body {
+	font-weight: $font-weight;
+	font-family: $font-family;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: $second-font;
+	margin: 0;
+}
+
+
+ul, li {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+
+p {
+	margin: 0;
+}
+
+
+a:hover, a:active, a:focus {
+	text-decoration: none;
+	color: rgba(255, 255, 255, 1);
+}
+
+a:link {
+	text-decoration: none;
+}
+
+
+// audio, canvas, iframe, img, svg, video
+// vertical-align: middle;
+
+textarea {
+	resize: none;
+}
+
+.wrapper {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	//min-width: 320px;
+	width: 100%;
+	//margin: 0 auto;
+	//max-width: 1170px;
+}
+
+/*.padding_null {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}*/
+
+
+// section
+/*	position: relative
+	margin-bottom: 20px*/
+
+// input, select, button
+	/*outline: none*/
+
+//*, *:before, *:after
+	/*box-sizing: border-box*/
+
+//.hide
+	/*display: none*/
+
+//.show
+	/*display: block*/
+
+//::-moz-selection
+/*	background: #b3d4fc
+	text-shadow: none*/
+
+//::selection
+/*	background: #b3d4fc
+	text-shadow: none*/
+
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+
+// Общие стили
+@import "_common_styles.scss";
+
+// Стили шапки
+@import "modules/_header.scss";
+
+// Стили меню
+@import "modules/_menu.scss";
+
+// Стили главной страницы
+@import "page/_index.scss";
+
+// Стили футера
+@import "modules/_footer.scss";
+
+// Стили медиазапросов
+@import "_media.scss";

@@ -1,0 +1,100 @@
+extends ../layout/main
+
+block title
+	| Alexander Shatalov | Web Site Layout | MALIN - Perfect Coming Soon Template by Madeon08
+
+block content
+	div(class="page-content")
+
+		// Background Image + Dark
+		.page-content__img
+
+		// ======= Left Menu
+		div(class="left")
+			nav(class="left__menu")
+				button(class="left__menu-buttons left__menu-buttons_open")
+					i(class="left__menu-button-icon icon ion-navicon-round")
+				button(class="left__menu-buttons left__menu-buttons_close")
+					i(class="left__menu-button-icon icon ion-close-round")
+				ul(class="left__menu-list")
+					li(class="left__menu-list-items left__menu-list-item_home")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_home")
+							i(class="icon ion-ios-home-outline left__menu-list-items-icons left__menu-list-item-icon_home")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") Home
+					li(class="left__menu-list-items left__menu-list-item_about")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_about")
+							i(class="icon ion-ios-people-outline left__menu-list-items-icons left__menu-list-item-icon_about")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") About
+					li(class="left__menu-list-items left__menu-list-item_services")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_services")
+							i(class="icon ion-ios-world-outline left__menu-list-items-icons left__menu-list-item-icon_services")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") Services
+					li(class="left__menu-list-items left__menu-list-item_contact")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_contact")
+							i(class="icon ion-ios-chatbubble-outline left__menu-list-items-icons left__menu-list-item-icon_contact")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") Contact
+					li(class="left__menu-list-items left__menu-list-item_newsletter")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_newsletter")
+							i(class="icon ion-ios-bell-outline left__menu-list-items-icons left__menu-list-item-icon_newsletter")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") Newsletter
+					li(class="left__menu-list-items left__menu-list-item_blank")
+						div(class="left__menu-list-items-anchors left__menu-list-item-anchor_blank") &nbsp;
+					li(class="left__menu-list-items left__menu-list-item_twitter")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_twitter")
+							i(class="icon ion-social-twitter-outline left__menu-list-items-icons left__menu-list-item-icon_twitter")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") Twitter
+					li(class="left__menu-list-items left__menu-list-item_facebook")
+						a(href="javascript:void(0)" class="left__menu-list-items-anchors left__menu-list-item-anchor_facebook")
+							i(class="icon ion-social-facebook-outline left__menu-list-items-icons left__menu-list-item-icon_facebook")
+							div(class="left__menu-list-items-titles left__menu-list-item-title_home") FaceBook
+
+		// ======= Header - Right Menu (Languages)
+		header(class="languages")
+			nav(class="languages__menu")
+				ul(class="languages__menu-list")
+					li(class="languages__menu-list-items languages__menu-list-item__en__active") EN
+					li(class="languages__menu-list-items languages__menu-list-item__divide") |
+					li(class="languages__menu-list-items languages__menu-list-item__ru")
+						a(href="javascript:void(0)" class="languages__menu-list-items-anchors languages__menu-list-item-anchor__ru") RU
+
+		// ======= Main Content
+		main(class="main")
+
+			section(class="main__content")
+				// ======= Logo
+				div(class="main__content-logo")
+					img(class="main__content-logo-img" src="static/img/general/logo.png" alt="LAUNCHING IN")
+				// ======= Text
+				h1(class="main__content-launchingin") LAUNCHING IN
+				// ======= Counter
+				div(class="main__content-counter" id="countdown_dashboard")
+					div(class="counter__items counter__item_days")
+						div(class="counter__items-numbers counter__item-number_days days_dash")
+							div(class="counter__items-numbers-digits digit") 0
+							div(class="counter__items-numbers-digits digit") 0
+							div(class="counter__items-numbers-digits digit") 0
+						div(class="counter__items-titles counter__item-title_days") Days
+					div(class="counter__items counter__item_hours")
+						div(class="counter__items-numbers counter__item-number_hours hours_dash")
+							div(class="counter__items-numbers-digits digit") 0
+							div(class="counter__items-numbers-digits digit") 0
+						div(class="counter__items-titles counter__item-title_hours") Hours
+					div(class="counter__items counter__item_minutes")
+						div(class="counter__items-numbers counter__item-number_minutes minutes_dash")
+							div(class="counter__items-numbers-digits digit") 0
+							div(class="counter__items-numbers-digits digit") 0
+						div(class="counter__items-titles counter__item-title_minutes") Minutes
+					div(class="counter__items counter__item_seconds")
+						div(class="counter__items-numbers counter__item-number_seconds seconds_dash")
+							div(class="counter__items-numbers-digits digit") 0
+							div(class="counter__items-numbers-digits digit") 0
+						div(class="counter__items-titles counter__item-title_seconds") Seconds
+				// ======= Buttons
+				div(class="main__content-buttons")
+					a(href="javascript:void(0)" class="main__content-buttons-anchors main__content-buttons-anchors_getnotifed") Get notifed
+					a(href="javascript:void(0)" class="main__content-buttons-anchors main__content-buttons-anchors_moreinfo") More info
+
+		// ======= Footer (Copyright)
+		footer(class="footer")
+			div(class="footer__copyright")
+				a(href="http://themehelite.com/themeforest/malin/index-2.html" class="footer__copyright-anchor") ©MALIN&nbsp;2015

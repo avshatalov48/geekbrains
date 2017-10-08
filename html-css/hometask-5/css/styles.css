@@ -1,0 +1,647 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html,
+body {
+    font-size: 18px;
+    height: 100%;
+}
+
+
+/* http://www.cssportal.com/css-snippets/clear-fix.php */
+
+.clear-fix:after {
+    font-size: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+    content: ' ';
+}
+
+.clear-fix {
+    display: inline-block;
+}
+
+
+/* start commented backslash hack \*/
+
+* html .clear-fix {
+    height: 1%;
+}
+
+.clear-fix {
+    display: block;
+}
+
+
+/* close commented backslash hack */
+
+body {
+    background-color: #ededed;
+    font-weight: 200;
+    color: #000000;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header {
+    min-width: 1150px;
+    margin: 0;
+    color: #ffffff;
+}
+
+/*
+.scrolled .header {
+    margin: 50;
+    color: #000000;
+}
+*/
+
+.header-space {
+    height: 120px;
+}
+
+header
+{
+    width: 100%;
+    position: fixed;
+}
+
+.inner-header {
+    background-color: #007dc7;
+}
+
+.phone {
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 42px;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    padding-left: 20px;
+    text-align: left;
+}
+
+.phone-under {
+    font-size: 0.8rem;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: left;
+}
+
+.nameshop {
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 42px;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+
+.slogan {
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 16px;
+    text-align: center;
+}
+
+.cart {
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 42px;
+    float: left;
+    width: 25%;
+    padding: 10px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.cart-under {
+    font-size: 14px;
+    font-weight: 200;
+    line-height: 14px;
+    text-align: right;
+}
+
+.menu {
+    min-width: 1150px;
+    margin: 0;
+}
+
+.inner-menu {
+    background-color: black;
+}
+
+.menu-items {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 22px;
+    width: 100%;
+    /*     float: left; */
+    padding: 10px;
+    text-align: center;
+}
+
+.menu-items nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.menu-items nav ul li a {
+    color: #fff;
+}
+
+.menu-items nav ul li a:hover {
+    /* color: #007dc7; */
+}
+
+.menu-items nav ul li a.active {
+    font-weight: 400;
+}
+
+.menu-items nav ul li a.under-construction {
+    text-decoration: line-through;
+    color: gray;
+}
+
+.banner {
+    margin: 20px;
+    background-color: #ededed;
+}
+
+.inner-banner {
+    font-size: 84px;
+    font-weight: 700;
+    line-height: 220px;
+    height: 240px;
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    background: url(../images/banner-snowboards.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+
+/*.inner-banner a:hover {
+    font-size: 88px;
+    color: red;
+}*/
+
+.breadcrumbs {
+    margin: 20px;
+}
+
+.inner-breadcrumbs {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 14px;
+    /*height: 22px;*/
+    padding: 10px;
+    text-align: left;
+    color: black;
+    background-color: #e7eaed;
+}
+
+.inner-breadcrumbs a {
+    color: black;
+}
+
+.here-breadcrumbs {
+    color: #007dc7;
+}
+
+.main {
+    margin: 20px;
+    background-color: #ededed;
+}
+
+.items {
+    padding: 0 10px 0 10px;
+}
+
+.items:first-child {
+    padding: 0 10px 0 0;
+}
+
+.items:last-child {
+    padding: 0 0 0 10px;
+}
+
+.inner-items {
+    text-align: center;
+    background: rgba(0, 125, 199, .03);
+    /*line-height: 240px;*/
+}
+
+.inner-items a {
+    text-align: center;
+    color: #000;
+    /*    line-height: 240px;
+    font-size: 48px;
+    font-weight: bold;
+    */
+}
+
+.item-name {
+    font-weight: 400;
+    margin-bottom: 2px;
+    padding: 5px;
+    color: #007dc7;
+    background: rgba(0, 125, 199, .05);
+}
+
+.price {
+    font-weight: 400;
+    margin-top: 2px;
+    padding: 5px;
+    color: #000;
+    background: rgba(0, 125, 199, .05);
+}
+
+.description {
+    font-weight: 300;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    padding: 5px;
+    color: #000;
+    background: #e7eaed;
+}
+
+.description p {
+    font-weight: 300;
+    line-height: 36px;
+    padding: 0 80px;
+    text-align: justify;
+    text-indent: 30px;
+    color: black;
+}
+
+.description ul li {
+    line-height: 36px;
+    margin: 0;
+    /* убираем маркеры */
+    list-style-type: none;
+}
+
+.buy {
+    font-weight: 300;
+    padding: 5px;
+    color: #fff;
+    background: #007dc7;
+}
+
+.item-1 {
+    float: left;
+    width: 20%;
+}
+
+.item-full {
+    float: left;
+    width: 50%;
+}
+
+.item-full .item-name {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 28px;
+    /*font-weight: 400;*/
+    color: #007dc7;
+}
+
+.inner-item-1 {
+    /*    background: url(../images/background_01.jpg);
+    background-repeat:no-repeat;
+    background-size: 100%;
+    background-position:center;*/
+}
+
+
+.contacts {
+    padding: 0;
+}
+
+.column-1 {
+    width: 50%;
+    float: left;
+    padding: 0px 10px 0px 0px;
+    text-align: center;
+}
+
+.column-2 {
+    width: 50%;
+    float: left;
+    padding: 0px 0px 0px 10px;
+}
+
+.inner-contacts {
+    /*line-height: 240px;*/
+    /*text-align: center;*/
+    padding: 20px;
+    font-weight: 300;
+    color: #000;
+    background: #e7eaed;
+    line-height: 1.5;
+    height: 500px;
+}
+
+.inner-contacts a {
+    color: #000;
+}
+
+
+/* Форма на странице "Контакты" */
+
+.form {
+    padding: 0;
+}
+
+.inner-form {
+    padding: 0px;
+    font-weight: 300;
+    color: #000;
+    background: #e7eaed;
+    line-height: 1.5;
+}
+
+.inner-form a {
+    color: #000;
+}
+
+
+
+.products {
+    padding: 0 10px 0 10px;
+}
+
+.products:first-child {
+    padding: 0 10px 0 0;
+}
+
+.products:last-child {
+    padding: 0 0 0 10px;
+}
+
+.inner-products {
+    line-height: 240px;
+    text-align: center;
+}
+
+.inner-products a {
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 240px;
+    text-align: center;
+    color: #fff;
+}
+
+.inner-products a:hover {
+    /*font-size: 50px;*/
+}
+
+.products-1 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-1 {
+    background: url(../images/background_01.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-2 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-2 {
+    background: url(../images/background_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-3 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-3 {
+    background: url(../images/background_03.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-4 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-4 {
+    background: url(../images/background_04.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-5 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-5 {
+    background: url(../images/background_05.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.products-6 {
+    float: left;
+    width: 33.3%;
+}
+
+.inner-products-6 {
+    background: url(../images/background_06.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+
+/* figure img {
+    width: 100%;
+} */
+
+.content {
+    width: 100%;
+}
+
+.content a {
+    color: black;
+}
+
+.inner-content {
+    font-weight: 300;
+    line-height: 36px;
+    padding: 80px;
+    text-align: justify;
+    text-indent: 30px;
+    color: black;
+    background: rgba(0, 125, 199, .09);
+}
+
+.inner-content-bg {
+    background: url(../images/banner-snowboards-2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.footer {
+    /* margin-top: 10px; */
+}
+
+.inner-footer {
+    font-size: 42px;
+    font-weight: 200;
+    line-height: 42px;
+    padding: 10px;
+    text-align: center;
+    background-color: #007dc7;
+}
+
+.footer-left {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 50%;
+    padding: 10px;
+    text-align: left;
+}
+
+.footer-right {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 45%;
+    padding: 10px;
+    text-align: right;
+}
+
+.footer-right a {
+    margin: 0 8px;
+}
+
+.footer-up {
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 20px;
+    float: left;
+    width: 5%;
+    padding: 10px;
+    text-align: center;
+    color: #007dc7;
+    background-color: #e7eaed;
+}
+
+.footer-up a {
+    margin: 0 8px;
+    color: #007dc7;
+}
+
+.option {
+    font-weight: 400;
+}
+
+.wrapper {
+    min-width: 1150px;
+}
+
+
+/* Форма */
+
+input, textarea, option, select {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+/* Базовые стили формы */
+form {
+    margin:0 auto;
+    max-width: 60%;
+    box-sizing:border-box;
+    background: #e7eaed;
+    padding:20px;
+    /*border-radius:5px;*/
+    /*background: RGBA(255,255,255,1);*/
+    /*box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, .45);*/
+}
+
+/* Поля ввода */
+.textbox {
+    height:50px;
+    width:100%;
+    /*border-radius:3px;*/
+    border:rgba(0,0,0,.3) 1px solid;
+    background: #FFFFFFf;
+    box-sizing:border-box;
+    font-size:1rem;
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.message:focus, .textbox:focus {
+    outline:none;
+    border: #007dc7 1px solid;
+    /*color: rgba(24,149,215,1);*/
+}
+
+/* Текстовое поле */
+.message {
+    background: #FFFFFF;
+    width:100%;
+    height: 120px;
+    border:rgba(0,0,0,.3) 1px solid;
+    box-sizing:border-box;
+    font-size:1rem;
+    /*border-radius: 3px;*/
+    display:block;
+    padding:10px;
+    margin-bottom:10px;
+    overflow:hidden;
+}
+
+/* Кнопка */
+.button {
+    height:50px;
+    width:100%;
+    /*border-radius:3px;*/
+    border:rgba(0,0,0,.3) 0px solid;
+    box-sizing:border-box;
+    padding:10px;
+    background:#007dc7;
+    color:#FFF;
+    font-weight:300;
+    font-size: 1rem;
+    /*transition:background .4s;*/
+    /* Курсор в виде руки */
+    cursor:pointer;
+}

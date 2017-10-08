@@ -1,0 +1,51 @@
+doctype html
+html(lang="ru-RU")
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		//- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+		meta(name="keywords" content="")
+		meta(name="robots" content="noindex, nofollow")
+		meta(name="author" content="Alexander Shatalov")
+		//- link(rel="stylesheet" type='text/css' href="static/fonts/fonts.css")
+		link(rel="stylesheet" type='text/css' href="static/css/main.css")
+		//- BootStrap 3
+		//- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+		//- WARNING: Respond.js doesn't work if you view the page via file://
+		//- != "<!--[if lt IE 9]>"
+		//- script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+		//- script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+		//- != "<![endif]-->"
+		title
+			block title
+	body
+		.wrapper
+			//- browsehappy.com
+			!= "<!--[if lt IE 8]>"
+			p.browserupgrade
+				| You are using an
+				strong outdated
+				| browser. Please
+				a(href='http://browsehappy.com/') upgrade your browser
+				| to improve your experience.
+			!= "<![endif]-->"
+
+			include ../modules/header
+			block content
+		include ../modules/footer
+
+		//- Foundation 6
+		//- script(src="static/libs/foundation/js/vendor/jquery.js")
+		//- script(src="static/libs/foundation/js/vendor/what-input.js")
+		//- script(src="static/libs/foundation/js/vendor/foundation.min.js")
+
+		//- BootStrap 3
+		//- jQuery (necessary for Bootstrap's JavaScript plugins)
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')
+		//- Include all compiled plugins (below), or include individual files as needed
+		//- script(src="static/libs/bootstrap/js/bootstrap.min.js")
+
+		//- script(src="static/js/libs.min.js")
+		script(src="static/js/countdown.js")
+		script(src="static/js/main.js")

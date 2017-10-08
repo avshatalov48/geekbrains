@@ -1,0 +1,262 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1170px) {
+
+    /* Footer */
+    .footer__nav-column {
+        margin: 0 45px;
+    }
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+
+    .header__container-top, .header__container-down,
+    .section__whowhy-container, .section__services-container,
+    .section__tweets-container, .footer__container-top,
+    .footer__container-down
+    {
+        width: 95%;
+    }
+
+    /* Section - Services */
+    .section__services-item img {
+        margin-top: 68px;
+    }
+
+    /* Footer */
+    .footer__nav-column {
+        margin: 0 5px;
+    }
+
+    .footer__nav-down ul li {
+        margin: 0px 10px 0px 10px;
+    }
+
+    .footer__nav-down ul li:first-child {
+        margin: 0px 10px 0px 0px;
+    }
+
+    .footer__nav-down ul li:last-child {
+        margin: 0px 0px 0px 10px;
+    }
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+
+    /* Section - Who & Why */
+    .section__whowhy-container img {
+        margin-top: 78px;
+    }
+
+    /* Section - Services */
+    .section__services-item img {
+        margin-top: 65px;
+    }
+
+    .section__services-item {
+        padding: 0 20px 0 20px;
+    }
+
+    /* Footer */
+
+    .footer__container {
+        padding: 0;
+    }
+
+    .footer__container-top {
+        display: none;
+    }
+
+    .footer__copyright {
+        float: none;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 48px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .footer__copyright p {
+        text-align: center;
+    }
+
+    .footer__copyright p:first-child {
+        margin-top: 20px;
+    }
+
+    .footer__container-down {
+        border-top: solid 1px #212121;
+    }
+
+    .footer__nav-down {
+        float: none;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer__nav-down:last-child {
+    }
+
+    .footer__container-down {
+        height: auto;
+    }
+
+    .footer__copyright {
+        height: auto;
+    }
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+    .header__container-top, .header__container-down,
+    .section__whowhy-container, .section__services-container,
+    .section__tweets-container, .footer__container-top,
+    .footer__container-down
+    {
+        width: 93%;
+    }
+
+    /* Section - Who & Why */
+    .section__whowhy-container img {
+        margin-top: 31px;
+    }
+    .section__whowhy-container p {
+        margin: 53px auto 20px;
+    }
+
+    /* Section - Services */
+    .section__services-item {
+        width: 100%;
+        text-align: center;
+        padding: 0 20px 0 20px;
+        margin: 0 auto;
+    }
+    .section__services-item img {
+        margin-top: 30px;
+    }
+    .section__services-item p {
+        margin-bottom: 30px;
+    }
+
+    /* Section - Tweets */
+    .section__tweets-container {
+        margin: 55px auto 0px;
+    }
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+    .header__container-top, .header__container-down,
+    .section__whowhy-container, .section__services-container,
+    .section__tweets-container, .footer__container-top,
+    .footer__container-down
+    {
+        width: 90%;
+    }
+
+    /* Header */
+
+    header {
+        height: 480px;
+    }
+
+    .header__content {
+        text-align: center;
+    }
+
+    .header__content hr {
+        margin: auto;
+    }
+
+    .header__container-top {
+        height: 36px;
+    }
+
+    .header__nav ul li {
+        display: none;
+    }
+
+    .header__nav ul li:last-child {
+        display: inherit;
+    }
+
+    .header__container-down {
+        margin-top: 10px;
+        width: 90%;
+    }
+
+    .header__content h1 {
+        font-size: 2.5rem;
+    }
+
+    .header__content p {
+        margin-top: 16px;
+        font-size: 1.1rem;
+    }
+
+    .header__content a {
+        margin-top: 15px;
+    }
+
+    /* Section - Who & Why */
+    .section__whowhy-container img {
+        margin-top: 20px;
+    }
+    .section__whowhy-container p {
+        margin: 53px auto 20px;
+    }
+
+    /* Section - Tweets */
+    .section__tweets-container {
+        margin: 20px auto 0px;
+    }
+
+
+
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+ /* Large Devices, Wide Screens */
+@media only screen and (min-width : 1170px) {
+
+}
