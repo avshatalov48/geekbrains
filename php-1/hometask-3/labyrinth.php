@@ -123,6 +123,7 @@ $map = smile($smile, $map);
 
 $arrow = $smile["arrow"];
 
+/*Алгоритм в процессе. Переписать*/
 $step = false;
 $i = 1;
 
