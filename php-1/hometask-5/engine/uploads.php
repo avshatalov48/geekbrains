@@ -1,8 +1,12 @@
 <?php
 
-function uploadsFiles()
+/**
+ * @param $conDB
+ */
+function uploadsFiles($conDB)
 {
     foreach ($_FILES as $file) {
+//        var_dump($file);
         $fileType = explode("/", $file['type'])[0];
         if ($file['error'] != 0) {
             $message = "Произошла ошибка: " . $file['error'] . "!";
@@ -17,7 +21,12 @@ function uploadsFiles()
             img_resize($src, $thumbs, 240, 160);
             move_uploaded_file($src, $original);
             $message = "Загрузка файла: " . $file['name'] . " успешно выполнена!";
+            /*Добавляем запись о новом файле в БД*/
+            $query = "INSERT INTO pictures (path, size, name, view, click) VALUES ('" . IMAGES_DIR . "', '" . $file['size'] . "', '" . $file['name'] . "', '0', '0')";
+            mysqli_query($conDB, $query);
         }
+
+//(path, size, name) VALUES ('testuser', 123, 'test')\"
 
         echo '<div class="page-header"><h4>' . $message . '</h4></div>';
     }

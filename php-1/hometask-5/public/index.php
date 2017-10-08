@@ -36,18 +36,15 @@
     /*Подключение к БД*/
     $conDB = mysqli_connect($config["host"], $config["user"], $config["password"], $config["db"]);
 
-    //    $id = $_GET['id'];
-
-    //    if ($id) {
-//        $resDB = mysqli_query($conDB, "SELECT * FROM product WHERE id = :id");
-//        var_dump(mysqli_fetch_all($resDB, MYSQLI_ASSOC));
-    //    }
+    include ENGINE_DIR . "render.php";
+    include ENGINE_DIR . "scandb.php";
+    include ENGINE_DIR . "uploads.php";
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES)) {
-        uploadsFiles();
+        uploadsFiles($conDB);
     }
 
-    renderFilesGallery();
+    renderGallery($conDB, null);
 
     /*Закрытие соединения с БД*/
     mysqli_close($conDB);

@@ -1,6 +1,6 @@
 <?php
 
-function scanFilesDirectory()
+function scanDB($conDB)
 {
     $dir = opendir(IMAGES_THUMBS_DIR);
     while ($filename = readdir($dir)) {
