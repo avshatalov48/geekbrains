@@ -15,48 +15,47 @@
         <h1>phpGallery</h1>
     </div>
 
-<!--    <div class="page-header">
-        <h3>Загрузка нового изображения</h3>
-    </div>
-
-    <form action="" enctype="multipart/form-data" method="post">
-        <input type="file" name="file"/>
-        <input type="submit" value="Загрузить"/>
-    </form>-->
-
     <?php
 
     /*Файлы конфигурации*/
     require_once "../config/main.php";
     $config = include CONFIG_DIR . "db.php";
 
-    /*Библиотека - Генерация thumbnails*/
-    require_once VENDOR_DIR . "funcImgResize.php";
-
     /*Подключение к БД*/
     $conDB = mysqli_connect($config["host"], $config["user"], $config["password"], $config["db"]);
 
     include ENGINE_DIR . "render.php";
-    include ENGINE_DIR . "scandb.php";
-    include ENGINE_DIR . "uploads.php";
-
-/*    if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES)) {
-        uploadsFiles($conDB);
-    }*/
+    include ENGINE_DIR . "counters.php";
 
     $id = $_GET['id'];
+    $click = $_GET['click'];
 
     if ($id) {
-        echo $id;
+        if ($click == true) {
+            counters($conDB, $id, "click");
+        }
+        counters($conDB, $id, "view");
         renderGallery($conDB, $id);
     }
+
+    /*Галерея без формы загрузки*/
+    echo '<hr>';
+    renderGallery($conDB, null);
 
     /*Закрытие соединения с БД*/
     mysqli_close($conDB);
 
     ?>
 
+    <!--Кнопка в футере-->
+    <hr>
+    <div style="text-align: center; margin-bottom: 16px!important;">
+        <button type="button" class="btn btn-secondary" onclick="location.href='./index.php';">
+            Загрузить фото
+        </button>
+    </div>
 </div>
+<script src="./js/jquery-1.11.2.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>

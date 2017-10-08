@@ -23,6 +23,7 @@
         <input type="file" name="file"/>
         <input type="submit" value="Загрузить"/>
     </form>
+    <hr>
 
     <?php
 
@@ -37,8 +38,8 @@
     $conDB = mysqli_connect($config["host"], $config["user"], $config["password"], $config["db"]);
 
     include ENGINE_DIR . "render.php";
-    include ENGINE_DIR . "scandb.php";
     include ENGINE_DIR . "uploads.php";
+    include ENGINE_DIR . "counters.php";
 
     if ($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES)) {
         uploadsFiles($conDB);
@@ -52,6 +53,7 @@
     ?>
 
 </div>
+<script src="./js/jquery-1.11.2.min.js"></script>
 <script src="./js/bootstrap.min.js"></script>
 </body>
 </html>
