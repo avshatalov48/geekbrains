@@ -11,6 +11,5 @@ function counters($conDB, $id, $counter)
         $number = $data[$counter] + 1;
         $query = "UPDATE pictures SET " . $counter . " = " . $number . " WHERE id = " . $id;
         mysqli_query($conDB, $query);
-        return $number;
     }
 }
