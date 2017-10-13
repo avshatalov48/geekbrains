@@ -3,7 +3,7 @@
 require_once "../config/main.php";
 $config = include ENGINE_DIR . "db.php";
 
-if($_SERVER['REQUEST_METHOD']=="POST"){
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
     var_dump($_POST);
     $name = $_POST['name'];
     $text = $_POST['text'];
@@ -12,13 +12,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 }
 
 ?>
-<form action="" method = "post">
-    <input name = "name" type="text"/><br>
-    <textarea name="text" id="" cols="30" rows="10"></textarea><br>
-    <input name="dec" value="1" type="submit"/>
-    <input name="dec" value="2" type="submit"/>
-    <input name="dec" value="3" type="submit"/>
-    <input name="dec" value="4" type="submit"/>
+
+<form action="" method="post">
+    <input name="name" type="text" required/><br>
+    <textarea name="text" id="" cols="30" rows="10" required></textarea><br>
+    <input value="submit" type="submit"/>
 </form>
 
 
