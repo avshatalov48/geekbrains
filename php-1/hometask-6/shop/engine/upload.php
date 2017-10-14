@@ -1,4 +1,5 @@
 <?php
+
 function uploadFiles($dir = UPLOADS_DIR, $callback = null){
     if($_SERVER['REQUEST_METHOD'] == "POST" && !empty($_FILES)){
         foreach ($_FILES as $file){
