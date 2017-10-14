@@ -1,0 +1,2 @@
+INSERT INTO creative.images (name, path, views) VALUES ('examples_001_1280.jpg', 'examples_001_1280.jpg', null);
+INSERT INTO creative.images (name, path, views) VALUES ('examples_011_1280.jpg', 'examples_011_1280.jpg', null);

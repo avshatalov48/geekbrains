@@ -23,4 +23,4 @@ if ($addcom == "form") {
 
 ?>
 
-<hr><a href="gallery.php">Посмотреть все фото</a>
+<a href="gallery.php">Посмотреть все фото</a>

@@ -1,28 +1,33 @@
 <?php
 require_once ENGINE_DIR . "db.php";
 
+/*Вывод комментариев*/
 function displayComments($id)
 {
-    /*Вывод комментария*/
-    $feedback = queryOne("SELECT * FROM feedback WHERE image_id = {$id}");
-    if ($feedback) {
-        echo "<br><b>Пользователь: </b>" . $feedback["user_name"];
-        echo "<br><b>Текст: </b>" . $feedback["text"];
-    } else {
-        echo "<br>Отзыв отсутствует! ";
+    $fbQuery = queryAll("SELECT * FROM feedback WHERE image_id = {$id}");
+
+    foreach ($fbQuery as $feedback) {
+        if ($feedback) {
+            echo "<br><b>Пользователь: </b>" . $feedback["user_name"];
+            echo "<br><b>Текст: </b>" . $feedback["text"];
+        } else {
+            echo "<br>Отзыв отсутствует! ";
+        }
     }
+
     echo "<br><a href='photo.php?id={$id}&addcom=form'>Добавить отзыв</a>" . "<hr>";
 }
 
+/*Добавление отзыва в БД*/
 function addComments($id)
 {
     $name = $_GET['name'];
     $text = $_GET['text'];
     executeQuery("INSERT INTO feedback (user_name, text, image_id) 
     VALUES('{$name}','{$text}', '{$id}')");
-
 }
 
+/*Вывод формы отзыва*/
 function formComments($id)
 {
     echo "
