@@ -21,6 +21,7 @@ if ($addcom == "form") {
     displayComments($id);
 }
 
+closeConnection();
 ?>
 
 <a href="gallery.php">Посмотреть все фото</a>

@@ -5,6 +5,7 @@ require_once ENGINE_DIR . "upload.php";
 
 uploadImg();
 displayGallery();
+closeConnection();
 ?>
 
 <b>Загрузить изображение:</b>

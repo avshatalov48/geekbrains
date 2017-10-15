@@ -4,7 +4,7 @@ require_once ENGINE_DIR . "db.php";
 /*Вывод комментариев*/
 function displayComments($id)
 {
-    $fbQuery = queryAll("SELECT * FROM feedback WHERE image_id = {$id}");
+    $fbQuery = queryAll("SELECT * FROM feedback WHERE product_id = {$id}");
 
     foreach ($fbQuery as $feedback) {
         if ($feedback) {
@@ -15,7 +15,7 @@ function displayComments($id)
         }
     }
 
-    echo "<br><a href='photo.php?id={$id}&addcom=form'>Добавить отзыв</a>" . "<hr>";
+    echo "<br><a href='view.php?id={$id}&addcom=form'>Добавить отзыв</a>" . "<hr>";
 }
 
 /*Добавление отзыва в БД*/
@@ -23,7 +23,7 @@ function addComments($id)
 {
     $name = $_GET['name'];
     $text = $_GET['text'];
-    executeQuery("INSERT INTO feedback (user_name, text, image_id) 
+    executeQuery("INSERT INTO feedback (user_name, text, product_id) 
     VALUES('{$name}','{$text}', '{$id}')");
 }
 

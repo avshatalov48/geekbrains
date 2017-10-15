@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = $_POST['password'];
 }
 
-echo "<h2>Админка</h2>";
+echo "<center><h2>Админка</h2>";
 
 if (authentication($login, $password)) {
     uploadImg();
@@ -35,3 +35,11 @@ if (authentication($login, $password)) {
     <input value="Войти" type="submit"/>
     </form>';
 }
+
+closeConnection();
+
+?>
+
+<a href="index.php">Посмотреть весь каталог</a><br>
+<a href="admin.php">Вход в админку</a>
+</center>
