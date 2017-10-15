@@ -1,4 +1,5 @@
 <?php
+header ("Content-type:text/html; charset=utf-8");
 /**
  * 1. Написать функцию, отображающую все дерево файлов и каталогов,
  * начиная от указанной директории.
@@ -28,6 +29,10 @@ function render($directory, $filename)
     } else {
         $type = "<small>";
         $fileInfo = " [" . date("d.m.Y H:i", filemtime($path)) . "] [" . filesize($path) . " байт] [" . substr(sprintf('%o', fileperms($path)), -4) . "]</small>";
+    }
+    // Решение проблемы с кириллицей в названиях каталогов и файлов под Windows
+    if (stristr(getenv('OS'), "win")) {
+        $filename = iconv("WINDOWS-1251", "UTF-8", $filename);
     }
     echo spaces($path) . "{$type}{$filename}{$fileInfo}<br>";
 }
