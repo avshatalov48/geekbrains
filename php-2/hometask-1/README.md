@@ -17,6 +17,7 @@ https://geekbrains.ru/courses/5
 
 5. Дан код:
 
+```PHP
 class A {
     public function foo() {
         static $x = 0;
@@ -29,11 +30,13 @@ $a1->foo();
 $a2->foo();
 $a1->foo();
 $a2->foo();
+```
 
 Что он выведет на каждом шаге? Почему?
 
 Немного изменим п.5
 
+```PHP
 class A {
     public function foo() {
         static $x = 0;
@@ -44,14 +47,17 @@ class B extends A {
 }
 $a1 = new A();
 $b1 = new B();
-$a1->foo(); 
-$b1->foo(); 
-$a1->foo(); 
+$a1->foo();
 $b1->foo();
+$a1->foo();
+$b1->foo();
+```
 
-6. Объясните результаты в этом случае.
+6. (*) Объясните результаты в этом случае.
 
 *Дан код:
+
+```PHP
 class A {
     public function foo() {
         static $x = 0;
@@ -62,9 +68,10 @@ class B extends A {
 }
 $a1 = new A;
 $b1 = new B;
-$a1->foo(); 
-$b1->foo(); 
-$a1->foo(); 
-$b1->foo(); 
+$a1->foo();
+$b1->foo();
+$a1->foo();
+$b1->foo();
+```
 
 Что он выведет на каждом шаге? Почему?
