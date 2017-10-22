@@ -1,16 +1,16 @@
 # Содержание
 
-1. [GeekBrains. HTML/CSS. Основы создания сайтов](#GeekBrains.-HTML/CSS.-Основы-создания-сайтов)
-2. [GeekBrains. HTML5 и CSS3. Современные средства Web-разработки](#GeekBrains.-HTML5-и-CSS3.-Современные-средства-Web-разработки)
-3. [GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения](#GeekBrains.-JavaScript.-Уровень-1.-Интерактивные-веб-приложения)
-4. [GeekBrains. JavaScript. Уровень 2. Продвинутый курс](#GeekBrains.-JavaScript.-Уровень-2.-Продвинутый-курс)
-5. [GeekBrains. ReactJS. Профессиональная frontend-разработка.](#GeekBrains.-ReactJS.-Профессиональная-frontend-разработка)
-6. [GeekBrains. PHP. Уровень 1](#GeekBrains.-PHP.-Уровень-1)
-7. [GeekBrains. PHP. Уровень 2](#GeekBrains.-PHP.-Уровень-2)
+1. [GeekBrains. HTML/CSS. Основы создания сайтов.](#htmlcss)
+2. [GeekBrains. HTML5 и CSS3. Современные средства Web-разработки.](#html5css3)
+3. [GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения.](#js1)
+4. [GeekBrains. JavaScript. Уровень 2. Продвинутый курс.](#js2)
+5. [GeekBrains. ReactJS. Профессиональная frontend-разработка.](#react)
+6. [GeekBrains. PHP. Уровень 1.](#php1)
+7. [GeekBrains. PHP. Уровень 2.](#php2)
 
 ____
 
-# GeekBrains. HTML/CSS. Основы создания сайтов.
+#  <a name="htmlcss"></a> GeekBrains. HTML/CSS. Основы создания сайтов.
 Преподаватель: Владимир Языков.
 https://geekbrains.ru/courses/3
 
@@ -41,7 +41,7 @@ https://geekbrains.ru/courses/3
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. HTML5 и CSS3. Современные средства Web-разработки.
+#  <a name="html5css3"></a> GeekBrains. HTML5 и CSS3. Современные средства Web-разработки.
 Преподаватель: Владимир Языков.
 https://geekbrains.ru/courses/9
 
@@ -72,7 +72,7 @@ https://geekbrains.ru/courses/9
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения.
+#  <a name="js1"></a> GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения.
 Преподаватель: Владимир Языков.
 https://geekbrains.ru/courses/6
 
@@ -104,7 +104,7 @@ https://geekbrains.ru/courses/6
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
+#  <a name="js2"></a> GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
 https://geekbrains.ru/courses/83
 
@@ -135,7 +135,7 @@ XMLHttpRequest; типы запросов; форматы JSON и XML.
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. ReactJS. Профессиональная frontend-разработка.
+#   <a name="react"></a> GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
 https://geekbrains.ru/courses/119
 
@@ -166,7 +166,7 @@ Virtual DOM; состояние компонентов; как задавать 
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. PHP. Уровень 1.
+#  <a name="php1"></a> GeekBrains. PHP. Уровень 1.
 Преподаватель: Игорь Полуянов.
 https://geekbrains.ru/courses/4
 
@@ -197,7 +197,7 @@ https://geekbrains.ru/courses/4
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. PHP. Уровень 2.{#foo}
+# <a name="php2"></a> GeekBrains. PHP. Уровень 2.{#foo}
 Преподаватель: Игорь Полуянов.
 https://geekbrains.ru/courses/5
 
