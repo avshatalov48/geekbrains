@@ -2,11 +2,11 @@
 
 1. [GeekBrains. HTML/CSS. Основы создания сайтов](#GeekBrains.-HTML/CSS.-Основы-создания-сайтов)
 2. [GeekBrains. HTML5 и CSS3. Современные средства Web-разработки](#GeekBrains.-HTML5-и-CSS3.-Современные-средства-Web-разработки)
-3. [GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения] (#GeekBrains.-JavaScript.-Уровень 1.-Интерактивные веб-приложения)
-4. [GeekBrains. JavaScript. Уровень 2. Продвинутый курс](#GeekBrains.-JavaScript.-Уровень 2.-Продвинутый курс)
-5. [GeekBrains. ReactJS. Профессиональная frontend-разработка.](#GeekBrains.-ReactJS.-Профессиональная frontend-разработка)
-6. [GeekBrains. PHP. Уровень 1](#GeekBrains.-PHP.-Уровень 1)
-7. [GeekBrains. PHP. Уровень 2](#GeekBrains.-PHP.-Уровень 2)
+3. [GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения](#GeekBrains.-JavaScript.-Уровень-1.-Интерактивные-веб-приложения)
+4. [GeekBrains. JavaScript. Уровень 2. Продвинутый курс](#GeekBrains.-JavaScript.-Уровень-2.-Продвинутый-курс)
+5. [GeekBrains. ReactJS. Профессиональная frontend-разработка.](#GeekBrains.-ReactJS.-Профессиональная-frontend-разработка)
+6. [GeekBrains. PHP. Уровень 1](#GeekBrains.-PHP.-Уровень-1)
+7. [GeekBrains. PHP. Уровень 2](#GeekBrains.-PHP.-Уровень-2)
 
 ____
 
@@ -197,7 +197,7 @@ https://geekbrains.ru/courses/4
 [:arrow_up: Содержание](#Содержание)
 ____
 
-# GeekBrains. PHP. Уровень 2.
+# GeekBrains. PHP. Уровень 2.{#foo}
 Преподаватель: Игорь Полуянов.
 https://geekbrains.ru/courses/5
 
