@@ -45,8 +45,13 @@
         }
 
         .smile {
-            color: cornflowerblue;
+            color: #007DC7;
             font-size: 48px;
+        }
+
+        .exit {
+            color: #00838a;
+            font-size: 40px;
         }
 
     </style>
@@ -63,8 +68,18 @@
  * Написать программу, которая модулирует алгоритм выхода человека из лабиринта по методу "правой руки".
  */
 
+/*
+ * Карта
+ *
+ * 0 - Стена
+ * 1 - Дорога
+ * 2 - Смайл
+ * 3 - Пройденный участок дороги
+ * 4 - Выход
+ * */
+
 $map = [
-    [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 4, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
     [0, 1, 0, 0, 0, 0, 1, 0, 0, 0],
@@ -76,12 +91,23 @@ $map = [
     [0, 1, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
+/* Начальные установки смайлика */
 $smile = [
     "x" => "1",
     "y" => "9",
     "arrow" => "up"
 ];
 
+/* Координаты выхода */
+$exit = [
+    "x" => "1",
+    "y" => "0"
+];
+
+/* Классы CSS карты */
+$class = ["wall", "road", "smile road", "road", "exit road"];
+
+/* Отметка смайлика на карте */
 function smile($smile, $map)
 {
     foreach ($map as $y => $value) {
@@ -94,28 +120,31 @@ function smile($smile, $map)
     }
 }
 
-function renderMap($map)
+/* Отрисовка карты */
+function renderMap($map, $class)
 {
     echo "<table>";
     foreach ($map as $tr) {
         echo "<tr>";
         foreach ($tr as $value) {
             $smile = "";
-            if ($value == 0) $class = "wall";
-            if ($value == 1) $class = "road";
-            if ($value == 2) {
-                $class = "smile road";
-                $smile = "&#9786";
-            }
-            if ($value == 3) {
-                $class = "road";
-                $smile = "+";
-            }
-            echo "<td class='$class'>" . $smile . "</td>";
+            if ($value == 2) $smile = "&#9786";
+            if ($value == 3) $smile = "+";
+            if ($value == 4) $smile = "&#128682;";
+            echo "<td class='$class[$value]'>" . $smile . "</td>";
         }
         echo "</tr>";
     }
     echo "</table>";
+}
+
+function win($x, $y, $exit)
+{
+    if ($x == $exit["x"] && $y == $exit["y"]) {
+        echo "<h1>Победа!</h1>";
+        return true;
+    }
+    return false;
 }
 
 $map = smile($smile, $map);
@@ -126,10 +155,13 @@ $arrow = $smile["arrow"];
 /*Алгоритм в процессе. Переписать*/
 $step = false;
 $i = 1;
+$reverse = 1;
 
 do {
     $x = $smile["x"];
     $y = $smile["y"];
+
+    if (win($x, $y, $exit)) break;
 
     if ($arrow == "up") {
         if ($map[$y - 1][$x] != 0 && $y > 0) {
@@ -166,7 +198,9 @@ do {
     }
 
     echo "x=$x, y=$y, arrow=$arrow<br>";
+
+
 } while (/*$step == false &&*/
     ++$i < 10);
 
-renderMap($map);
+renderMap($map, $class);
