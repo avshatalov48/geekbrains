@@ -2,12 +2,12 @@
 
 include "../services/Autoloader.php";
 
-spl_autoload_register([new \services\Autoloader(), 'loadClass']);
+spl_autoload_register([new \app\services\Autoloader(), 'loadClass']);
 
-$product = new \models\Product();
+$product = new \app\models\Product();
 
 var_dump($product);
 
-function foo(\Interfaces\IModel $object){
+function foo(\app\Interfaces\IModel $object){
     echo $object->getTableName();
 }

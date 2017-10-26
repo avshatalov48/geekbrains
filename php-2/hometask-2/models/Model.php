@@ -1,10 +1,11 @@
 <?php
 
-namespace models;
+namespace app\models;
 
-use Interfaces\IModel;
-use services\Db;
+use app\Interfaces\IModel;
+use app\services\Db;
 
+/*Класс, который содержит хотя бы один абстрактный метод, должен быть определён как абстрактный.*/
 abstract class Model implements IModel
 {
     private $db;
