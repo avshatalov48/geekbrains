@@ -1,4 +1,7 @@
 <?php
+
+namespace Interfaces;
+
 interface IModel
 {
     public function getOne($id);

@@ -1,16 +1,13 @@
 <?php
+
 include "../services/Autoloader.php";
 
-spl_autoload_register([new Autoloader(), 'loadClass']);
+spl_autoload_register([new \services\Autoloader(), 'loadClass']);
 
-require("../Interfaces/IModel.php");
-require("../services/Db.php");
-
-$product = new Product();
+$product = new \models\Product();
 
 var_dump($product);
 
-
-function foo(IModel $object){
+function foo(\Interfaces\IModel $object){
     echo $object->getTableName();
 }

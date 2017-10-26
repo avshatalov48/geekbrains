@@ -1,5 +1,6 @@
 <?php
-namespace app\models;
+
+namespace models;
 
 class User extends Model
 {
@@ -7,12 +8,6 @@ class User extends Model
     public $login;
     public $password;
 
-    /**
-     * User constructor.
-     * @param $id
-     * @param $login
-     * @param $password
-     */
     public function __construct($id = null, $login = null, $password = null)
     {
         parent::__construct();
@@ -25,6 +20,4 @@ class User extends Model
     {
         return 'users';
     }
-
-
 }
