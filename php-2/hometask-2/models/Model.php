@@ -8,6 +8,7 @@ use app\services\Db;
 /*Класс, который содержит хотя бы один абстрактный метод, должен быть определён как абстрактный.*/
 abstract class Model implements IModel
 {
+    public $id;
     private $db;
 
     public function __construct()
