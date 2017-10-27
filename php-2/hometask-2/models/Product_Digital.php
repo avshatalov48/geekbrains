@@ -3,11 +3,12 @@
 
 namespace app\models;
 
-class Product_Digital extends Product_Abstract
+class Product_Digital extends Product_Real
 {
-    public function getPrice()
-    {
-        return 0;
+    public function getPrice($number) {
+        $sum = parent::getPrice($number)/2;
+        $this->total -= $sum;
+        return $sum;
     }
 
     public function getTableName()

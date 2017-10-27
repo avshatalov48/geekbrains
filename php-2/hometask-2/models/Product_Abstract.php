@@ -15,6 +15,7 @@ abstract class Product_Abstract extends Model
     public $guarantee;
     public $country;
     public $count;
+    public $total;
 
     public function __construct($article = null, $category = null, $title = null, $description = null, $size = null, $weight = null, $price = null, $guarantee = null, $country = null, $count = null)
     {
@@ -31,10 +32,10 @@ abstract class Product_Abstract extends Model
         $this->count = $count;
     }
 
-    abstract public function getPrice();
+    abstract public function getPrice($number);
 
-    public function getSale(){
-        return "Доход с продаж: {$this->getPrice()}";
+    public function getTotal(){
+        return $this->total;
     }
 
 }

@@ -9,8 +9,8 @@ class Autoloader
     function loadClass($className)
     {
 //        var_dump($className);
+        $className = str_replace($this->root, "", $className);
         $filename = '..\\' . $className . '.php';
-        $filename = str_replace($this->root, "", $filename);
 
         if (file_exists($filename)) {
             require_once($filename);
