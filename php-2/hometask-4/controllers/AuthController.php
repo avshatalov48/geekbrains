@@ -1,7 +1,5 @@
 <?php
 
-// Добавляем имя класса к Controller, чтобы понимать, что речь идет именно об этом компоненте
-
 namespace app\controllers;
 
 use app\models\Auth;
@@ -10,7 +8,8 @@ class AuthController extends Controller
 {
     public function actionIndex()
     {
-        echo "<h3>Вы не авторизованы на сайте!</h3>";
+        $auth = (object)array('message' => 'Вы не авторизованы на сайте!');
+        echo $this->render("form", ['auth' => $auth]);
     }
 
     public function actionLogin()

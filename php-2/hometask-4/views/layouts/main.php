@@ -9,11 +9,11 @@
 </head>
 <body>
 <!-- Основной шаблон -->
-<div class="header">Это хедер</div>
+<div class="header">HEADER</div>
 <div class="content">
     <!-- В контент будет попадать уже отрендеренный шаблон -->
     <?=$content?>
 </div>
-<div class="footer">Это футер</div>
+<div class="footer">FOOTER</div>
 </body>
 </html>

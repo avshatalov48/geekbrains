@@ -2,6 +2,8 @@
 -->
 <h3><?=$product->name?></h3>
 <p>
-    <?=$product->description?>
+    <strong>Краткое описание: </strong><?=$product->short_description?><br>
+    <strong>Подробное описание: </strong><?=$product->description?><br>
+    <strong>Цена: </strong><?=$product->price?>
 </p>
 <hr>
