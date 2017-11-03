@@ -28,6 +28,11 @@ abstract class Model implements IModel
         return static::getDb()->fetchObjectAll("SELECT * FROM {$tableName}", [], get_called_class());
     }
 
+    public static function freeQuery($query){
+        $tableName = static::getTableName();
+        return static::getDb()->fetchObjectAll($query, [], get_called_class());
+    }
+
     private static function getDb(){
         return Db::getInstance();
     }
