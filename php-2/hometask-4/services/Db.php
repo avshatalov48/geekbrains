@@ -15,7 +15,7 @@ class Db
         'host' => 'localhost',
         'login' => 'root',
         'password' => '',
-        'database' => 'shopshop',
+        'database' => 'shop',
         'charset' => 'UTF8'
     ];
 
@@ -60,6 +60,15 @@ class Db
     public function fetchAll($sql, $params = [])
     {
         return $this->query($sql, $params)->fetchAll();
+    }
+
+    public function fetchObjectAll($sql, $params = [], $class)
+    {
+        $smtp = $this->query($sql, $params);
+        $smtp->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, $class);
+        // PDOStatement::fetchAll — Возвращает массив, содержащий все строки результирующего набора
+        // https://php.ru/manual/pdostatement.fetchall.html
+        return $smtp->fetchAll();
     }
 
     public function fetchObject($sql, $params = [], $class)

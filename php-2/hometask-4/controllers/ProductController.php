@@ -17,12 +17,21 @@ class ProductController extends Controller
     // В связке с моделью
     public function actionCard()
     {
+        // Отобразить без Layout (false), например, для Ajax запроса и т.д.
+        $this->useLayout = false;
         // Получаем id продукта
         $id = $_GET['id'];
-        $product = Product::getOne($id);
-        // Отобразить без Layout, например, для Ajax запроса и т.д.
-        $this->useLayout = false;
-        // Передаем во View - Шаблон и параметры
-        echo $this->render("card", ['product' => $product]);
+
+        if ($id) {
+            $product = Product::getOne($id);
+            echo $this->render("card", ['product' => $product]);
+        } else {
+            $products = Product::getAll();
+            foreach ($products as $product ) {
+                echo $this->render("card", ['product' => $product]);
+            }
+        }
+
     }
+
 }

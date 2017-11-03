@@ -11,6 +11,7 @@ abstract class Model implements IModel
 
     public static function getOne($id){
         $tableName = static::getTableName();
+        // PDOStatement::fetchObject — Извлекает следующую строку и возвращает ее в виде объекта
         return static::getDb()->fetchObject(
             "SELECT * FROM {$tableName} WHERE id = :id",
             [':id' => $id],
@@ -24,7 +25,7 @@ abstract class Model implements IModel
         // меняем $this на static
         $tableName = static::getTableName();
         // $this->db на static::getDb()
-        return static::getDb()->fetchAll("SELECT * FROM {$tableName}");
+        return static::getDb()->fetchObjectAll("SELECT * FROM {$tableName}", [], get_called_class());
     }
 
     private static function getDb(){

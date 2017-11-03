@@ -4,6 +4,10 @@ include "../services/Autoloader.php";
 
 spl_autoload_register([new \app\services\Autoloader(), 'loadClass']);
 
+/*Примеры адресной строки*/
+// index.php?c=product&a=card - Вывод всех карточек товаров
+// index.php?c=product&a=card&id=1 - Вывод конкретной карточки товара
+
 // Подключение контроллера
 // Controller - если не пришел, то открываем "Product"
 $controllerName = $_GET['c'] ?: "Product";

@@ -4,3 +4,4 @@
 <p>
     <?=$product->description?>
 </p>
+<hr>

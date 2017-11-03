@@ -6,7 +6,7 @@ abstract class Controller
 {
     // Текущий action, который выполняем
     private $action;
-    // action по default
+    // action по умолчанию
     private $defaultAction = "index";
     // Наименование шаблона
     private $layout = "main";
@@ -18,7 +18,10 @@ abstract class Controller
     {
         // если action пустой, то запускается action по default
         $this->action = $action ?: $this->defaultAction;
-        $action = "action" . ucfirst($this->action);
+        // Преобразование card-my-test-privet => actionCardMyTestPrivet
+        // ucwords — Преобразует в верхний регистр первый символ каждого слова в строке
+        $action = ucwords(str_replace("-", " ", $action));
+        $action = "action" . str_replace(" ", "", $action);
         $this->$action();
     }
 
