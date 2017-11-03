@@ -10,11 +10,10 @@ spl_autoload_register([new \app\services\Autoloader(), 'loadClass']);
 /*Авторизация*/
 // index.php?c=auth&a=login&login=admin&pass=123
 
-// Подключение контроллера
-// Controller - если не пришел, то открываем "Product"
-$controllerName = $_GET['c'] ?: "Product";
+// Controller - если не пришел, то открываем "Auth"
+$controllerName = $_GET['c'] ?: "Auth";
 // Action
-$actionName = $_GET['a'];
+$actionName = $_GET['a']  ?: "Login";;
 
 // Формируем название класса из полученных значений
 $controllerClass = CONTROLLERS_NAMESPACE . ucfirst($controllerName) . "Controller";

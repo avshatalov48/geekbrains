@@ -26,7 +26,9 @@ class AuthController extends Controller
             } else {
                 $this->actionIndex();
             }
+            return;
         }
+        $this->actionIndex();
     }
 
 }
