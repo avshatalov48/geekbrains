@@ -1,8 +1,14 @@
 <?php
 include "../config/main.php";
-include "../services/Autoloader.php";
-
+include ROOT_DIR . "services/Autoloader.php";
 spl_autoload_register([new \app\services\Autoloader(), 'loadClass']);
+
+// Автозагрузчик Composer, который, в свою очередь, загрузит Twig. Если Twig был установлен другим способом, понадобится автозагрузчик Twig
+require_once ROOT_DIR . 'vendor/autoload.php';
+$loader = new Twig_Loader_Filesystem(ROOT_DIR . 'views/twig');
+$twig = new Twig_Environment($loader
+//    , array('cache' => '/path/to/compilation_cache',)
+);
 
 $controllerName = $_GET['c'] ?: "Product";
 $actionName = $_GET['a'];
@@ -15,5 +21,3 @@ $controller = new $controllerClass(
 );
 
 $controller->run($actionName);
-
-

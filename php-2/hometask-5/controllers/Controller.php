@@ -5,6 +5,7 @@ use app\services\renderers\IRenderer;
 use app\services\renderers\TemplateRenderer;
 
 abstract class Controller {
+    private $templateEngine = "study";
     private $action;
     private $defaultAction = "index";
     private $layout = "main";
@@ -22,7 +23,7 @@ abstract class Controller {
         $this->renderer = $renderer;
     }
 
-    public function runAction($action = null)
+    public function run($action = null)
     {
         $this->action = $action ?: $this->defaultAction;
         $action = "action" . ucfirst($this->action);
@@ -31,8 +32,10 @@ abstract class Controller {
 
     public function render($template, $params)
     {
+        $template = $this->templateEngine . "/" . $template;
         if($this->useLayout){
-            return $this->renderTemplate("layouts/{$this->layout}",
+            $layout = $this->templateEngine . "/" . "layouts/" . $this->layout;
+            return $this->renderTemplate($layout,
                 ['content' => $this->renderTemplate($template, $params)]
             );
         }else{

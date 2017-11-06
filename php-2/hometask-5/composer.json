@@ -1,0 +1,12 @@
+{
+    "name": "user/hometask-5",
+    "authors": [
+        {
+            "name": "Alexander Shatalov",
+            "email": "alexander.shataloff@gmail.com"
+        }
+    ],
+    "require": {
+      "twig/twig" : "*"
+    }
+}
