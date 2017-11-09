@@ -1,0 +1,12 @@
+{
+    "name": "geralt/php2.courses.local",
+    "authors": [
+        {
+            "name": "Geralt",
+            "email": "matkowton@gmail.com"
+        }
+    ],
+    "require": {
+      "twig/twig" : "*"
+    }
+}
