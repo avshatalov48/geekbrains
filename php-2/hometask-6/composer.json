@@ -1,9 +1,9 @@
 {
-    "name": "geralt/php2.courses.local",
+    "name": "user/hometask-5",
     "authors": [
         {
-            "name": "Geralt",
-            "email": "matkowton@gmail.com"
+            "name": "Alexander Shatalov",
+            "email": "alexander.shataloff@gmail.com"
         }
     ],
     "require": {
