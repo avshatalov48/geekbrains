@@ -1,9 +1,12 @@
 <?php
+
 namespace app\services;
 
 use app\base\App;
 
-class AutoloaderNotMatchException extends \Exception{}
+class AutoloaderNotMatchException extends \Exception
+{
+}
 
 class Autoloader
 {

@@ -6,6 +6,7 @@ use app\base\App;
 use app\models\User;
 
 use app\services\RequestNotMatchException;
+
 //use app\services\AutoloaderNotMatchException;
 
 class FrontController extends Controller
@@ -18,9 +19,9 @@ class FrontController extends Controller
     public function actionIndex()
     {
         // Обращение к компоненту Request по имени, а не через new Request(), как раньше
-        try{
+        try {
             $rm = App::call()->request;
-        }catch (RequestNotMatchException $e){
+        } catch (RequestNotMatchException $e) {
             $this->redirect();
         }
 
@@ -50,15 +51,16 @@ class FrontController extends Controller
     }
 
     // Если пользователь авторизован, пускаем дальше, если нет - отправляем на страницу авторизации
-    private function checkLogin(){
+    private function checkLogin()
+    {
         // Используем сессии, чтобы при каждом заходе пользователя не спрашивать его про авторизацию
         session_start();
         // Чтобы не было бесконечного редиректа добавляем условие
-        if($this->controller != "\\" . AuthController::class){
+        if ($this->controller != "\\" . AuthController::class) {
             // Успешно получен ли текущий пользователь
             $user = (new User())->getCurrent();
             // Отправляем на страницу авторизации
-            if(!$user){
+            if (!$user) {
                 $this->redirect();
             }
         }

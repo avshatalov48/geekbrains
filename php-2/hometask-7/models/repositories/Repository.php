@@ -1,4 +1,5 @@
 <?php
+
 namespace app\models\repositories;
 
 
@@ -12,6 +13,7 @@ abstract class Repository
     protected $entityClass;
 
     protected $conn;
+
     /**
      * DataGetter constructor.
      * @param $db
@@ -21,7 +23,8 @@ abstract class Repository
         $this->conn = App::call()->db;
     }
 
-    public function getOne($id){
+    public function getOne($id)
+    {
 
         return $this->conn->fetchObject(
             "SELECT * FROM {$this->tableName} WHERE id = :id",
@@ -30,17 +33,25 @@ abstract class Repository
         );
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         return static::getDb()->fetchAll("SELECT * FROM {$this->tableName}");
     }
 
-    public function update(DataEntity $entity){}
+    public function update(DataEntity $entity)
+    {
+    }
 
-    public function create(DataEntity $entity){}
+    public function create(DataEntity $entity)
+    {
+    }
 
-    public function delete(DataEntity $entity){}
+    public function delete(DataEntity $entity)
+    {
+    }
 
-    private static function getDb(){
+    private static function getDb()
+    {
         return Db::getInstance();
     }
 }

@@ -1,6 +1,7 @@
 <?php
 // Репозиторий для таблицы sessions
 namespace app\models\repositories;
+
 use app\base\App;
 use app\models\repositories\Repository;
 use app\services\Db;

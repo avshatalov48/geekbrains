@@ -10,7 +10,7 @@
 <body>
 <div class="header">Это хедер</div>
 <div class="content">
-    <?=$content?>
+    <?= $content ?>
 </div>
 <div class="footer">Это футер</div>
 </body>

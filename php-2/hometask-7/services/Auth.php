@@ -1,4 +1,5 @@
 <?php
+
 namespace app\services;
 
 use app\models\repositories\UserRep;
@@ -14,7 +15,7 @@ class Auth
     public function login($login, $pass)
     {
         // Если юзера не нашли, то false
-        if(!$user = (new UserRep())->getByLoginPass($login, $pass)){
+        if (!$user = (new UserRep())->getByLoginPass($login, $pass)) {
             return false;
         }
         // Если все Ок, то открываем сессию, генерируем токен
@@ -27,7 +28,7 @@ class Auth
     {
         // Получение ключа из сессии $_SESSION
         $sid = $_SESSION[$this->sessionKey];
-        if(!is_null($sid)){
+        if (!is_null($sid)) {
             // Обновление времени доступа токена в БД
             (new SessionsRep())->updateLastTime($sid);
         }

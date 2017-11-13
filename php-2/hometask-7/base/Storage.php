@@ -16,7 +16,7 @@ class Storage
     public function get($key)
     {
         // Существует ли такой компонент?
-        if(!isset($this->items[$key])){
+        if (!isset($this->items[$key])) {
             // Если нет - создаем компонент
             $this->items[$key] = App::call()->createComponent($key);
         }

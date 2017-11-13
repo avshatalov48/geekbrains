@@ -1,6 +1,7 @@
 <?php
 
-class Rectangle{
+class Rectangle
+{
     protected $a;
     protected $b;
 
@@ -37,7 +38,8 @@ class Rectangle{
     }
 }
 
-class Square{
+class Square
+{
     /**
      * @param mixed $a
      */
@@ -58,7 +60,8 @@ class Square{
 
 }
 
-function foo(Rectangle $r){
+function foo(Rectangle $r)
+{
     return $r->getA() * $r->getB();
 }
 

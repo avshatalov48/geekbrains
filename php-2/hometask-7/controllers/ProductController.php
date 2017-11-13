@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+
 use app\base\App;
 use app\models\repositories\ProductRepository;
 use app\services\Request;
@@ -20,7 +21,8 @@ class ProductController extends Controller
         echo $this->render("card", ['product' => $product]);
     }
 
-    private function getRepository(){
+    private function getRepository()
+    {
         return new ProductRepository();
     }
 }

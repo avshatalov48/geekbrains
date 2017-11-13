@@ -1,4 +1,5 @@
 <?php
+
 namespace app\models;
 
 use app\models\repositories\SessionsRep;
@@ -34,7 +35,7 @@ class User extends DataEntity
     // Возвращает текущего пользователя, если он авторизован
     public function getCurrent()
     {
-        if($userId = $this->getUserId()){
+        if ($userId = $this->getUserId()) {
 
             return (new UserRep())->getById($userId);
         }
@@ -46,7 +47,7 @@ class User extends DataEntity
     {
         // Сначала получаем SessionId
         $sid = (new Auth())->getSessionId();
-        if(!is_null($sid)){
+        if (!is_null($sid)) {
             // А из SessionId получаем UserId
             return (new SessionsRep())->getUidBySid($sid);
         }

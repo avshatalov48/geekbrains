@@ -3,7 +3,9 @@
 
 namespace app\services;
 
-class RequestNotMatchException extends \Exception{}
+class RequestNotMatchException extends \Exception
+{
+}
 
 class Request
 {
@@ -26,8 +28,8 @@ class Request
 
     private function parseRequest()
     {
-        foreach ($this->patterns as $pattern){
-            if(preg_match_all($pattern, $this->requestString, $matches)){
+        foreach ($this->patterns as $pattern) {
+            if (preg_match_all($pattern, $this->requestString, $matches)) {
                 $this->controllerName = $matches['controller'][0];
                 $this->actionName = $matches['action'][0];
                 $this->params = $_REQUEST;
