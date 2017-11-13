@@ -15,10 +15,13 @@ class UserRep extends Repository
 
     public function getByLoginPass($login, $pass)
     {
+        //  u - это алиас для таблички user в этом запросе, чтобы кажддый раз не писать имя таблицы целиком
         $sql = "SELECT u.* FROM users u WHERE login = :login AND password = :pass";
         return $this->conn->fetchObject($sql,
             [
-                ":login" => $login, ":pass" => md5($pass)
+                // ":login" => $login, ":pass" => md5($pass)
+                // Поле 'password' в 'users' должно быть в md5
+                ":login" => $login, ":pass" => $pass
             ],
             $this->nestedClass
         );

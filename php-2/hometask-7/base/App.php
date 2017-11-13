@@ -1,7 +1,7 @@
 <?php
 //  Данный класс - наше приложение
 namespace app\base;
-// Т.к. автолоадер подключаем после Singleton, поэтому Singleton подключаем руками
+// Т.к. автолоадер подключаем после Singleton, поэтому Singleton подключаем вручную через include
 include "../traits/TSingleton.php";
 
 use app\controllers\Controller;
@@ -11,13 +11,6 @@ use app\traits\TSingleton;
 
 class ComponentNotFoundException extends \Exception{}
 
-/**
- * Class App
- * @package app\base
- * @property Request request
- * @property Controller mainController
- * @property Db db
- */
 class App
 {
     use TSingleton;
@@ -27,7 +20,7 @@ class App
     // Будем в нем хранить компоненты, с отложенной инициализацией
     public $components;
 
-    // Переопределим getInstance() на call()
+    // Переопределим getInstance() на call() для удобства
     public static function call()
     {
         return static::getInstance();

@@ -5,6 +5,9 @@ namespace app\controllers;
 use app\base\App;
 use app\models\User;
 
+use app\services\RequestNotMatchException;
+//use app\services\AutoloaderNotMatchException;
+
 class FrontController extends Controller
 {
     private $controller;
@@ -15,7 +18,11 @@ class FrontController extends Controller
     public function actionIndex()
     {
         // Обращение к компоненту Request по имени, а не через new Request(), как раньше
-        $rm = App::call()->request;
+        try{
+            $rm = App::call()->request;
+        }catch (RequestNotMatchException $e){
+            $this->redirect();
+        }
 
         $controllerName = $rm->getControllerName() ?: $this->defaultController;
         $this->action = $rm->getActionName();
@@ -23,10 +30,23 @@ class FrontController extends Controller
         $this->controller = App::call()->config['controller_namespaces']
             . ucfirst($controllerName) . "Controller";
         $this->checkLogin();
-        $controller = new $this->controller(
-            new \app\services\renderers\TemplateRenderer()
-        );
-        $controller->runAction($this->action);
+
+        // Ловим несуществующий Controller
+        try {
+            $controller = new $this->controller(
+                new \app\services\renderers\TemplateRenderer()
+            );
+        } catch (AutoloaderNotMatchException $e) {
+            $this->redirect();
+        }
+
+        // Ловим несуществующий Action
+        try {
+            $controller->runAction($this->action);
+        } catch (ActionNotMatchException $e) {
+            $this->redirect();
+        }
+
     }
 
     // Если пользователь авторизован, пускаем дальше, если нет - отправляем на страницу авторизации
@@ -39,7 +59,7 @@ class FrontController extends Controller
             $user = (new User())->getCurrent();
             // Отправляем на страницу авторизации
             if(!$user){
-                $this->redirect('auth');
+                $this->redirect();
             }
         }
     }

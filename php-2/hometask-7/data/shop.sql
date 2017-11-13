@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 13 2017 г., 20:15
+-- Время создания: Ноя 13 2017 г., 22:55
 -- Версия сервера: 5.6.37
 -- Версия PHP: 7.0.21
 
@@ -99,6 +99,27 @@ INSERT INTO `product` (`id`, `category_id`, `name`, `photo`, `short_description`
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `sid` varchar(64) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `last_update` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `sessions`
+--
+
+INSERT INTO `sessions` (`sid`, `user_id`, `last_update`) VALUES
+('YsXs8kwpqa', 1, '2017-11-13 20:55:06'),
+('5iLBGtE77Q', 1, '2017-11-13 22:51:42'),
+('utWAbrkayy', 1, '2017-11-13 22:51:58');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `users`
 --
 
@@ -119,29 +140,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `groups_id`, `login`, `password`, `name`, `surname`, `email`, `phone`, `description`) VALUES
-(12, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(14, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(15, 1, 'user2', '123456789', 'Миша', 'Галустян', NULL, NULL, 'The site administrator'),
-(16, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(17, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(18, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(19, 1, 'admin', '123', 'Alexander', NULL, NULL, NULL, 'The site administrator'),
-(20, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(21, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(22, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(23, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(24, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(26, 1, 'user2', '123456789', 'Миша', 'Галустян', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(27, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(28, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(29, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(30, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(31, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(32, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(33, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(34, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(35, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!'),
-(36, 1, 'user1', '12345', 'Гадя', 'Петрович', 'gadya@mail.ru', '322-223', 'Потерялася я!');
+(1, 1, 'admin', '123', NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -211,7 +210,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `user_groups`
 --

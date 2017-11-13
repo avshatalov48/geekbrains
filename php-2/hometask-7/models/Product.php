@@ -8,13 +8,6 @@ class Product extends DataEntity
     public $description;
     public $price;
 
-    /**
-     * Product constructor.
-     * @param $id
-     * @param $name
-     * @param $description
-     * @param $price
-     */
     public function __construct($id = null, $name = null, $description = null, $price = null)
     {
         parent::__construct();

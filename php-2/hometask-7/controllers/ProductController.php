@@ -12,9 +12,9 @@ class ProductController extends Controller
         echo "Catalog";
     }
 
-    public function actionCard($id)
+    public function actionCard($id = null)
     {
-      //  $id = App::call()->request->getParams()['id'];
+        $id = App::call()->request->getParams()['id'];
         $product = $this->getRepository()->getOne($id);
         $this->useLayout = false;
         echo $this->render("card", ['product' => $product]);
