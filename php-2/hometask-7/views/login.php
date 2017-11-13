@@ -1,10 +1,10 @@
 <form action="" method="post">
     <div>
-        Логин:
+        Введите логин:
         <input type="text" name='login'/>
     </div>
     <div>
-        Пароль:
+        Введите пароль:
         <input type="password" name='pass'/>
     </div>
     <input type="submit" value='Вход'/>
