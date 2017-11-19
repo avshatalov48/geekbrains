@@ -1,10 +1,10 @@
 <?php
 
-define("PREFIX", "../");
+define("PREFIX", "..");
 
-require_once PREFIX . "base/App.php";
-require_once PREFIX . 'services/Autoloader.php';
-require_once PREFIX . 'controllers/Controller.php';
+require_once PREFIX . "/base/App.php";
+require_once PREFIX . '/services/Autoloader.php';
+require_once PREFIX . '/controllers/Controller.php';
 
 use app\services\Autoloader;
 
@@ -24,12 +24,12 @@ class AutoloaderTest extends PHPUnit_Framework_TestCase
     public function providerLoadClass()
     {
         return array(
-            array(PREFIX . "app\services\Auth"),
-            array(PREFIX . "app\services\Db"),
-            array(PREFIX . "app\services\Request"),
-            array(PREFIX . "app\controllers\AuthController"),
-            array(PREFIX . "app\controllers\FrontController"),
-            array(PREFIX . "app\controllers\ProductController")
+            array(PREFIX . "\app\services\Auth"),
+            array(PREFIX . "\app\services\Db"),
+            array(PREFIX . "\app\services\Request"),
+            array(PREFIX . "\app\controllers\AuthController"),
+            array(PREFIX . "\app\controllers\FrontController"),
+            array(PREFIX . "\app\controllers\ProductController")
         );
     }
 
