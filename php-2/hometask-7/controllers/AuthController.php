@@ -1,4 +1,5 @@
 <?php
+// Контроллер для авторизации
 
 namespace app\controllers;
 
@@ -18,7 +19,7 @@ class AuthController extends Controller
             }
         }
 
-        // Отрисовываем по шаблону
+        // Если ничего не пришло - отрисовываем по шаблону форму авторизации
         echo $this->render('login');
     }
 }

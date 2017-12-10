@@ -1,7 +1,7 @@
 <?php
+// Repository (хранилище объектов, посредник между БД и программой)
 
 namespace app\models\repositories;
-
 
 use app\base\App;
 use app\models\DataEntity;

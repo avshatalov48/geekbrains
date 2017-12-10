@@ -7,7 +7,7 @@ use app\models\User;
 
 use app\services\RequestNotMatchException;
 
-//use app\services\AutoloaderNotMatchException;
+use app\services\AutoloaderNotMatchException;
 
 class FrontController extends Controller
 {

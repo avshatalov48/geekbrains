@@ -1,5 +1,6 @@
 <?php
 // Репозиторий для таблицы sessions
+
 namespace app\models\repositories;
 
 use app\base\App;
@@ -8,7 +9,7 @@ use app\services\Db;
 
 class SessionsRep extends Repository
 {
-    // Очистка неиспользуемых сессий
+    // Очистка неиспользуемых сессий, старше 20 минут
     public function clearSessions()
     {
         return $this->conn->execute(
@@ -16,7 +17,7 @@ class SessionsRep extends Repository
         );
     }
 
-    // Создаем запись в sessions
+    // Создаем запись в таблице sessions
     public function createNew($userId, $sid, $timeLast)
     {
         return $this->conn->execute(
@@ -25,6 +26,7 @@ class SessionsRep extends Repository
         );
     }
 
+    // Обновление времени последнего входа
     public function updateLastTime($sid, $time = null)
     {
         if (is_null($time)) {
@@ -34,6 +36,7 @@ class SessionsRep extends Repository
             "UPDATE sessions SET last_update = '{$time}' WHERE sid = '{$sid}'");
     }
 
+    // Получаем user_id по session_id (sid)
     public function getUidBySid($sid)
     {
         return $this->conn->fetchOne(

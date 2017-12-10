@@ -1,8 +1,6 @@
 <?php
 
-
 namespace app\services\renderers;
-
 
 class TwigRenderer implements IRenderer
 {
@@ -15,7 +13,6 @@ class TwigRenderer implements IRenderer
         $loader = new \Twig_Loader_Filesystem($this->templateDir);
         $this->templater = new \Twig_Environment($loader);
     }
-
 
     public function render($template, $params = [])
     {

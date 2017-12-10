@@ -1,8 +1,6 @@
 <?php
 
-
 namespace app\services\renderers;
-
 
 interface IRenderer
 {
