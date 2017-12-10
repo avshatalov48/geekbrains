@@ -1,0 +1,10 @@
+@startuml
+
+class ActionNotMatchException extends \Exception
+
+abstract class Controller
+class FrontController extends Controller
+class ProductController extends Controller
+class AuthController extends Controller
+
+@enduml

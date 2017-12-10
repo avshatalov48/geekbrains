@@ -15,10 +15,12 @@ class ComponentNotFoundException extends \Exception
 
 class App
 {
+    // Трейт TSingleton
     use TSingleton;
 
     // Свойство-массив со всеми параметрами config
     public $config;
+
     // Будем в нем хранить компоненты, с отложенной инициализацией
     public $components;
 
