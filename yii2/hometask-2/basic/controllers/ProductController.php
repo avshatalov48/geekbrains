@@ -11,8 +11,8 @@ class ProductController extends Controller {
 
 	public function actionIndex() {
 
-		$product = Product::findOne(1);
-		var_dump($product->name);
+//		$product = Product::findOne(1);
+//		var_dump($product->name);
 
 		// Примеры запросов
 
