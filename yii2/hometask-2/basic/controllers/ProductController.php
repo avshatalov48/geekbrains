@@ -3,6 +3,7 @@
 // index.php?r=product
 namespace app\controllers;
 
+use app\models\Product;
 use yii\web\Controller;
 
 class ProductController extends Controller {
@@ -11,8 +12,31 @@ class ProductController extends Controller {
 
 	public function actionIndex() {
 
-//		$product = Product::findOne(1);
-//		var_dump($product->name);
+        // Как мы работаем в контроллерах с моделями
+	    // $product = Product::findOne(1);
+        // return $this->render('index', ['product' => $product]);
+
+        // Удаление записи с которой работаем
+        // $product->delete();
+        // либо
+        // Product::deleteAll(['id' => 15]); Удаление по условию id=15
+
+//        $product = Product::findOne(1);
+        // INSERT нового значения в БД несмотря на то, что findOne нашел значение
+//        $product = isNewRecord = true;
+        // Сбрасываем ID чтобы оно было уникально
+//        $product->id = null;
+//        $product->price = 200;
+//        $product->save();
+
+        // Создание нового Active Record
+//	    $product = new Product();
+//        $product->name = 'торт Наполеон';
+//        $product->price = 400;
+//        $product->save();
+
+	    //		$product = Product::findOne(1);
+        //		var_dump($product->name);
 
 		// Примеры запросов
 
