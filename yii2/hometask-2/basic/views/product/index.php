@@ -2,16 +2,16 @@
 
 use yii\helpers\Html;
 
+$title = "Каталог товаров";
 $this->title = $title;
 $this->params['breadcrumbs'][] = $this->title;
-?>
 
-<div class="product">
-    <h1><?= Html::encode($this->title) ?></h1>
+echo "<h1>$title</h1><hr>";
 
-	<p><?=$short_description?></p>
-	<img src="<?=$photo?>" class="img-responsive center-block">
-	<?=$description?>
-	<h3>Цена:</h3><?=$price?>
-
-</div>
+foreach ($product as $item) {
+    ?>
+    <div class="product">
+        <a href="index.php?r=product/card/&id=<?= $item->id ?>"><?= $item->name ?> (<?= $item->price ?> руб.)</a>
+    </div>
+    <hr>
+<? } ?>
