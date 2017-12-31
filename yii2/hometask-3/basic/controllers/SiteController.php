@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\forms\Callback;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -122,5 +123,16 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionCallback()
+    {
+//        Смотрим, что пришло в POST
+//        var_dump(Yii:$app->request->post());
+        $form = new CallbackForm();
+//        Метод для массовой загрузки свойств, данные отображаются в полях формы
+        $form->load(Yii:$app->request->post());
+//        $form->city = 1;
+        $this->render('callback', ['model' => $form, 'cities' => CallbackForm::getCities()])
     }
 }

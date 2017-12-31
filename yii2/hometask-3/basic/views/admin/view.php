@@ -31,6 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'category_id',
             'name',
+//        Дополнительная колонка со значениями
+            [
+                'label' => 'sep',
+//                'value' => '-----------'
+//                'value' => $model->name
+//'format' => 'html',
+//'contentOptions'=>['class' => 'myClass'],
+//'captionOptions'=>[],
+// Ананонимная функция
+                'value' => function () {
+        return "121241";
+                }
+            ],
             'photo',
             'short_description',
             'description:ntext',
