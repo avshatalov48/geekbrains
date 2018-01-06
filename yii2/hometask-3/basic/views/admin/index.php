@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => 'view',
 // при необходимости передаем переменные внутрь шаблона
         'viewParams' => ['hideBr' => true]
-    ])
+    ]);
 
     ?>
 
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'description:ntext',
             //'price',
             [
-                'class' => 'yii\grid\CheckboxColumn',
+                'class' => 'yii\grid\CheckboxColumn'
                 // you may configure additional properties here
             ],
             ['class' => 'yii\grid\ActionColumn',
@@ -56,6 +56,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => ['update' => function ($url, $model, $key) {
                     echo "Обновить!";
                 }],
-            ],
-        ]); ?>
+            ]
+        ]]); ?>
 </div>

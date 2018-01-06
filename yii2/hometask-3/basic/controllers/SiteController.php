@@ -131,8 +131,8 @@ class SiteController extends Controller
 //        var_dump(Yii:$app->request->post());
         $form = new CallbackForm();
 //        Метод для массовой загрузки свойств, данные отображаются в полях формы
-        $form->load(Yii:$app->request->post());
+        $form->load(Yii::$app->request->post());
 //        $form->city = 1;
-        $this->render('callback', ['model' => $form, 'cities' => CallbackForm::getCities()])
+        $this->render('callback', ['model' => $form, 'cities' => CallbackForm::getCities()]);
     }
 }
