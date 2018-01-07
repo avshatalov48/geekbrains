@@ -2,38 +2,121 @@
 
 namespace app\models;
 
-class User extends \yii\base\Object implements \yii\web\IdentityInterface
+use Yii;
+
+/**
+ * This is the model class for table "user".
+ *
+ * @property int $id
+ * @property int $groups_id
+ * @property string $username
+ * @property string $password
+ * @property string $salt
+ * @property string $access_token
+ * @property string $name
+ * @property string $surname
+ * @property string $email
+ * @property string $phone
+ * @property string $description
+ * @property string $create_date
+ *
+ * @property Feedback[] $feedbacks
+ * @property Session[] $sessions
+ * @property UserGroup $groups
+ */
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
 
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'user';
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['groups_id'], 'integer'],
+            [['username', 'password', 'salt'], 'required'],
+            [['create_date'], 'safe'],
+            [['username', 'name', 'surname'], 'string', 'max' => 32],
+            [['password', 'salt', 'access_token', 'description'], 'string', 'max' => 255],
+            [['email', 'phone'], 'string', 'max' => 64],
+            [['username'], 'unique'],
+            [['groups_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserGroup::className(), 'targetAttribute' => ['groups_id' => 'id']],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'groups_id' => 'Groups ID',
+            'username' => 'Username',
+            'password' => 'Password',
+            'salt' => 'Salt',
+            'access_token' => 'Access Token',
+            'name' => 'Name',
+            'surname' => 'Surname',
+            'email' => 'Email',
+            'phone' => 'Phone',
+            'description' => 'Description',
+            'create_date' => 'Create Date',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFeedbacks()
+    {
+        return $this->hasMany(Feedback::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSessions()
+    {
+        return $this->hasMany(Session::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getGroups()
+    {
+        return $this->hasOne(UserGroup::className(), ['id' => 'groups_id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return UserQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new UserQuery(get_called_class());
+    }
+
+/*
+ * Manual (not GII)
+ * */
 
     /**
      * @inheritdoc
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        //        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return static::findOne(['id' => $id]);
     }
 
     /**
@@ -41,13 +124,14 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+//        foreach (self::$users as $user) {
+//            if ($user['accessToken'] === $token) {
+//                return new static($user);
+//            }
+//        }
+//
+//        return null;
+        return static::findOne(['access_token' => $token]);
     }
 
     /**
@@ -58,13 +142,14 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findByUsername($username)
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
+//        foreach (self::$users as $user) {
+//            if (strcasecmp($user['username'], $username) === 0) {
+//                return new static($user);
+//            }
+//        }
+//
+//        return null;
+        return static::findOne(['username' => $username]);
     }
 
     /**
@@ -101,4 +186,5 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     {
         return $this->password === $password;
     }
+
 }

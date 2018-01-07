@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Product */
+/* @var $model app\models\Category */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="product-view">
+<div class="category-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,25 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'category_id',
             'name',
-//        Дополнительная колонка со значениями
-            [
-                'label' => 'sep',
-//                'value' => '-----------'
-//                'value' => $model->name
-//'format' => 'html',
-//'contentOptions'=>['class' => 'myClass'],
-//'captionOptions'=>[],
-// Ананонимная функция
-                'value' => function () {
-        return "121241";
-                }
-            ],
-            'photo',
-            'short_description',
-            'description:ntext',
-            'price',
+            'create_date',
         ],
     ]) ?>
 

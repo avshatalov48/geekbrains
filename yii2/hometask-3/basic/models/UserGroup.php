@@ -5,22 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "category".
+ * This is the model class for table "user_group".
  *
  * @property int $id
  * @property string $name
  * @property string $create_date
  *
- * @property Product[] $products
+ * @property User[] $users
  */
-class Category extends \yii\db\ActiveRecord
+class UserGroup extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'category';
+        return 'user_group';
     }
 
     /**
@@ -30,7 +30,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['create_date'], 'safe'],
-            [['name'], 'string', 'max' => 100],
+            [['name'], 'string', 'max' => 64],
         ];
     }
 
@@ -49,17 +49,17 @@ class Category extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProducts()
+    public function getUsers()
     {
-        return $this->hasMany(Product::className(), ['category_id' => 'id']);
+        return $this->hasMany(User::className(), ['groups_id' => 'id']);
     }
 
     /**
      * @inheritdoc
-     * @return CategoryQuery the active query used by this AR class.
+     * @return UserGroupQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new CategoryQuery(get_called_class());
+        return new UserGroupQuery(get_called_class());
     }
 }

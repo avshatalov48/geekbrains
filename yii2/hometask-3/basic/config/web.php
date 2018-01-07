@@ -5,6 +5,8 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'name' => 'Yii2 Shop',
+    'homeUrl' => '/basic/web/index.php?r=site/map',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -14,7 +16,7 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'But0jXG5rgrO1B-3Gkh_Jn0W-GqIlSLM',
+            'cookieValidationKey' => 'GV2o9oz3FY4Y3hyXYlWgmf_89zXN7f-3',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',

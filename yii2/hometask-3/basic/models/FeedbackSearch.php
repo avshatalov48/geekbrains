@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Product;
+use app\models\Feedback;
 
 /**
- * ProductSearch represents the model behind the search form of `app\models\Product`.
+ * FeedbackSearch represents the model behind the search form of `app\models\Feedback`.
  */
-class ProductSearch extends Product
+class FeedbackSearch extends Feedback
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class ProductSearch extends Product
     public function rules()
     {
         return [
-            [['id', 'category_id'], 'integer'],
-            [['name', 'photo', 'short_description', 'description', 'create_date'], 'safe'],
-            [['price'], 'number'],
+            [['id', 'user_id', 'product_id'], 'integer'],
+            [['text', 'create_date'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class ProductSearch extends Product
      */
     public function search($params)
     {
-        $query = Product::find();
+        $query = Feedback::find();
 
         // add conditions that should always apply here
 
@@ -61,15 +60,12 @@ class ProductSearch extends Product
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'category_id' => $this->category_id,
-            'price' => $this->price,
+            'user_id' => $this->user_id,
+            'product_id' => $this->product_id,
             'create_date' => $this->create_date,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'photo', $this->photo])
-            ->andFilterWhere(['like', 'short_description', $this->short_description])
-            ->andFilterWhere(['like', 'description', $this->description]);
+        $query->andFilterWhere(['like', 'text', $this->text]);
 
         return $dataProvider;
     }

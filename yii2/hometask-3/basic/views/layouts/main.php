@@ -41,9 +41,9 @@ AppAsset::register($this);
             ['label' => 'Главная', 'url' => ['/site/index']],
 //            ['label' => 'О нас', 'url' => ['/site/about']],
 //            ['label' => 'Контакты', 'url' => ['/site/contact']],
+            ['label' => 'Карта', 'url' => ['/site/map']],
             ['label' => 'Каталог товаров', 'url' => ['/product/index']],
-            ['label' => 'Админка', 'url' => ['/admin/index']],
-            ['label' => 'Обратная связь', 'url' => ['/admin/callback']],
+            ['label' => 'Админка', 'url' => ['/product/admin']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -72,7 +72,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Yii2 Shop <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

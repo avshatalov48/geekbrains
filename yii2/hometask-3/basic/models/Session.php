@@ -5,25 +5,23 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "feedback".
+ * This is the model class for table "session".
  *
- * @property int $id
+ * @property string $sid
  * @property int $user_id
- * @property int $product_id
- * @property string $text
+ * @property string $last_update
  * @property string $create_date
  *
- * @property Product $product
  * @property User $user
  */
-class Feedback extends \yii\db\ActiveRecord
+class Session extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'feedback';
+        return 'session';
     }
 
     /**
@@ -32,10 +30,11 @@ class Feedback extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'product_id'], 'integer'],
-            [['text'], 'string'],
-            [['create_date'], 'safe'],
-            [['product_id'], 'exist', 'skipOnError' => true, 'targetClass' => Product::className(), 'targetAttribute' => ['product_id' => 'id']],
+            [['sid'], 'required'],
+            [['user_id'], 'integer'],
+            [['last_update', 'create_date'], 'safe'],
+            [['sid'], 'string', 'max' => 64],
+            [['sid'], 'unique'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -46,20 +45,11 @@ class Feedback extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
+            'sid' => 'Sid',
             'user_id' => 'User ID',
-            'product_id' => 'Product ID',
-            'text' => 'Text',
+            'last_update' => 'Last Update',
             'create_date' => 'Create Date',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getProduct()
-    {
-        return $this->hasOne(Product::className(), ['id' => 'product_id']);
     }
 
     /**
@@ -72,10 +62,10 @@ class Feedback extends \yii\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return FeedbackQuery the active query used by this AR class.
+     * @return SessionQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new FeedbackQuery(get_called_class());
+        return new SessionQuery(get_called_class());
     }
 }

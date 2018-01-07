@@ -14,6 +14,10 @@ use Yii;
  * @property string $short_description
  * @property string $description
  * @property double $price
+ * @property string $create_date
+ *
+ * @property Feedback[] $feedbacks
+ * @property Category $category
  */
 class Product extends \yii\db\ActiveRecord
 {
@@ -32,9 +36,12 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             [['category_id'], 'integer'],
+            [['name'], 'required'],
             [['description'], 'string'],
             [['price'], 'number'],
+            [['create_date'], 'safe'],
             [['name', 'photo', 'short_description'], 'string', 'max' => 255],
+            [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
 
@@ -51,6 +58,32 @@ class Product extends \yii\db\ActiveRecord
             'short_description' => 'Short Description',
             'description' => 'Description',
             'price' => 'Price',
+            'create_date' => 'Create Date',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFeedbacks()
+    {
+        return $this->hasMany(Feedback::className(), ['product_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCategory()
+    {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
+    /**
+     * @inheritdoc
+     * @return ProductQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new ProductQuery(get_called_class());
     }
 }
