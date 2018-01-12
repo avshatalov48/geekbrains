@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Янв 12 2018 г., 22:40
+-- Время создания: Янв 12 2018 г., 23:45
 -- Версия сервера: 5.6.37
 -- Версия PHP: 7.0.21
 
@@ -182,7 +182,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `groups_id`, `username`, `password`, `salt`, `access_token`, `name`, `surname`, `email`, `phone`, `description`, `create_date`, `created_at`, `updated_at`) VALUES
 (1, 1, 'admin', 'admin', '', NULL, NULL, NULL, NULL, NULL, NULL, '2018-01-06 16:01:41', 0, 0),
-(33, 2, 'vasya', 'qwerty', NULL, NULL, NULL, NULL, 'vasya@mail.ru', NULL, NULL, '2018-01-12 22:38:08', 1515785888, 1515785888);
+(33, 2, 'vasya', 'qwerty', NULL, NULL, NULL, NULL, 'vasya@mail.ru', NULL, NULL, '2018-01-12 22:38:08', 1515785888, 1515785888),
+(47, 2, 'petya', 'qwerty', NULL, NULL, NULL, NULL, 'petya@mail.ru', NULL, NULL, '2018-01-12 23:45:03', 1515789903, 1515789903);
 
 -- --------------------------------------------------------
 
@@ -225,7 +226,8 @@ CREATE TABLE `user_subscription` (
 --
 
 INSERT INTO `user_subscription` (`id`, `user_id`, `email`, `created_at`, `updated_at`) VALUES
-(7, 33, 'vasya@mail.ru', 1515785888, 1515785888);
+(7, 33, 'vasya@mail.ru', 1515785888, 1515785888),
+(9, 47, 'petya@mail.ru', 1515789903, 1515789903);
 
 --
 -- Индексы сохранённых таблиц
@@ -303,7 +305,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 --
 -- AUTO_INCREMENT для таблицы `user_group`
 --
@@ -313,7 +315,7 @@ ALTER TABLE `user_group`
 -- AUTO_INCREMENT для таблицы `user_subscription`
 --
 ALTER TABLE `user_subscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --

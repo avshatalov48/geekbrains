@@ -81,13 +81,18 @@ class UserController extends Controller
     public function actionReg()
     {
         $model = new User();
-//        $model->on(static::EVENT_USER_SAVE,
-//            [$this, 'addUserSubscription']
-//        );
+        $model->on($this::EVENT_USER_SAVE,
+            function ($event) {
+                $model = $event->sender;
+                $modelUserSubscription = new UserSubscription();
+                $modelUserSubscription->email = $model->email;
+                $modelUserSubscription->user_id = $model->id;
+                $modelUserSubscription->save();
+            }
+        );
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $this->addUserSubscription($model);
-            //            $this->trigger(static::EVENT_USER_SAVE);
+            $model->trigger($this::EVENT_USER_SAVE);
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
@@ -95,15 +100,6 @@ class UserController extends Controller
             'model' => $model,
         ]);
     }
-
-    public function addUserSubscription($event)
-    {
-        $modelUserSubscription = new UserSubscription();
-        $modelUserSubscription->email = $event->email;
-        $modelUserSubscription->user_id = $event->id;
-        $modelUserSubscription->save();
-    }
-
 
     /**
      * Updates an existing User model.
