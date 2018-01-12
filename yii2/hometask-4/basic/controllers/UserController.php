@@ -5,6 +5,7 @@ namespace app\controllers;
 use Yii;
 use app\models\User;
 use app\models\UserSearch;
+use app\models\UserSubscription;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -14,6 +15,8 @@ use yii\filters\VerbFilter;
  */
 class UserController extends Controller
 {
+    const EVENT_USER_SAVE = 'user_save';
+
     /**
      * @inheritdoc
      */
@@ -75,6 +78,33 @@ class UserController extends Controller
         ]);
     }
 
+    public function actionReg()
+    {
+        $model = new User();
+//        $model->on(static::EVENT_USER_SAVE,
+//            [$this, 'addUserSubscription']
+//        );
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $this->addUserSubscription($model);
+            //            $this->trigger(static::EVENT_USER_SAVE);
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+        return $this->render('reg', [
+            'model' => $model,
+        ]);
+    }
+
+    public function addUserSubscription($event)
+    {
+        $modelUserSubscription = new UserSubscription();
+        $modelUserSubscription->email = $event->email;
+        $modelUserSubscription->user_id = $event->id;
+        $modelUserSubscription->save();
+    }
+
+
     /**
      * Updates an existing User model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -124,4 +154,5 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }

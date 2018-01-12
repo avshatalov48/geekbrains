@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "feedback".
@@ -77,5 +78,12 @@ class Feedback extends \yii\db\ActiveRecord
     public static function find()
     {
         return new FeedbackQuery(get_called_class());
+    }
+
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
     }
 }

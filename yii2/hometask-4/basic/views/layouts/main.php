@@ -43,6 +43,7 @@ AppAsset::register($this);
 //            ['label' => 'Контакты', 'url' => ['/site/contact']],
             ['label' => 'Карта', 'url' => ['/site/map']],
             ['label' => 'Каталог товаров', 'url' => ['/product/index']],
+            ['label' => 'Регистрация', 'url' => ['/user/reg']],
             ['label' => 'Админка', 'url' => ['/product/admin']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

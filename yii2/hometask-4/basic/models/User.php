@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "user".
@@ -42,7 +43,7 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             [['groups_id'], 'integer'],
-            [['username', 'password', 'salt'], 'required'],
+            [['username', 'password'], 'required'], // 'salt'
             [['create_date'], 'safe'],
             [['username', 'name', 'surname'], 'string', 'max' => 32],
             [['password', 'salt', 'access_token', 'description'], 'string', 'max' => 255],
@@ -59,14 +60,14 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return [
             'id' => 'ID',
-            'groups_id' => 'Groups ID',
-            'username' => 'Username',
-            'password' => 'Password',
+            'groups_id' => 'Группа пользователей',
+            'username' => 'Логин',
+            'password' => 'Пароль',
             'salt' => 'Salt',
             'access_token' => 'Access Token',
             'name' => 'Name',
             'surname' => 'Surname',
-            'email' => 'Email',
+            'email' => 'Электронная почта',
             'phone' => 'Phone',
             'description' => 'Description',
             'create_date' => 'Create Date',
@@ -187,4 +188,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
         return $this->password === $password;
     }
 
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
 }
