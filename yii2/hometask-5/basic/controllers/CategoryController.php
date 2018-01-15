@@ -3,11 +3,13 @@
 namespace app\controllers;
 
 use Yii;
+//use yii\caching\DbDependency;
 use app\models\Category;
 use app\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\PageCache;
 
 /**
  * CategoryController implements the CRUD actions for Category model.
@@ -26,6 +28,26 @@ class CategoryController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            [
+                'class' => PageCache::className(),
+                'only' => ['index', 'view'],
+                'duration' => '600',
+                'variations' => Yii::$app->language,
+                'dependency' => [
+                    'class' => 'yii\caching\DbDependency',
+                    'sql' => 'SELECT COUNT(*) FROM product, category;'
+                ]
+            ],
+            [
+                'class' => PageCache::className(),
+                'only' => ['index', 'view'],
+                'duration' => '600',
+                'variations' => Yii::$app->language,
+                'dependency' => [
+                    'class' => 'yii\caching\ExpressionDependency',
+                    'expression' => 'Yii::$app->request->get()'
+                ]
+            ],
         ];
     }
 
@@ -33,12 +55,24 @@ class CategoryController extends Controller
      * Lists all Category models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionAdmin()
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionIndex()
+    {
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 10;
+
+        return $this->render('catalog', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);

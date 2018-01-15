@@ -3,11 +3,14 @@
 namespace app\controllers;
 
 use Yii;
+//use yii\caching\DbDependency;
+//use yii\caching\ExpressionDependency;
 use app\models\Product;
 use app\models\ProductSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\PageCache;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -25,6 +28,26 @@ class ProductController extends Controller
                 'actions' => [
                     'delete' => ['POST'],
                 ],
+            ],
+            [
+                'class' => PageCache::className(),
+                'only' => ['index', 'category', 'view'],
+                'duration' => '600',
+                'variations' => Yii::$app->language,
+                'dependency' => [
+                    'class' => 'yii\caching\DbDependency',
+                    'sql' => 'SELECT COUNT(*) FROM product, category;'
+                ]
+            ],
+            [
+                'class' => PageCache::className(),
+                'only' => ['index', 'category', 'view'],
+                'duration' => '600',
+                'variations' => Yii::$app->language,
+                'dependency' => [
+                    'class' => 'yii\caching\ExpressionDependency',
+                    'expression' => 'Yii::$app->request->get()'
+                ]
             ],
         ];
     }
@@ -48,6 +71,19 @@ class ProductController extends Controller
     {
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->pagination->pageSize = 10;
+
+        return $this->render('catalog', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    public function actionCategory($category_id)
+    {
+        $searchModel = new ProductSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider->query->andFilterWhere(['in','category_id',[$category_id]]);
         $dataProvider->pagination->pageSize = 10;
 
         return $this->render('catalog', [

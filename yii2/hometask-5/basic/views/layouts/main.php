@@ -40,10 +40,11 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
 //            ['label' => 'О нас', 'url' => ['/site/about']],
-//            ['label' => 'Контакты', 'url' => ['/site/contact']],
+            ['label' => 'Контакты', 'url' => ['/site/contact']],
             ['label' => 'Карта', 'url' => ['/site/map']],
-            ['label' => 'Каталог товаров', 'url' => ['/product/index']],
+            ['label' => 'Каталог товаров', 'url' => ['/category/index']],
             ['label' => 'Регистрация', 'url' => ['/user/reg']],
+            ['label' => 'Очистить кэш', 'url' => ['/site/cache-flush']],
             ['label' => 'Админка', 'url' => ['/product/admin']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
@@ -63,6 +64,7 @@ AppAsset::register($this);
     ?>
 
     <div class="container">
+
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

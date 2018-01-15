@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
+use yii\filters\PageCache;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
@@ -35,6 +36,18 @@ class SiteController extends Controller
                     'logout' => ['post'],
                 ],
             ],
+//            [
+//                'class' => PageCache::className(),
+//                // Кеширование только определенных actions
+//                'only' => ['contact'],
+//                'duration' => '600',
+////                'enabled' => Yii::$app->request->isGet,
+//                'variations' => Yii::$app->language,
+//                'dependency' => [
+//                    'class' => 'yii\caching\ExpressionDependency',
+//                    'expression' => 'Yii::$app->request->get()'
+//                ]
+//            ]
         ];
     }
 
@@ -106,12 +119,11 @@ class SiteController extends Controller
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
-
             return $this->refresh();
         }
-        return $this->render('contact', [
-            'model' => $model,
-        ]);
+            return $this->render('contact', [
+                'model' => $model,
+            ]);
     }
 
     /**
@@ -127,6 +139,12 @@ class SiteController extends Controller
     public function actionMap()
     {
         return $this->render('map');
+    }
+
+    public function actionCacheFlush()
+    {
+        Yii::$app->cache->flush();
+        return $this->goBack();
     }
 
 }

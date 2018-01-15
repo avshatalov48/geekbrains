@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "user_subscription".
@@ -31,7 +32,7 @@ class UserSubscription extends \yii\db\ActiveRecord
     {
         return [
             [['user_id', 'email'], 'required'],
-            [['user_id', 'created_at', 'updated_at'], 'integer'],
+            [['user_id'], 'integer'],
             [['email'], 'string', 'max' => 64],
         ];
     }
@@ -62,9 +63,11 @@ class UserSubscription extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
-
 
 }

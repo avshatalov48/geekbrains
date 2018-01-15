@@ -3,6 +3,8 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "user_group".
@@ -61,5 +63,15 @@ class UserGroup extends \yii\db\ActiveRecord
     public static function find()
     {
         return new UserGroupQuery(get_called_class());
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
+        ];
     }
 }

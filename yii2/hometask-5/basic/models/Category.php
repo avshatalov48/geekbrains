@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\behaviors\TimestampBehavior;
+use yii\db\Expression;
 
 /**
  * This is the model class for table "category".
@@ -67,7 +68,18 @@ class Category extends \yii\db\ActiveRecord
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            [
+                'class' => TimestampBehavior::className(),
+                'value' => new Expression('NOW()'),
+            ],
         ];
     }
+
+    public function afterSave($insert, $changedAttributes){
+        if (parent::afterSave($insert, $changedAttributes)) {
+            return Yii::$app->cache->flush();
+        }
+        return false;
+    }
+
 }

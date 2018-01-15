@@ -8,13 +8,15 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Contact';
+$this->title = 'Контакты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+    <?php
+
+    if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
         <div class="alert alert-success">
             Thank you for contacting us. We will respond to you as soon as possible.
@@ -31,7 +33,21 @@ $this->params['breadcrumbs'][] = $this->title;
             <?php endif; ?>
         </p>
 
-    <?php else: ?>
+    <?php else:
+
+        $key = 'contact';
+        if ($this->beginCache($key, ['enabled' => Yii::$app->request->isGet])) {
+        ?>
+
+            <?php
+
+//                var_dump(Yii::$app->request);
+                echo "<hr><b>Проверка кэширования:</b>" .
+                "<br>static: " . date("H:i:s") .
+                "<br>dynamic: " . $this->renderDynamic('return date("H:i:s");') . "<hr>";
+
+//                echo "<br>" . Yii::$app->request->getMethod();
+            ?>
 
         <p>
             If you have business inquiries or other questions, please fill out the following form to contact us.
@@ -56,10 +72,15 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
 
-                <?php ActiveForm::end(); ?>
+                <?php
+                    ActiveForm::end();
+                    $this->endCache();
+                }
+                ?>
+
 
             </div>
         </div>

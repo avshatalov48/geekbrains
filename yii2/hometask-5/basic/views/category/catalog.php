@@ -7,7 +7,7 @@ use yii\widgets\ListView;
 /* @var $searchModel app\models\ProductSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Каталог товаров';
+$this->title = 'Категории товаров';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class='product-index'>
@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => function ($model) {
             return "<hr>
             <div class='product'>
-                <a href='index.php?r=product/view/&id={$model->id}'>{$model->name} ({$model->price} руб.)</a>
+                <a href='index.php?r=product/category/&category_id={$model->id}'>{$model->name}</a>
             </div>";
         },
     ]);

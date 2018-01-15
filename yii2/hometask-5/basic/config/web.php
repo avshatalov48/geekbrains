@@ -6,7 +6,7 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'name' => 'Yii2 Shop',
-    'homeUrl' => '/basic/web/index.php?r=site/map',
+    'homeUrl' => '/basic/web/index.php?r=site/index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [

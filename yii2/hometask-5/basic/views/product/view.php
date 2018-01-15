@@ -14,6 +14,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
+    <?php
+
+    echo "<hr><b>Проверка кэширования:</b>" .
+        "<br>static: " . date("H:i:s") .
+        "<br>dynamic: " . $this->renderDynamic('return date("H:i:s");') . "<hr>";
+    ?>
+
     <p>
         <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Delete', ['delete', 'id' => $model->id], [
