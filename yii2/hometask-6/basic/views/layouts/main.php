@@ -45,6 +45,7 @@ AppAsset::register($this);
             ['label' => 'Каталог товаров', 'url' => ['/category/index']],
             ['label' => 'Регистрация', 'url' => ['/user/reg']],
             ['label' => 'Очистить кэш', 'url' => ['/site/cache-flush']],
+            ['label' => 'Создать товар', 'url' => ['/product/create/']],
             ['label' => 'Админка', 'url' => ['/product/admin']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

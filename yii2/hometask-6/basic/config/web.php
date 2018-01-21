@@ -3,19 +3,24 @@
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
+// Решение проблемы с алиасами при использовании @webroot, @web в basic/config/web.php и получении ошибки "yii\base\InvalidParamException: Invalid path alias:"
+Yii::setAlias('@web', dirname(__DIR__) . '/../web');
+Yii::setAlias('@webroot', dirname(__DIR__) . '/web');
+
 $config = [
     'id' => 'basic',
     'name' => 'Yii2 Shop',
-//    'language' => 'ru-RU',
+//    'language' => 'en-EN',
     'language' => 'ru-RU',
     'homeUrl' => '/basic/web/index.php?r=site/index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
-//        '@img' => '@webroot/img',
+        '@img' => '@webroot/img',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+
     'components' => [
         'i18n' => [
             'translations' => [

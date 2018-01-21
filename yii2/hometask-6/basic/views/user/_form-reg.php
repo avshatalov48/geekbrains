@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\UserGroup;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -12,14 +13,19 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <!-- <?= $form->field($model, 'groups_id')->textInput() ?> -->
+    <? /* $form->field($model, 'groups_id')->textInput() */ ?>
 
-    <?= $form->field($model, 'groups_id')->dropDownList(
+    <? /* $form->field($model, 'groups_id')->dropDownList(
         [
             2 => 'Пользователи',
             1 => 'Администраторы',
-        ]);
+        ]); */
     ?>
+
+    <?= $form->field($model, 'groups_id')->dropdownList(
+        UserGroup::find()->select(['name', 'id'])->indexBy('id')->column(),
+        ['prompt'=>'Выберите группу пользователей']
+    ); ?>
 
     <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
 

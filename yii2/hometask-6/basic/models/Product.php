@@ -5,6 +5,8 @@ namespace app\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
+use yii\imagine\Image;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "product".
@@ -23,6 +25,11 @@ use yii\db\Expression;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    /**
+     * @var UploadedFile
+     */
+    public $imageFile;
+
     /**
      * @inheritdoc
      */
@@ -43,6 +50,14 @@ class Product extends \yii\db\ActiveRecord
             [['price'], 'number'],
             [['create_date'], 'safe'],
             [['name', 'photo', 'short_description'], 'string', 'max' => 255],
+            [['imageFile'], 'file',
+//                'on' => 'create',
+//                skipOnEmpty - обязательная загрузка файла. Отключить, так можно сделать Update, без необходимости обязательной загрузки нового файла
+//                'skipOnEmpty' => false,
+//                checkExtensionByMimeType - проверять MIME-тип данных, в соответствии с расширением
+//                'checkExtensionByMimeType' => false,
+                'mimeTypes' => ['image/jpeg', 'image/png'],
+                'extensions' => ['jpg', 'jpeg', 'png']],
             [['category_id'], 'exist', 'skipOnError' => true, 'targetClass' => Category::className(), 'targetAttribute' => ['category_id' => 'id']],
         ];
     }
@@ -54,13 +69,14 @@ class Product extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'category_id' => 'Category ID',
-            'name' => 'Name',
-            'photo' => 'Photo',
-            'short_description' => 'Short Description',
-            'description' => 'Description',
-            'price' => 'Price',
-            'create_date' => 'Create Date',
+            'category_id' => Yii::t('app_product', 'categoryId'),
+            'name' => Yii::t('app_product', 'name'),
+            'photo' => Yii::t('app_product', 'photo'),
+            'short_description' => Yii::t('app_product', 'shortDescription'),
+            'description' => Yii::t('app_product', 'description'),
+            'price' => Yii::t('app_product', 'price'),
+            'create_date' => Yii::t('app_product', 'createDate'),
+            'imageFile' => Yii::t('app_product', 'imageFile'),
         ];
     }
 
@@ -105,5 +121,34 @@ class Product extends \yii\db\ActiveRecord
 //        }
 //        return false;
 //    }
+
+    public function beforeSave($insert)
+    {
+        if (parent::beforeSave($insert)) {
+            // Текущий авторизованный юзер, добавивший товар
+            // $this->user_id = Yii::$app->user->id;
+            if (empty($this->imageFile))
+                unset($this->imageFile);
+            return true;
+        }
+        return false;
+    }
+
+    public static function saveImageAndModel($model, $post)
+    {
+        if ($model->load($post)) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            if ($model->imageFile->baseName) {
+                $model->photo = $model->imageFile->name;
+                // Сохранение загружаемого файла
+                file_put_contents(Yii::getAlias("@img/products/{$model->photo}"), file_get_contents($model->imageFile->tempName));
+                // Создание маленького файла из оригинала c помощью Imagine
+                Image::thumbnail("@img/products/{$model->photo}", 200, 150)
+                ->save(Yii::getAlias("@img/products/small/{$model->photo}"), ['quality' => 75]);
+            }
+            return ($model->validate() && $model->save());
+        }
+        return false;
+    }
 
 }

@@ -11,6 +11,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\PageCache;
+use yii\imagine\Image;
+use yii\web\UploadedFile;
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -110,14 +112,12 @@ class ProductController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+
     public function actionCreate()
     {
         $model = new Product();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if(Product::saveImageAndModel($model, Yii::$app->request->post()))
             return $this->redirect(['view', 'id' => $model->id]);
-        }
-
         return $this->render('create', [
             'model' => $model,
         ]);
@@ -130,14 +130,12 @@ class ProductController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if(Product::saveImageAndModel($model, Yii::$app->request->post()))
             return $this->redirect(['view', 'id' => $model->id]);
-        }
-
         return $this->render('update', [
             'model' => $model,
         ]);
