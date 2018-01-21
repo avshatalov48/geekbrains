@@ -8,7 +8,10 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
-$this->title = 'Контакты';
+//Yii::$app->language = 'en-EN';
+//Yii::$app->language = 'ru-RU';
+
+$this->title = Yii::t('app', 'titleForm');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-contact">
@@ -19,39 +22,34 @@ $this->params['breadcrumbs'][] = $this->title;
     if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
 
         <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
+            <?= Yii::t('app', 'successFormMessage') ?>
         </div>
 
         <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
+            <?= Yii::t('app', 'debuggerFormMessage') ?>
             <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
+                <?= Yii::t('app', 'notSentFormMessage', ['code' => Yii::getAlias(Yii::$app->mailer->fileTransportPath)]) ?>
             <?php endif; ?>
         </p>
 
     <?php else:
 
         $key = 'contact';
-        if ($this->beginCache($key, ['enabled' => Yii::$app->request->isGet])) {
+        // if ($this->beginCache($key, ['enabled' => Yii::$app->request->isGet])) {
         ?>
 
             <?php
 
 //                var_dump(Yii::$app->request);
-                echo "<hr><b>Проверка кэширования:</b>" .
-                "<br>static: " . date("H:i:s") .
-                "<br>dynamic: " . $this->renderDynamic('return date("H:i:s");') . "<hr>";
+//                echo "<hr><b>Проверка кэширования:</b>" .
+//                "<br>static: " . date("H:i:s") .
+//                "<br>dynamic: " . $this->renderDynamic('return date("H:i:s");') . "<hr>";
 
 //                echo "<br>" . Yii::$app->request->getMethod();
             ?>
 
         <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
+            <?= Yii::t('app', 'helloFormMessage') ?>
         </p>
 
         <div class="row">
@@ -72,13 +70,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     ]) ?>
 
                     <div class="form-group">
-                        <?= Html::submitButton('Отправить', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                        <?= Html::submitButton(Yii::t('app', 'send'), ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
                     </div>
 
                 <?php
                     ActiveForm::end();
-                    $this->endCache();
-                }
+                    // $this->endCache();
+                //}
                 ?>
 
 

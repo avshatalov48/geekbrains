@@ -6,14 +6,25 @@ $db = require __DIR__ . '/db.php';
 $config = [
     'id' => 'basic',
     'name' => 'Yii2 Shop',
+//    'language' => 'ru-RU',
+    'language' => 'ru-RU',
     'homeUrl' => '/basic/web/index.php?r=site/index',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
+//        '@img' => '@webroot/img',
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'components' => [
+        'i18n' => [
+            'translations' => [
+                'app*' => [
+                    'class' => yii\i18n\PhpMessageSource::className(),
+                    'basePath' => '@app/messages'
+                ]
+            ]
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'GV2o9oz3FY4Y3hyXYlWgmf_89zXN7f-3',

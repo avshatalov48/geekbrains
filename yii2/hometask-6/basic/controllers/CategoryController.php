@@ -28,26 +28,26 @@ class CategoryController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-            [
-                'class' => PageCache::className(),
-                'only' => ['index', 'view'],
-                'duration' => '600',
-                'variations' => Yii::$app->language,
-                'dependency' => [
-                    'class' => 'yii\caching\DbDependency',
-                    'sql' => 'SELECT COUNT(*) FROM product, category;'
-                ]
-            ],
-            [
-                'class' => PageCache::className(),
-                'only' => ['index', 'view'],
-                'duration' => '600',
-                'variations' => Yii::$app->language,
-                'dependency' => [
-                    'class' => 'yii\caching\ExpressionDependency',
-                    'expression' => 'Yii::$app->request->get()'
-                ]
-            ],
+//            [
+//                'class' => PageCache::className(),
+//                'only' => ['index', 'view'],
+//                'duration' => '600',
+//                'variations' => Yii::$app->language,
+//                'dependency' => [
+//                    'class' => 'yii\caching\DbDependency',
+//                    'sql' => 'SELECT COUNT(*) FROM product, category;'
+//                ]
+//            ],
+//            [
+//                'class' => PageCache::className(),
+//                'only' => ['index', 'view'],
+//                'duration' => '600',
+//                'variations' => Yii::$app->language,
+//                'dependency' => [
+//                    'class' => 'yii\caching\ExpressionDependency',
+//                    'expression' => 'Yii::$app->request->get()'
+//                ]
+//            ],
         ];
     }
 

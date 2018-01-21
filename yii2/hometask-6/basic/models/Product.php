@@ -99,11 +99,11 @@ class Product extends \yii\db\ActiveRecord
         ];
     }
 
-    public function afterSave($insert, $changedAttributes){
-        if (parent::afterSave($insert, $changedAttributes)) {
-            return Yii::$app->cache->flush();
-        }
-        return false;
-    }
+//    public function afterSave($insert, $changedAttributes){
+//        if (parent::afterSave($insert, $changedAttributes)) {
+//            return Yii::$app->cache->flush();
+//        }
+//        return false;
+//    }
 
 }
