@@ -1,0 +1,96 @@
+PassMark ® Software MemTest86™
+Copyright (C) 2013-2017 PassMark Software
+All Rights Reserved
+http://www.memtest86.com
+
+Overview
+========================================
+PassMark's MemTest86 is a standalone memory testing software for x86 computers.
+MemTest86 boots from a USB flash drive and tests the RAM in your computer for 
+faults using a series of comprehensive algorithms and test patterns.
+<For more details see the MemTest86 User Guide>
+
+
+Requirements
+========================================
+- x86 System (Mac and PC)
+- USB Flash drive (>= 256MB capacity)
+
+
+Creating a bootable USB drive
+========================================
+ - Plug in your USB drive.
+ - Launch the included ImageUSB application.
+ - Select your USB drive from the list (Step 1).
+ - Select 'Write image to USB drive' (Step 2)
+ - If it is not already selected, select the included image file (Step 3).
+ - Click 'Write' (Step 4).
+
+After accepting a few more prompts this should give you a working
+bootable USB drive.
+
+
+Booting the MemTest86 USB drive
+========================================
+This USB drive supports dual booting on UEFI and BIOS platforms. 
+Most newer systems are able to run the UEFI version of MemTest86.
+On machines that don't support UEFI, the older V4 BIOS release of MemTest86 
+will be automatically booted.
+
+To boot from the drive you may need to go into your BIOS settings and
+alter your boot order. Or launch the boot menu at system startup.
+The methods for doing this will vary depending on your motherboard.
+
+To start MemTest86 insert the USB flash drive into the appropriate drive and 
+restart your computer. If running on a UEFI system, the UEFI BIOS must be configured 
+to boot from the device that MemTest86 is installed on. Most systems have an optional 
+boot menu that is enabled by pressing a key at startup (often ESC, F9, F11 or F12).
+
+If available use the boot menu to select the correct drive. 
+You may see both the UEFI and BIOS as separate options. 
+Please consult your motherboard documentation for details.
+
+On a Mac, you need to hold down the 'c' key while the computer is booting to boot from CD. 
+To boot from USB, you need to hold down the ALT / Option key on the Mac keyboard 
+while powering on the machine.
+
+
+Reclaiming disk space from the USB drive
+========================================
+You may have noticed that the MemTest86 USB drive you have created may have lost some 
+disk space and normal formatting will not recover the lost space. 
+For example, this can happen when a UFD contains multiple partitions, such as the
+MemTest86 image. Formatting will not span across multiple partitions/volume. 
+To erase the partition records and reclaim the whole disk, you will need to 
+zero the MBR.
+
+WARNING: THIS PROCESS WILL COMPLETELY DELETE THE DATA ON THE DRIVE
+
+1. Insert UFD.
+2. Launch imageUSB and select the appropriate UFD. (Be careful and select the correct drive!).
+3. Choose the Zero UFD option & Run.
+4. Drive MBR is now Zeroed. You will need to reinsert the drive for Windows to recognize it 
+   and prompt for formatting before you can use it again. A normal format will now recover 
+   the full capacity of the USB drive.
+
+
+Documentation
+=============
+All the documentation is included in the MemTest86 User Guide PDF. It can be found under the
+'help' folder in the USB flash drive. 
+
+
+Support
+=======
+For technical support, questions, suggestions, please check the User Guide or 
+visit our web page at http://www.memtest86.com
+
+
+Ordering / Registration
+=======================
+All the details are in our sales information page
+http://www.memtest86.com/sales/index.php
+
+
+Enjoy..
+The PassMark Development team
