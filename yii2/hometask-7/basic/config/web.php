@@ -62,14 +62,13 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
+            //  запрещаем index.php
             'enablePrettyUrl' => true,
+            // запрещаем r= routes
             'showScriptName' => false,
             'rules' => [
-                '' => 'site/index',
-                'contact' => 'site/contact',
-                'map' => 'site/map',
-                'login' => 'site/login',
-                'cache-flush' => 'site/cache-flush',
+                '/' => 'site/index',
+                '<action:\w+>' => 'site/<action>',
             ],
         ],
     ],
