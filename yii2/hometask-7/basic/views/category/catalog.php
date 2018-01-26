@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'itemView' => function ($model) {
             return "<hr>
             <div class='product'>
-                <a href='index.php?r=product/category/&category_id={$model->id}'>{$model->name}</a>
+                <a href='" . Yii::getAlias('@web') . "/product/category/?category_id={$model->id}'>{$model->name}</a>
             </div>";
         },
     ]);

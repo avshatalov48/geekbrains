@@ -12,7 +12,7 @@ $config = [
     'name' => 'Yii2 Shop',
 //    'language' => 'en-EN',
     'language' => 'ru-RU',
-    'homeUrl' => '/basic/web/index.php?r=site/index',
+    'homeUrl' => '@web',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -61,14 +61,17 @@ $config = [
             ],
         ],
         'db' => $db,
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                '' => 'site/index',
+                'contact' => 'site/contact',
+                'map' => 'site/map',
+                'login' => 'site/login',
+                'cache-flush' => 'site/cache-flush',
             ],
         ],
-        */
     ],
     'params' => $params,
 ];

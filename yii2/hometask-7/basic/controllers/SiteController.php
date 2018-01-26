@@ -147,12 +147,10 @@ class SiteController extends Controller
         return $this->goBack();
     }
 
-//    public function actionAliases()
-//    {
-//        echo Yii::getAlias('@web');
-//        echo Yii::getAlias('@webroot');
-//        //print_r(Yii::$aliases);
-//        exit;
-//    }
+    public function actionAliases()
+    {
+        var_dump(Yii::$aliases);
+        exit;
+    }
 
 }
