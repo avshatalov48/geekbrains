@@ -9,6 +9,9 @@ $config = [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -23,6 +26,14 @@ $config = [
         'db' => $db,
     ],
     'params' => $params,
+
+// https://github.com/yii2mod/yii2-rbac
+//    'modules' => [
+//        'rbac' => [
+//            'class' => 'yii2mod\rbac\ConsoleModule'
+//        ]
+//    ]
+
     /*
     'controllerMap' => [
         'fixture' => [ // Fixture generation command line.

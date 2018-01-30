@@ -6,6 +6,38 @@ $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
+    <?php
+
+    // Проверка прав доступа пользователя к конкретной операции
+
+    if (!Yii::$app->user->isGuest) {
+
+        echo "<h4>Права доступа:</h4>";
+
+        if (Yii::$app->user->can('viewAdminPage')) {
+            echo "<br>Вы имеете доступ к админке!";
+        }
+
+        if (Yii::$app->user->can('regUsers')) {
+            echo "<br>Вы можете регистрировать новых пользователей!";
+        }
+
+        if (Yii::$app->user->can('createProduct')) {
+            echo "<br>Вы имеете доступ к созданию товара!";
+        }
+
+        if (Yii::$app->user->can('deleteProduct')) {
+            echo "<br>Вы имеете доступ к удалению товара!";
+        }
+
+        if (Yii::$app->user->can('updateProduct')) {
+            echo "<br>Вы имеете доступ к обновлению товара!";
+        }
+
+    }
+
+    ?>
+
     <div class="jumbotron">
         <h1>Congratulations!</h1>
 
