@@ -22,8 +22,16 @@ $config = [
     ],
 
     'components' => [
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            'defaultRoles' => ['guest', 'user', 'admin',],
+        ],
         'i18n' => [
             'translations' => [
+                'yii2mod.rbac' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@yii2mod/rbac/messages',
+                ],
                 'app*' => [
                     'class' => yii\i18n\PhpMessageSource::className(),
                     'basePath' => '@app/messages'
@@ -62,7 +70,7 @@ $config = [
         ],
         'db' => $db,
         'urlManager' => [
-            //  запрещаем index.php
+            // запрещаем index.php
             'enablePrettyUrl' => true,
             // запрещаем r= routes
             'showScriptName' => false,
@@ -73,6 +81,13 @@ $config = [
         ],
     ],
     'params' => $params,
+
+    'modules' => [
+        'rbac' => [
+            'class' => 'yii2mod\rbac\Module',
+        ],
+    ],
+
 ];
 
 if (YII_ENV_DEV) {

@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\filters\AccessControl;
 //use yii\caching\DbDependency;
 //use yii\caching\ExpressionDependency;
 use app\models\Product;
@@ -31,6 +32,20 @@ class ProductController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
+            'access' => [
+                'class' => AccessControl::className(),
+//                'only' => ['admin'],
+                'rules' => [
+                    [
+                        'actions' => ['admin'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                ],
+            ],
+
+
 //            [
 //                'class' => PageCache::className(),
 //                'only' => ['index', 'category', 'view'],
@@ -63,10 +78,12 @@ class ProductController extends Controller
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+//        if (Yii::$app->user->can('viewAdminPage')) {
+            return $this->render('index', [
+                'searchModel' => $searchModel,
+                'dataProvider' => $dataProvider,
+            ]);
+//        }
     }
 
     public function actionIndex()
