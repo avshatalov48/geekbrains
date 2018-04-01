@@ -1,5 +1,5 @@
 <?php
-// Хранилище
+// Хранилище наших компонентов
 namespace app\base;
 
 class Storage

@@ -14,10 +14,6 @@ abstract class Repository
 
     protected $conn;
 
-    /**
-     * DataGetter constructor.
-     * @param $db
-     */
     public function __construct()
     {
         $this->conn = App::call()->db;
