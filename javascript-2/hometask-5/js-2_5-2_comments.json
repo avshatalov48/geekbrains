@@ -2,17 +2,17 @@
   "result": 1,
   "comments": [
     {
-      "id_comment": 123,
+      "id_comment": 1,
       "text": "Текст отзыва 123",
       "submit": true
     },
     {
-      "id_comment": 124,
+      "id_comment": 2,
       "text": "Текст отзыва 124",
       "submit": false
     },
     {
-      "id_comment": 125,
+      "id_comment": 3,
       "text": "Текст отзыва 125",
       "submit": false
     }
