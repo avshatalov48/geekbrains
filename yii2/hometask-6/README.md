@@ -1,6 +1,6 @@
 # GeekBrains. Yii2 Framework. Профессиональная Backend-разработка.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/35
+<br>[https://geekbrains.ru/courses/35](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 6. Кеширование данных.
 Рассмотрим механизмы кеширования в Yii; определим какие данные выгодно кешировать нам; реализация кешей.

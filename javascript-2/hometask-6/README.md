@@ -1,5 +1,6 @@
 # GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 6. jQuery UI и другие расширения jQuery (04/07/2017)
 Виджеты; Поведения; дополнительная анимация; подключение и использование объекта Carousel.

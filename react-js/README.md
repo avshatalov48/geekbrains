@@ -1,5 +1,6 @@
 # GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Введение в ReactJS: современный Javascript.
 Знакомство с ReactJS; сравнение с другими технологиями; современный JS; что нового в ES6 и как это использовать; классы, наследования, модули rest/spread, параметры, промисы, модули.

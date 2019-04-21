@@ -1,6 +1,6 @@
 # GeekBrains. Yii2 Framework. Профессиональная Backend-разработка.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/35
+<br>[https://geekbrains.ru/courses/35](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 3. Инструменты работы с БД в Yii; DAO и ORM.
 Рассмотрим DAO и ActiveRecord; сгенерируем модель User и сделаем авторизацию пользователя через БД.

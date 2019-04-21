@@ -1,5 +1,6 @@
 # GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 8. Тестирование: куда дальше?
 Типы тестирования; тестирование в JavaScript; Jasmine.js; Mocha; дальнейшее развитие.

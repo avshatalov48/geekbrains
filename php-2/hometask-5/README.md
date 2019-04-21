@@ -1,6 +1,6 @@
 # GeekBrains. PHP. Уровень 2.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/5
+<br>[https://geekbrains.ru/courses/5](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 5. Парадигма MVC.
 Зачем нужен MVC? Составляющие и их взаимосвязь. Архитектура системы. Маршрутизация и ЧПУ. PSR-0 и PSR-1.

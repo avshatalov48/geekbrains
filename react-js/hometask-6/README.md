@@ -1,5 +1,6 @@
 # GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 6. Роутинг в ReactJS приложении.
 Что такое роутинг; добавляем ReactRouter в наше приложение; основные возможности ReactRouter; организуем роутинг в нашем приложении; параметры роутинга.

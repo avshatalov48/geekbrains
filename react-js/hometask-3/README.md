@@ -1,5 +1,6 @@
 # GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 3. Первое приложение на ReactJS.
 Что же такое ReactJS и как с ним работать; JSX, ReactComponent, ReactDOM.render, Render function; создаём и отрисовываем первый компонент; добавляем Layout компонент; определяемся с набором компонентов нашего приложения; реализуем заготовки компонентов системы.

@@ -1,5 +1,6 @@
 # GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 4. Введение в jQuery.
 Селекторы; события; AJAX в jQuery; работа со стилями и анимация.

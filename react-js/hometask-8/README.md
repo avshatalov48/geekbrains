@@ -1,5 +1,6 @@
 # GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 8. Знакомство с NodeJS, EpxressJS и MongoDB.
 Что такое NodeJS; что такое ExpressJS; что такое MongoDB; устанавливаем и настраиваем NodeJS; подключаем ExpressJS; организуем обработку входящих запросов при помощи ExpressJS Router; устанавливаем и настраиваем MongoDB; типизируем наши схемы, подключаем Mongoose.

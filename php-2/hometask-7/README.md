@@ -1,6 +1,6 @@
 # GeekBrains. PHP. Уровень 2.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/5
+<br>[https://geekbrains.ru/courses/5](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 7. Практическое занятие.
 Проектирование системы. Доработка необходимых модулей.

@@ -1,6 +1,6 @@
 # GeekBrains. Yii2 Framework. Профессиональная Backend-разработка.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/35
+<br>[https://geekbrains.ru/courses/35](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Настройка рабочей среды на базе Ubuntu, шаблоны Yii.
 Что такое YII; возможности фреймфорка; установка веб-сервера на Ubuntu 15.10; установка фреймворка; обзор базового и продвинутого шаблона; запуск шаблонов.

@@ -1,5 +1,5 @@
 # GeekBrains. Профессия "Веб-разработчик".
-<br>https://geekbrains.ru/professions/web_developer
+<br>[https://geekbrains.ru/professions/web_developer](https://geekbrains.ru/go/rmHbir)
 ____
 
 # Содержание
@@ -16,7 +16,7 @@ ____
 
 #  <a name="htmlcss"></a> GeekBrains. HTML/CSS. Основы создания сайтов.
 Преподаватель: Владимир Языков.
-<br>https://geekbrains.ru/courses/3
+<br>[https://geekbrains.ru/courses/3](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Основные понятия в веб-разработке
 Что представляет собой веб-страница; виды сайтов; процесс разработки сайта; что такое гипертекст, теги и атрибуты; подготовка рабочего места; структура HTML-документа; основные теги оформления текста; простой пример HTML странички; пример сложной веб-страницы; горячие клавиши для перемещения по документам.
@@ -47,7 +47,7 @@ ____
 
 #  <a name="html5css3"></a> GeekBrains. HTML5 и CSS3. Современные средства Web-разработки.
 Преподаватель: Владимир Языков.
-<br>https://geekbrains.ru/courses/9
+<br>[https://geekbrains.ru/courses/9](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. HTML5: Семантические элементы.
 Обзор HTML5, Новые семантические элементы HTML5, Новый способ структурирования страниц. Семантика текстового уровня. Настройка редактора , практические примеры применения семантических тегов, для создания структуры сайта. Знакомство с плагинами ускоряющими вёрстку сайта.
@@ -78,7 +78,7 @@ ____
 
 #  <a name="js1"></a> GeekBrains. JavaScript. Уровень 1. Интерактивные веб-приложения.
 Преподаватель: Владимир Языков.
-<br>https://geekbrains.ru/courses/6
+<br>[https://geekbrains.ru/courses/6](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Основы языка JavaScript.
 Синтаксис; структура кода; внешние скрипты и порядок их исполнения; переменные и типы данных; Hello world; современные стандарты.
@@ -110,7 +110,7 @@ ____
 
 #  <a name="js2"></a> GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
-<br>https://geekbrains.ru/courses/83
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. ООП в JavaScript.
 Prototype; жизненные циклы объекта; прототипный и функциональный стиль: минусы и плюсы; наследование; встроенные классы.
@@ -141,7 +141,7 @@ ____
 
 #   <a name="react"></a> GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
-<br>https://geekbrains.ru/courses/119
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Введение в ReactJS: современный Javascript.
 Знакомство с ReactJS; сравнение с другими технологиями; современный JS; что нового в ES6 и как это использовать; классы, наследования, модули rest/spread, параметры, промисы, модули.
@@ -172,7 +172,7 @@ ____
 
 #  <a name="php1"></a> GeekBrains. PHP. Уровень 1.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/4
+<br>[https://geekbrains.ru/courses/4](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Введение в PHP.
 Принципы работы динамических сайтов Принципы работы веб-серверов Подготовка рабочей среды Hello, world! [Практика] Базовые. конструкции языка – дескрипторы, переменные, типы данных Версии языка и их различия на базовом уровне.
@@ -203,7 +203,7 @@ ____
 
 # <a name="php2"></a> GeekBrains. PHP. Уровень 2.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/5
+<br>[https://geekbrains.ru/courses/5](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. ООП в PHP. Базовые понятия.
 Откуда появилась концепция ООП? Базовые термины ООП. Базовые принципы ООП. ООП в PHP. Константы и статические методы. Hello, world в стиле ООП [Практика].
@@ -234,7 +234,7 @@ ____
 
 # <a name="yii2"></a> GeekBrains. Yii2 Framework. Профессиональная Backend-разработка.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/35
+<br>[https://geekbrains.ru/courses/35](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. Настройка рабочей среды на базе Ubuntu, шаблоны Yii.
 Что такое YII; возможности фреймфорка; установка веб-сервера на Ubuntu 15.10; установка фреймворка; обзор базового и продвинутого шаблона; запуск шаблонов.

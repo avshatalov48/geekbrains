@@ -1,5 +1,6 @@
 # GeekBrains. ReactJS. Профессиональная frontend-разработка.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/119](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 7. Концепция Flux на примере использования Redux.
 Что такое Flux; FluxDispatcher; EventEmitter; Store; что такое Redux и для чего он нам нужен; Reducers; Redux EventEmitter и Store.

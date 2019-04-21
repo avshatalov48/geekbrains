@@ -1,6 +1,6 @@
 # GeekBrains. Yii2 Framework. Профессиональная Backend-разработка.
 Преподаватель: Игорь Полуянов.
-<br>https://geekbrains.ru/courses/35
+<br>[https://geekbrains.ru/courses/35](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 5. Автоматическая генерация кода с использованием GII. Часть 2.
 Детальное изучение Gii; генерация CRUD-операций на основные таблицы БД; теоретическая и практическая часть.

@@ -1,5 +1,6 @@
 # GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. ООП в JavaScript.
 Prototype; жизненные циклы объекта; прототипный и функциональный стиль: минусы и плюсы; наследование; встроенные классы.

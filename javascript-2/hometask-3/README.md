@@ -1,5 +1,6 @@
 # GeekBrains. JavaScript. Уровень 2. Продвинутый курс.
 Преподаватель: Игорь Филимонов.
+<br>[https://geekbrains.ru/courses/83](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 3. Регулярные выражения в JavaScript.
 Паттерны и флаги; Regexp и String; квантификаторы; наборы и диапазоны.

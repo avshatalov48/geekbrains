@@ -1,6 +1,6 @@
 # GeekBrains. PHP. Уровень 2.
 Преподаватель: Игорь Полуянов.
-https://geekbrains.ru/courses/5
+<br>[https://geekbrains.ru/courses/5](https://geekbrains.ru/go/rmHbir)
 
 ## Урок 1. ООП в PHP. Базовые понятия.
 Откуда появилась концепция ООП? Базовые термины ООП. Базовые принципы ООП. ООП в PHP. Константы и статические методы. Hello, world в стиле ООП [Практика].
